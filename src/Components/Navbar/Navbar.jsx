@@ -14,7 +14,7 @@ const Navbar = () => {
                     <MenuItem>Login</MenuItem>
                     <MenuItem>
                         <Badge badgeContent={4} color="primary">
-                        <ShoppingCartOutlined color="action" style={{color:'white',fontSize:20}}/>
+                        <ShoppingCartOutlined />
                         </Badge>
                     </MenuItem>
                 </Center>
@@ -22,7 +22,7 @@ const Navbar = () => {
                     <Language>EN</Language>
                     <SearchContainer>
                         <Input />
-                        <Search style={{color:'red',fontSize:20}}/>
+                        <Search style={{color:'#6a9113',fontSize:20}}/>
                     </SearchContainer>
                 </Rigth>
             </Wrapper>
