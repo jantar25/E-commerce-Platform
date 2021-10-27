@@ -39,7 +39,7 @@ height:100vh;
 width:100vw;
 display:flex;
 align-items:center;
-background-color: ${ props=>props.bg};
+background-color: # ${ props=>props.bg};
 `
 export const ImgContainer = styled.div`
 flex:1;
