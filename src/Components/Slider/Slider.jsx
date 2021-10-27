@@ -1,27 +1,39 @@
+import { useState } from "react"
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons"
 import { Container,Arrow,Wrapper,Slide,ImgContainer,InfoContainer,Image,Title,Description,Button } from "./Styles"
-import mango from "../../Images/mango.png"
+import {SlideItems} from './SlideData'
 
 
 const Slider = () => {
+    const [slideIndex,setSlideIndex]= useState(0);
+    const handleClick=(direction)=>{
+        if(direction==="left") {
+            setSlideIndex(slideIndex > 0 ? slideIndex -1 : 2)
+        } else {
+            setSlideIndex(slideIndex < 2 ? slideIndex +1 : 0)
+        }
+    }
+
     return (
         <Container>
-            <Arrow direction="left">
+            <Arrow direction="left" onClick={()=>handleClick('left')}>
                 <KeyboardArrowLeft />
             </Arrow>
-            <Wrapper>
-                <Slide>
-                    <ImgContainer>
-                        <Image src={mango} />
-                    </ImgContainer>
-                    <InfoContainer>
-                        <Title>Mango fashion</Title>
-                        <Description>footwear and accessories. Shop the best outfits for this season at our online store.</Description>
-                        <Button>SHOW NOW</Button>
-                    </InfoContainer>
-                </Slide>
+            <Wrapper slideIndex={slideIndex}>
+                {SlideItems.map(item=>(
+                <Slide bg={item.bg}>
+                <ImgContainer>
+                    <Image src={item.img} />
+                </ImgContainer>
+                <InfoContainer>
+                    <Title>{item.title}</Title>
+                    <Description>{item.description}</Description>
+                    <Button>SHOW NOW</Button>
+                </InfoContainer>
+            </Slide>
+                ))}
             </Wrapper>
-            <Arrow direction="right">
+            <Arrow direction="right" onClick={()=>handleClick('right')}>
                 <KeyboardArrowRight />
             </Arrow>
             

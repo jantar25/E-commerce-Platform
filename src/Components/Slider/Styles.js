@@ -5,6 +5,7 @@ width:100%;
 height:100vh;
 display:flex;
 position:relative;
+overflow:hidden;
 `
 
 export const Arrow = styled.div`
@@ -23,16 +24,22 @@ left: ${ props=>props.direction==="left" && "10px"};
 right: ${ props=>props.direction==="right" && "10px"};
 opacity:0.5;
 cursor:pointer;
+z-index:2;
 `
 
 export const Wrapper = styled.div`
 height:100%;
+display:flex;
+transition: all 2s ease;
+transform:translateX(${props=>props.slideIndex * -100}vw);
+
 `
 export const Slide = styled.div`
 height:100vh;
 width:100vw;
 display:flex;
 align-items:center;
+background-color: ${ props=>props.bg};
 `
 export const ImgContainer = styled.div`
 flex:1;
