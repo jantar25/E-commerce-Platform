@@ -61,11 +61,3 @@ transition: all 0.5s ease;
 }
 
 `
-export const Button = styled.button`
-border:none;
-padding:10px;
-background:orange;
-color:green;
-font-weight:600;
-cursor:pointer;
-`

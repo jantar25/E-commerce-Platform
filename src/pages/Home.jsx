@@ -3,6 +3,7 @@ import Announcement from "../Components/Navbar/Announcement"
 import Slider from "../Components/Slider/Slider"
 import Categories from "../Components/Categories/Categories"
 import PopularItems from "../Components/PopularItems/PopularItems"
+import Newsletter from "../Components/Newsletter/Newsletter"
 
 
 const Home = () => {
@@ -13,6 +14,7 @@ const Home = () => {
            <Slider />
            <Categories />
            <PopularItems />
+           <Newsletter />
         </div>
     )
 }
