@@ -4,6 +4,7 @@ import Slider from "../Components/Slider/Slider"
 import Categories from "../Components/Categories/Categories"
 import PopularItems from "../Components/PopularItems/PopularItems"
 import Newsletter from "../Components/Newsletter/Newsletter"
+import Footer from "../Components/Footer/Footer"
 
 
 const Home = () => {
@@ -15,6 +16,7 @@ const Home = () => {
            <Categories />
            <PopularItems />
            <Newsletter />
+           <Footer />
         </div>
     )
 }

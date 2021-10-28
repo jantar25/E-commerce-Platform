@@ -28,7 +28,7 @@ align-items:center;
 justify-content:flex-end;
 `
 export const Language = styled.span`
-
+color:#6a9113;
 `
 export const SearchContainer = styled.div`
 display:flex;
