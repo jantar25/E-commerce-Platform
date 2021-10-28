@@ -51,3 +51,31 @@ export const CategoriesItems=[
         title:"Meat",
     },
 ]
+
+
+export const PopItems=[
+    {
+        id:1,
+        img:orange,
+    },
+    {
+        id:2,
+        img:orange,
+    },
+    {
+        id:3,
+        img:orange,
+    },
+    {
+        id:4,
+        img:orange,
+    },
+    {
+        id:5,
+        img:orange,
+    },
+    {
+        id:6,
+        img:orange,
+    }
+]
