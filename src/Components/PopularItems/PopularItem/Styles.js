@@ -10,12 +10,21 @@ let:0;
 width:100%;
 height:100%;
 display:flex;
+flex-direction:column;
 align-items:center;
 justify-content:center;
 z-index:3;
 background:rgba(0,0,0,0.4);
 transition: all 0.5s ease;
 `
+export const Icons = styled.div`
+display:flex;
+margin-bottom:30px;
+`
+export const Title = styled.h1`
+color:#7CFC00;
+`
+
 export const Container = styled.div`
 flex:1;
 margin:5px;
@@ -32,10 +41,10 @@ position:relative;
 `
 
 export const Circular = styled.div`
-width:200px;
-height:200px;
+width:150px;
+height:150px;
 border-radius:50%;
-background:green;
+background:#cacebf;
 position: absolute;
 `
 export const Image = styled.img`

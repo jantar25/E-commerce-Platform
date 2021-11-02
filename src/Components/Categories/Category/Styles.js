@@ -5,6 +5,7 @@ flex:1;
 margin:5px;
 height:70vh;
 position:relative;
+background: linear-gradient(to bottom,rgba(0,0,0, 0),rgba(0,0,0, 100));
 `
 export const Image = styled.img`
 width:100%;

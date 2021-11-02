@@ -71,49 +71,62 @@ export const PopItems=[
     {
         id:1,
         img:Ananas,
+        name: "Anana",
     },
     {
         id:2,
         img:Apple,
+        name: "Apple",
     },
     {
         id:3,
         img:Avocat,
+        name: "Avocat",
     },
     {
         id:4,
         img:Banana,
+        name: "Banana",
     },
     {
         id:5,
         img:Meat,
+        name: "Meat",
     },
     {
         id:6,
         img:Citron,
+        name: "Lemon",
     },
     {
         id:7,
         img:Brocoli,
+        name: "Broccolo",
     },
     {
         id:8,
         img:Cabbage,
+        name: "Cabbage",
     },
     {
         id:9,
         img:Potetoe,
+        name: "Potetoe",
+        
     },
     {
         id:10,
         img:Paper,
+        name: "Paper",
     },
     {
         id:11,
         img:Strawberry,
+        name: "Strawberry",
     },
     {
         id:12,
         img:Potetoe,
+        name: "Potetoe",
     },
 ]
