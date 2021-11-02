@@ -34,6 +34,7 @@ display:flex;
 align-items:center;
 justify-content:center;
 position:relative;
+background:whitesmoke;
 
 &:hover ${Info}{
     opacity:1;
