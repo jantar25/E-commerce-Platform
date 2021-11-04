@@ -1,8 +1,10 @@
 import styled from "styled-components";
+import { mobile } from "../../Responsive";
 
 
 export const Container = styled.div`
 display:flex;
+${mobile({flexDirection:"column"})}
 `
 export const Left = styled.div`
 flex:1;
@@ -67,6 +69,7 @@ cursor:pointer;
 export const Right = styled.div`
 flex:1;
 padding:20px;
+${mobile({background:"#eee"})}
 `
 export const ContactItem = styled.div`
 margin-bottom:20px;

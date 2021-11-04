@@ -5,12 +5,14 @@ import Footer from "../Components/Footer/Footer"
 import Cabbage from "../Images/cabbage.png"
 import Anana from "../Images/ananas.png"
 import { Add, Remove } from "@material-ui/icons"
+import { mobile } from "../Responsive"
 
 const Container = styled.div`
 
 `
 const Wrapper = styled.div`
 padding:20px;
+${mobile({padding:"10px"})}
 `
 const Title = styled.h1`
 text-align:center;
@@ -33,6 +35,7 @@ color: ${props=>props.type==="filled" && "white"};
 `
 const TopTexts = styled.div`
 display:flex;
+${mobile({display:"none"})}
 `
 const TopText = styled.div`
 text-decoration:underline;
@@ -42,6 +45,7 @@ margin:0px 10px;
 const Bottom = styled.div`
 display:flex;
 justify-content:space-between;
+${mobile({flexDirection:"column"})}
 `
 const Info = styled.div`
 flex:3;
@@ -49,6 +53,7 @@ flex:3;
 const Product = styled.div`
 display:flex;
 justify-content:space-between;
+${mobile({flexDirection:"column"})}
 `
 const ProductDetail = styled.div`
 flex:2;
@@ -56,6 +61,7 @@ display:flex;
 `
 const Image = styled.img`
 width:200px;
+height:25vh;
 `
 const Details = styled.div`
 padding:20px;
@@ -92,10 +98,12 @@ margin-bottom:20px;
 const ProductAmount = styled.div`
 font-size:24px;
 margin:5px;
+${mobile({margin:"5px 20px"})}
 `
 const ProductPrice = styled.div`
 font-size:35px;
 font-weight:800;
+${mobile({marginBottom:"20px"})}
 `
 const Hr = styled.hr`
 background:#eee;

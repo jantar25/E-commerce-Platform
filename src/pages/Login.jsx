@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import LoginImg from "../Images/Chemical.jpg"
+import { mobile } from "../Responsive"
 
 
 const Container = styled.div`
@@ -16,6 +17,7 @@ const Wrapper = styled.div`
 width:30%;
 padding:20px;
 background:whitesmoke;
+${mobile({width:"80%"})}
 `
 const Title = styled.h1`
 font-size:24px;

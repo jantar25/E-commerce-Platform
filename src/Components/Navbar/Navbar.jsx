@@ -19,7 +19,7 @@ const Navbar = () => {
         <MuiThemeProvider theme={theme}>
         <Container>
             <Wrapper>
-                <Left><Logo>KIVUGREEN <Spa style={{color:'#6a9113',fontSize:30}} /></Logo></Left>
+                <Left><Logo>KIVUGREEN</Logo></Left>
                 <Center>
                     <MenuItem>Register</MenuItem>
                     <MenuItem>Login</MenuItem>
@@ -32,7 +32,7 @@ const Navbar = () => {
                 <Rigth>
                     <Language>EN</Language>
                     <SearchContainer>
-                        <Input />
+                        <Input placeholder="Search" />
                         <Search style={{color:'#6a9113',fontSize:20}}/>
                     </SearchContainer>
                 </Rigth>
