@@ -104,6 +104,36 @@ height:2px;
 `
 const Summary = styled.div`
 flex:1;
+border: 1px solid lightgray;
+border-radius:10px;
+padding:20px;
+height:50vh;
+`
+const SummayTitle = styled.h1`
+font-weight:200;
+color:teal;
+`
+const SummaryItem = styled.div`
+margin:30px 0px;
+display:flex;
+justify-content: space-between;
+font-weight: ${props=>props.type==="total" && "600"};
+font-size: ${props=>props.type==="total" && "24px"};
+`
+const SummaryItemText = styled.span`
+
+`
+const SummaryItemPrice = styled.span`
+
+`
+const Button = styled.button`
+width:100%;
+padding:10px;
+background:teal;
+font-weight:600;
+color:white;
+border:none;
+border-radius:5px;
 `
 
 
@@ -128,7 +158,7 @@ const Cart = () => {
                             <ProductDetail>
                                 <Image src={Cabbage} />
                                 <Details>
-                                    <ProductName><b>Products:</b> CABBAGE</ProductName>
+                                    <ProductName><b>Product:</b> CABBAGE</ProductName>
                                     <ProductId><b>ID:</b> 26465637</ProductId>
                                     <ProductTurnary color="green" />
                                     <ProductSize><b>Size:</b> MEDIUM</ProductSize>
@@ -148,9 +178,9 @@ const Cart = () => {
                             <ProductDetail>
                                 <Image src={Anana} />
                                 <Details>
-                                    <ProductName><b>Products:</b> PINEAPLE</ProductName>
+                                    <ProductName><b>Product:</b> PINEAPLE</ProductName>
                                     <ProductId><b>ID:</b> 26465640</ProductId>
-                                    <ProductTurnary color="whitesmoke" />
+                                    <ProductTurnary color="green" />
                                     <ProductSize><b>Size:</b> BIG</ProductSize>
                                 </Details>
                             </ProductDetail>
@@ -164,7 +194,26 @@ const Cart = () => {
                             </PriceDetail>
                         </Product>
                     </Info>
-                    <Summary>Summary</Summary>
+                    <Summary>
+                        <SummayTitle>ORDER SUMMARY</SummayTitle>
+                        <SummaryItem>
+                            <SummaryItemText>Subtotal</SummaryItemText>
+                            <SummaryItemPrice>Frw 3000</SummaryItemPrice>
+                        </SummaryItem>
+                        <SummaryItem>
+                            <SummaryItemText>Estimated Shiping</SummaryItemText>
+                            <SummaryItemPrice>Frw 5000</SummaryItemPrice>
+                        </SummaryItem>
+                        <SummaryItem>
+                            <SummaryItemText>Shipping Discount</SummaryItemText>
+                            <SummaryItemPrice>Frw -300</SummaryItemPrice>
+                        </SummaryItem>
+                        <SummaryItem type="total">
+                            <SummaryItemText >Total</SummaryItemText>
+                            <SummaryItemPrice>Frw 3000</SummaryItemPrice>
+                        </SummaryItem>
+                        <Button>CHECKOUT NOW</Button>
+                    </Summary>
                 </Bottom>
             </Wrapper>
             <Footer />
