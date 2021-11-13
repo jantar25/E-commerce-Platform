@@ -6,8 +6,8 @@ const OrderSchima = new mongoose.Schema(
         userId:{type:String,required:true},
         products:[
             {
-                product:{type:string},
-                quqntity:{type:Number,default:1},
+                productId:{type:String},
+                quantity:{type:Number,default:1},
             }
         ],
         amount:{type:Number,required:true},

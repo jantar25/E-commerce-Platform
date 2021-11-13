@@ -6,8 +6,8 @@ const CartSchima = new mongoose.Schema(
         userId:{type:String,required:true},
         products:[
             {
-                product:{type:string},
-                quqntity:{type:Number,default:1},
+                product:{type:String},
+                quantity:{type:Number,default:1},
             }
         ]
 
