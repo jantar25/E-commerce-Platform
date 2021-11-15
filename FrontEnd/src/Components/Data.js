@@ -47,22 +47,26 @@ export const CategoriesItems=[
         id:1,
         img:Fruits,
         title:"Fruits",
+        cat:"fruits",
     },
 
     {
         id:2,
         img:Vegetables,
         title:"Vegetables",
+        cat:"vegetables",
     },
     {
         id:3,
         img:Potetoes,
         title:"Tubers",
+        cat:"tubers",
     },
     {
         id:4,
         img:Meats,
         title:"Meat",
+        cat:"meat",
     },
 ]
 

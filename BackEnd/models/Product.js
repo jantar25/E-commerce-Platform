@@ -7,9 +7,10 @@ const ProductSchima = new mongoose.Schema(
         description:{type:String,required:true},
         img:{type:String,required:true},
         categories:{type:Array},
-        size:{type:String},
-        content:{type:String},
+        size:{type:Array},
+        content:{type:Array},
         price:{type:Number,required:true},
+        inStock:{type:Boolean, default:true}
 
 },
 {timestamps:true})

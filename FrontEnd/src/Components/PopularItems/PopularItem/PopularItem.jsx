@@ -18,7 +18,7 @@ const PopularItem = ({item}) => {
                         <FavoriteBorderOutlined /> 
                     </Icon>
                 </Icons>
-                <Title>{item.name}</Title>
+                <Title>{item.title}</Title>
             </Info>
             
         </Container>

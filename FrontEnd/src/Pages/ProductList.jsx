@@ -6,6 +6,8 @@ import PopularItems from "../Components/PopularItems/PopularItems"
 import Footer from "../Components/Footer/Footer"
 import Newsletter from "../Components/Newsletter/Newsletter"
 import { mobile } from "../Responsive"
+import { useLocation } from "react-router"
+import { useState } from "react"
 
 
 const Container = styled.div`
@@ -40,6 +42,16 @@ margin:20px;
 `
 
 const ProductList = () => {
+    const location=useLocation();
+    const cat = location.pathname.split("/")[2]; 
+    const [filters,setFilters] = useState({});
+    const [sort,setSort] = useState("Newest");
+
+    const handleFilters = (e)=>{
+        const value = e.target.value;
+        setFilters({...filters,[e.target.name] : value})
+    }
+
     return (
         <Container>
            <Navbar />
@@ -47,29 +59,30 @@ const ProductList = () => {
            <Title>Fruits</Title>
            <FilterContainer>
                 <Filter><FilterText>Filter Products:</FilterText>
-                    <Select>
-                        <Option disabled selected>Turnary</Option>
-                        <Option>Ready</Option>
-                        <Option>Growing</Option>
-                        <Option>Not Ready</Option>
-                        <Option>Seed</Option>
+                    <Select name="content" onChange={handleFilters}>
+                        <Option disabled>Content</Option>
+                        <Option>white</Option>
+                        <Option>yellow</Option>
+                        <Option>green</Option>
+                        <Option>orange</Option>
+                        <Option>red</Option>
                     </Select>   
-                    <Select>
-                        <Option disabled selected>Size</Option>
-                        <Option>Big</Option>
-                        <Option>Medium</Option>
-                        <Option>Small</Option>
+                    <Select name="size" onChange={handleFilters}>
+                        <Option disabled>Size</Option>
+                        <Option>big</Option>
+                        <Option>medium</Option>
+                        <Option>small</Option>
                     </Select>             
                 </Filter>
                 <Filter><FilterText>Sort Products:</FilterText>
-                <Select>
-                        <Option selected>Newest</Option>
-                        <Option>Price(Asc)</Option>
-                        <Option>Price(Desc)</Option>
+                <Select onChange={(e)=>setSort(e.target.value)}>
+                        <Option value ="newest">Newest</Option>
+                        <Option value ="asc">Price(Asc)</Option>
+                        <Option value ="desc">Price(Desc)</Option>
                     </Select> 
                 </Filter>
            </FilterContainer>
-           <PopularItems />
+           <PopularItems cat={cat} filters={filters} sort={sort} />
            <Newsletter />
            <Footer />
         </Container>
