@@ -6,6 +6,9 @@ import Footer from "../Components/Footer/Footer"
 import Newsletter from "../Components/Newsletter/Newsletter"
 import { Add, Remove } from "@material-ui/icons"
 import { mobile } from "../Responsive"
+import { useLocation } from "react-router"
+import { useState,useEffect } from "react"
+import {publicRequest} from "../requestMethode"
 
 
 const Container = styled.div`
@@ -106,18 +109,34 @@ font-weight:700;
 `
 
 const Product = () => {
+    const location=useLocation();
+    const id = location.pathname.split("/")[2];
+    const [product,setProduct] = useState({});
+
+    useEffect(()=>{
+        const getProduct= async ()=>{
+            try {
+                const res = await publicRequest.get("/products/find/" +id)
+                setProduct(res.data);
+                console.log(res)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        getProduct();
+    },[id])
     return (
         <Container>
            <Navbar />
            <Announcement />
            <Wrapper>
                 <ImageConainter>
-                    <Image src={Cabbage} />
+                    <Image src={product.img} />
                 </ImageConainter>
                 <InfoContainer>
-                    <Title>Cabbage</Title>
-                    <Description>We guarantees that at least 95% of the ingredients of agricultural origin come from organic farming.</Description>
-                    <Price>Frw 200</Price>
+                    <Title>{product.title}</Title>
+                    <Description>{product.description}</Description>
+                    <Price>Frw {product.price}</Price>
                     <FilterContainer>
                         <Filter>
                             <FilterTitle>Turnary:</FilterTitle>

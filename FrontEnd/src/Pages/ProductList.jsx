@@ -15,6 +15,7 @@ const Container = styled.div`
 `
 const Title = styled.h1`
 margin:20px;
+text-transform: capitalize;
 ${mobile({margin:"20px 10px"})}
 `
 const FilterContainer = styled.div`
@@ -56,7 +57,7 @@ const ProductList = () => {
         <Container>
            <Navbar />
            <Announcement />
-           <Title>Fruits</Title>
+           <Title>{cat}</Title>
            <FilterContainer>
                 <Filter><FilterText>Filter Products:</FilterText>
                     <Select name="content" onChange={handleFilters}>
