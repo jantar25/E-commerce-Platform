@@ -8,12 +8,14 @@ import Product from './Pages/Product'
 import ProductList from './Pages/ProductList'
 import Pay from './Pages/Pay';
 import PaySuccess from './Pages/PaySuccess';
+import ScrollToTop from './Pages/scrollToTop' 
 
 function App() {
 
   const user=true;
   return (
     <Router>
+      <ScrollToTop />
       <Switch>
         <Route exact path="/"><Home /></Route>
         <Route exact path="/products/:category"><ProductList /></Route>
