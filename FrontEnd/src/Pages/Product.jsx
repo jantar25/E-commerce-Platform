@@ -12,6 +12,7 @@ import { addProduct } from "../Redux/cartRedux"
 import { useDispatch } from "react-redux"
 
 
+
 const Container = styled.div`
 
 `

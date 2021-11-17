@@ -1,3 +1,4 @@
+import { useLocation } from "react-router"
 import styled from "styled-components"
 
 const Container = styled.div`
@@ -23,7 +24,7 @@ background-size: 100%;
 -moz-background-clip: text;
 -webkit-text-fill-color: transparent;
 -moz-text-fill-color: transparent;
-margin-bottom:20px;
+margin-bottom:40px;
 text-align:center;
 `
 const TitleContainer = styled.div`
@@ -49,6 +50,9 @@ text-align:center;
 `
 
 const PaySuccess = () => {
+    const location = useLocation();
+    console.log(location);
+
     return (
         <Container>
             <Wrap>

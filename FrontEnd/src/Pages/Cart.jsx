@@ -1,11 +1,16 @@
+import {useSelector} from 'react-redux';
 import styled from "styled-components"
 import Navbar from "../Components/Navbar/Navbar"
 import Announcement from "../Components/Navbar/Announcement"
 import Footer from "../Components/Footer/Footer"
-import Cabbage from "../Images/cabbage.png"
-import Anana from "../Images/ananas.png"
 import { Add, Remove } from "@material-ui/icons"
 import { mobile } from "../Responsive"
+import Brocoli from "../Images/brocoli.png"
+import { useState,useEffect } from 'react';
+import StripeCheckout from 'react-stripe-checkout'
+import {userRequest} from '../requestMethode'
+import {useHistory} from "react-router"
+
 
 const Container = styled.div`
 
@@ -144,8 +149,33 @@ border:none;
 border-radius:5px;
 `
 
+const KEY="pk_test_51JvPoqKBZkT4LPtBKI5yrAmM7dYnethOIG6riguwYBfTc4yQ9DHQipmpeR4JIownTniFF0hoOuResqlkqWwLQ4qB00vvd4Q7X3"
 
 const Cart = () => {
+
+    const cart = useSelector(state=>state.cart)
+    const [stripeToken,setStripeToken]= useState(null);
+    const history = useHistory();
+    const onToken=(token)=>{
+        setStripeToken(token);
+    }
+
+    useEffect(()=>{
+        const makeRequest= async ()=>{
+            try {
+                const res = await userRequest.post("/checkout/payment",
+                {tokenId:stripeToken.id,amount:cart.total});
+                history.push("/paySuccess",{data:res.data});
+                console.log(res.data) 
+            } catch(err){
+                console.log(err)
+            }
+        };
+        stripeToken && cart.total>=1 && makeRequest();  
+    },[stripeToken,cart.total,history])
+
+
+
     return (
         <Container>
            <Navbar />
@@ -162,65 +192,63 @@ const Cart = () => {
                 </Top>
                 <Bottom>
                     <Info>
-                        <Product>
+                        {cart.products.map(product=>(
+                            <Product >
                             <ProductDetail>
-                                <Image src={Cabbage} />
+                                <Image src={product.img} />
                                 <Details>
-                                    <ProductName><b>Product:</b> CABBAGE</ProductName>
-                                    <ProductId><b>ID:</b> 26465637</ProductId>
-                                    <ProductTurnary color="green" />
-                                    <ProductSize><b>Size:</b> MEDIUM</ProductSize>
+                                    <ProductName><b>Product:</b>{product.title}</ProductName>
+                                    <ProductId><b>ID:</b>{product._id}</ProductId>
+                                    <ProductTurnary color= {product.content} />
+                                    <ProductSize><b>Size:</b>{product.size}</ProductSize>
                                 </Details>
                             </ProductDetail>
                             <PriceDetail>
                                 <ProductAmountContainer>
                                     <Add />
-                                    <ProductAmount>5</ProductAmount>
+                                    <ProductAmount>{product.quantity}</ProductAmount>
                                     <Remove />
                                 </ProductAmountContainer>
-                                <ProductPrice>Frw 1000</ProductPrice>
+                                <ProductPrice>Rwf {product.price * product.quantity}</ProductPrice>
                             </PriceDetail>
                         </Product>
+                        ))}
                         <Hr />
-                        <Product>
-                            <ProductDetail>
-                                <Image src={Anana} />
-                                <Details>
-                                    <ProductName><b>Product:</b> PINEAPLE</ProductName>
-                                    <ProductId><b>ID:</b> 26465640</ProductId>
-                                    <ProductTurnary color="green" />
-                                    <ProductSize><b>Size:</b> BIG</ProductSize>
-                                </Details>
-                            </ProductDetail>
-                            <PriceDetail>
-                                <ProductAmountContainer>
-                                    <Add />
-                                    <ProductAmount>2</ProductAmount>
-                                    <Remove />
-                                </ProductAmountContainer>
-                                <ProductPrice>Frw 2000</ProductPrice>
-                            </PriceDetail>
-                        </Product>
                     </Info>
                     <Summary>
                         <SummayTitle>ORDER SUMMARY</SummayTitle>
                         <SummaryItem>
                             <SummaryItemText>Subtotal</SummaryItemText>
-                            <SummaryItemPrice>Frw 3000</SummaryItemPrice>
+                            <SummaryItemPrice>Rwf {cart.total}</SummaryItemPrice>
                         </SummaryItem>
                         <SummaryItem>
                             <SummaryItemText>Estimated Shiping</SummaryItemText>
-                            <SummaryItemPrice>Frw 5000</SummaryItemPrice>
+                            <SummaryItemPrice>Rwf 300</SummaryItemPrice>
                         </SummaryItem>
                         <SummaryItem>
                             <SummaryItemText>Shipping Discount</SummaryItemText>
-                            <SummaryItemPrice>Frw -300</SummaryItemPrice>
+                            <SummaryItemPrice>Rwf -300</SummaryItemPrice>
                         </SummaryItem>
                         <SummaryItem type="total">
                             <SummaryItemText >Total</SummaryItemText>
-                            <SummaryItemPrice>Frw 3000</SummaryItemPrice>
+                            <SummaryItemPrice>Rwf {cart.total}</SummaryItemPrice>
                         </SummaryItem>
-                        <Button>CHECKOUT NOW</Button>
+                        {stripeToken? (
+                        <span>Processing.Please wait...</span>
+                        ) : (
+                            <StripeCheckout 
+                                name="KivuGreen Shop"
+                                image={Brocoli}
+                                billingAddress
+                                shippingAddress
+                                description={`Your tottal is ${cart.total}`}
+                                amount={cart.total}
+                                token={onToken}
+                                stripeKey={KEY}
+                            >
+                                <Button>CHECKOUT NOW</Button>
+                        </StripeCheckout> 
+                         )}
                     </Summary>
                 </Bottom>
             </Wrapper>

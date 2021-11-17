@@ -49,6 +49,7 @@ border: none;
 ${mobile({width:"50px"})}
 `
 export const Logo = styled.h1`
+text-decoration: none;
 background-color: #6a9113;
 background-image: linear-gradient(to top, #6a9113 0%, #cacebf 100%);
 background-size: 100%;
