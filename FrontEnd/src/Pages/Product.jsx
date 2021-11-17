@@ -8,6 +8,8 @@ import { mobile } from "../Responsive"
 import { useLocation } from "react-router"
 import { useState,useEffect } from "react"
 import {publicRequest} from "../requestMethode"
+import { addProduct } from "../Redux/cartRedux"
+import { useDispatch } from "react-redux"
 
 
 const Container = styled.div`
@@ -114,6 +116,7 @@ const Product = () => {
     const [quantity,setQuantity] = useState(1);
     const [content,setContent] = useState("");
     const [size,setSize] = useState("");
+    const dispatch = useDispatch();
     
 
     useEffect(()=>{
@@ -135,10 +138,10 @@ const Product = () => {
             setQuantity(quantity+1)
         }
     }
-
+    
     const handleClick = ()=>{
-        //UPDATE THE CART
-    }
+        dispatch (addProduct({ ...product, quantity, content, size}));
+        }
     
     return (
         <Container>
