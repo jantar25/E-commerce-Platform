@@ -23,6 +23,11 @@ margin-bottom:30px;
 `
 export const Title = styled.h1`
 color:#7CFC00;
+margin-bottom:30px;
+`
+export const Price = styled.span`
+color:#fff;
+font-size:20px;
 `
 
 export const Container = styled.div`

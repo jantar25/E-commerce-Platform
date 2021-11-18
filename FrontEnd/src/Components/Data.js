@@ -21,7 +21,8 @@ export const SlideItems=[
         id:1,
         img:Chemical,
         title:"Organic-Farming",
-        description: "Is our technique of cultivation which avoid the use of chemicals leading to better quality food products with high nutritive values. At the same time, it includes crop rotation, crop residues, organic waste, green manure and use of bio agents for biological pest control",
+        intro:"Best technique of cultivation",
+        description: "That avoid the use of chemicals leading to better quality food products with high nutritive values.",
         bg:"fffafa",
     },
 
@@ -29,6 +30,7 @@ export const SlideItems=[
         id:2,
         img:Chemical,
         title:"Bio-Food",
+        intro:"Eat Healthy",
         description: "We guarantees that at least 95% of the ingredients of agricultural origin come from organic farming.",
         bg:"ffffff",
     },
@@ -37,6 +39,7 @@ export const SlideItems=[
         id:3,
         img:Chemical,
         title:"Banana",
+        intro:"Best quality of fruits",
         description: "Footwear and accessories. Shop the best outfits for this season at our online store.",
         bg:"fff5ee",
     }

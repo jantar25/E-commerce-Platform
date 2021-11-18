@@ -9,14 +9,14 @@ display: flex;
 align-items:center;
 justify-content:center;
 font-size:20px;
-font-weight:800;
+font-weight:200;
 ${mobile({fontSize:"15px"})}
 `
 
 const Announcement = () => {
     return (
         <Container>
-            Free shipping for order beyong 100K Frw.
+            Free shipping in 3 Months Period for all orders.
         </Container>
     )
 }

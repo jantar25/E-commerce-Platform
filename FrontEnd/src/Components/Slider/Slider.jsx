@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons"
-import { Container,Arrow,Wrapper,Slide,ImgContainer,InfoContainer,Image,Title,Description,Button } from "./Styles"
+import { Container,Arrow,Wrapper,Slide,ImgContainer,InfoContainer,Image,Title,Intro,Description,Button } from "./Styles"
 import {SlideItems} from '../Data'
 
 
@@ -26,7 +26,8 @@ const Slider = () => {
                     <Image src={item.img} />
                 </ImgContainer>
                 <InfoContainer>
-                    <Title>{item.title}</Title>
+                    <Title>{item.title}</Title><br />
+                    <Intro>{item.intro}</Intro>
                     <Description>{item.description}</Description>
                     <Button>SHOW NOW</Button>
                 </InfoContainer>

@@ -1,5 +1,5 @@
 import { FavoriteBorderOutlined, SearchOutlined, ShoppingCartOutlined } from '@material-ui/icons'
-import {Container,Image,Info,Icons,Icon,Circular,Title} from './Styles'
+import {Container,Image,Info,Icons,Icon,Circular,Title,Price} from './Styles'
 import {Link} from "react-router-dom"
 
 const PopularItem = ({item}) => {
@@ -22,6 +22,7 @@ const PopularItem = ({item}) => {
                     </Icon>
                 </Icons>
                 <Title>{item.title}</Title>
+                <Price>Rwf {item.price}/kg</Price>
             </Info>
             
         </Container>

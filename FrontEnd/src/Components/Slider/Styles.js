@@ -3,7 +3,7 @@ import {mobile} from "../../Responsive"
 
 export const Container = styled.div`
 width:100%;
-height:100vh;
+height:90vh;
 display:flex;
 position:relative;
 overflow:hidden;
@@ -37,7 +37,7 @@ transform:translateX(${props=>props.slideIndex * -100}vw);
 
 `
 export const Slide = styled.div`
-height:100vh;
+height:90vh;
 width:100vw;
 display:flex;
 align-items:center;
@@ -53,20 +53,45 @@ padding:50px;
 `
 
 export const Image = styled.img`
-height:80%;
+height:100%;
+width:100%;
 `
-export const Title = styled.h1`
-font-size:70px;
+export const Title = styled.span`
+font-size:60px;
+font-weight:700;
+background-color: #577516;
+background-image: linear-gradient(to right, #29301a 0%, #c7e674 100%);
+background-size: 100%;
+-webkit-background-clip: text;
+-moz-background-clip: text;
+-webkit-text-fill-color: transparent;
+-moz-text-fill-color: transparent;
 `
+
+export const Intro = styled.span`
+font-size:30px;
+font-weight:500;
+background-color: #737966;
+background-image: linear-gradient(to top, #243109 0%, #2f3d08 100%);
+background-size: 100%;
+-webkit-background-clip: text;
+-moz-background-clip: text;
+-webkit-text-fill-color: transparent;
+-moz-text-fill-color: transparent;
+`
+
 export const Description = styled.p`
-margin:50px 0;
+margin:30px 0 50px;
 font-size:20px;
 font-weigth:500;
 letter-spacing:2px;
 `
 export const Button = styled.button`
-padding:10px;
+padding:10px 20px;
 font-size:20px;
-background-color:transparent;
-cursor-pinter;
+background:#577516;
+cursor:pointer;
+border:none;
+color:white;
+border-radius:10px;
 `
