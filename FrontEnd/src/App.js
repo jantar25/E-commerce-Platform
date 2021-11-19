@@ -9,10 +9,11 @@ import ProductList from './Pages/ProductList'
 import Pay from './Pages/Pay';
 import PaySuccess from './Pages/PaySuccess';
 import ScrollToTop from './Pages/scrollToTop' 
+import { useSelector } from 'react-redux';
 
 function App() {
 
-  const user=true;
+  const user=useSelector((state)=>state.user.currentUser);
   return (
     <Router>
       <ScrollToTop />
