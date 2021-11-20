@@ -66,6 +66,7 @@ cursor:pointer;
 margin-left:25px;
 color:#6a9113;
 transition: all 1s ease;
+
 ${mobile({fontSize:"15px",marginLeft:"10px"})}
 
 &:hover{
