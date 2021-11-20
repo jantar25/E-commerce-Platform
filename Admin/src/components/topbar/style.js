@@ -46,6 +46,9 @@ export const IconContainer = styled.div`
   cursor: pointer;
   margin-right: 20px;
   color: #cacebf;
+  &:hover{
+    color: #6a9113;
+  }
 `
 
 export const IconBadge = styled.span`
