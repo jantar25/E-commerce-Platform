@@ -1,4 +1,4 @@
-import "./chart.css";
+import { ChartContainer,Title } from "./style";
 import {
   LineChart,
   Line,
@@ -11,16 +11,16 @@ import {
 export default function Chart({ title, data, dataKey, grid }) {
 
   return (
-    <div className="chart">
-      <h3 className="chartTitle">{title}</h3>
+    <ChartContainer>
+      <Title>{title}</Title>
       <ResponsiveContainer width="100%" aspect={4 / 1}>
         <LineChart data={data}>
-          <XAxis dataKey="name" stroke="#5550bd" />
-          <Line type="monotone" dataKey={dataKey} stroke="#5550bd" />
+          <XAxis dataKey="name" stroke="#6a9113" />
+          <Line type="monotone" dataKey={dataKey} stroke="#cacebf" />
           <Tooltip />
-          {grid && <CartesianGrid stroke="#e0dfdf" strokeDasharray="5 5" />}
+          {grid && <CartesianGrid stroke="#6a9113" strokeDasharray="5 5" />}
         </LineChart>
       </ResponsiveContainer>
-    </div>
+    </ChartContainer>
   );
 }

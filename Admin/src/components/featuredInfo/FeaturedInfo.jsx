@@ -1,39 +1,39 @@
-import "./featuredInfo.css";
+import {Container,Item,Title,MoneyContainer,Money,MoneyRate,Sub} from './style'
 import { ArrowDownward, ArrowUpward } from "@material-ui/icons";
 
 export default function FeaturedInfo() {
   return (
-    <div className="featured">
-      <div className="featuredItem">
-        <span className="featuredTitle">Revanue</span>
-        <div className="featuredMoneyContainer">
-          <span className="featuredMoney">$2,415</span>
-          <span className="featuredMoneyRate">
-            -11.4 <ArrowDownward  className="featuredIcon negative"/>
-          </span>
-        </div>
-        <span className="featuredSub">Compared to last month</span>
-      </div>
-      <div className="featuredItem">
-        <span className="featuredTitle">Sales</span>
-        <div className="featuredMoneyContainer">
-          <span className="featuredMoney">$4,415</span>
-          <span className="featuredMoneyRate">
-            -1.4 <ArrowDownward className="featuredIcon negative"/>
-          </span>
-        </div>
-        <span className="featuredSub">Compared to last month</span>
-      </div>
-      <div className="featuredItem">
-        <span className="featuredTitle">Cost</span>
-        <div className="featuredMoneyContainer">
-          <span className="featuredMoney">$2,225</span>
-          <span className="featuredMoneyRate">
-            +2.4 <ArrowUpward className="featuredIcon"/>
-          </span>
-        </div>
-        <span className="featuredSub">Compared to last month</span>
-      </div>
-    </div>
+    <Container>
+      <Item>
+        <Title>Revenue</Title>
+        <MoneyContainer>
+          <Money>Rwf 5,350,000</Money>
+          <MoneyRate>
+            -11.4 <ArrowDownward style={{ color: 'red' }} />
+          </MoneyRate>
+        </MoneyContainer>
+        <Sub>Compared to last month</Sub>
+      </Item>
+      <Item>
+        <Title>Sales</Title>
+        <MoneyContainer>
+          <Money>Rwf 25,460,000</Money>
+          <MoneyRate>
+            -1.4 <ArrowDownward style={{ color: 'red' }} />
+          </MoneyRate>
+        </MoneyContainer>
+        <Sub>Compared to last month</Sub>
+      </Item>
+      <Item>
+        <Title>Cost</Title>
+        <MoneyContainer>
+          <Money>Rwf 3,500,000</Money>
+          <MoneyRate>
+          +2.4 <ArrowUpward style={{ color: 'green' }} />
+          </MoneyRate> 
+        </MoneyContainer>
+        <Sub>Compared to last month</Sub>
+      </Item>
+    </Container>
   );
 }
