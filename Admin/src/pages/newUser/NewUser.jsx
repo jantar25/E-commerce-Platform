@@ -1,54 +1,54 @@
-import "./newUser.css";
+import {Container,Title,Form,Label,Input,Item,Button,Select,InputG,LabelG} from './style'
 
 export default function NewUser() {
   return (
-    <div className="newUser">
-      <h1 className="newUserTitle">New User</h1>
-      <form className="newUserForm">
-        <div className="newUserItem">
-          <label>Username</label>
-          <input type="text" placeholder="john" />
-        </div>
-        <div className="newUserItem">
-          <label>Full Name</label>
-          <input type="text" placeholder="John Smith" />
-        </div>
-        <div className="newUserItem">
-          <label>Email</label>
-          <input type="email" placeholder="john@gmail.com" />
-        </div>
-        <div className="newUserItem">
-          <label>Password</label>
-          <input type="password" placeholder="password" />
-        </div>
-        <div className="newUserItem">
-          <label>Phone</label>
-          <input type="text" placeholder="+1 123 456 78" />
-        </div>
-        <div className="newUserItem">
-          <label>Address</label>
-          <input type="text" placeholder="New York | USA" />
-        </div>
-        <div className="newUserItem">
-          <label>Gender</label>
-          <div className="newUserGender">
-            <input type="radio" name="gender" id="male" value="male" />
-            <label for="male">Male</label>
-            <input type="radio" name="gender" id="female" value="female" />
-            <label for="female">Female</label>
-            <input type="radio" name="gender" id="other" value="other" />
-            <label for="other">Other</label>
+    <Container>
+      <Title>New User</Title>
+      <Form>
+        <Item>
+          <Label>Username</Label>
+          <Input type="text" placeholder="john" />
+        </Item>
+        <Item>
+          <Label>Full Name</Label>
+          <Input type="text" placeholder="John Smith" />
+        </Item>
+        <Item>
+          <Label>Email</Label>
+          <Input type="email" placeholder="john@gmail.com" />
+        </Item>
+        <Item>
+          <Label>Password</Label>
+          <Input type="password" placeholder="password" />
+        </Item>
+        <Item>
+          <Label>Phone</Label>
+          <Input type="text" placeholder="+1 123 456 78" />
+        </Item>
+        <Item>
+          <Label>Address</Label>
+          <Input type="text" placeholder="New York | USA" />
+        </Item>
+        <Item>
+          <Label>Gender</Label>
+          <div>
+            <InputG type="radio" name="gender" id="male" value="male" />
+            <LabelG for="male">Male</LabelG>
+            <InputG type="radio" name="gender" id="female" value="female" />
+            <LabelG for="female">Female</LabelG>
+            <InputG type="radio" name="gender" id="other" value="other" />
+            <LabelG for="other">Other</LabelG>
           </div>
-        </div>
-        <div className="newUserItem">
-          <label>Active</label>
-          <select className="newUserSelect" name="active" id="active">
+        </Item>
+        <Item>
+          <Label>Active</Label>
+          <Select name="active" id="active">
             <option value="yes">Yes</option>
             <option value="no">No</option>
-          </select>
-        </div>
-        <button className="newUserButton">Create</button>
-      </form>
-    </div>
+          </Select>
+        </Item>
+        <Button>Create</Button>
+      </Form>
+    </Container>
   );
 }

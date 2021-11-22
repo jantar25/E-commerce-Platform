@@ -51,11 +51,10 @@ export const Btn = styled.button`
 padding: 5px 7px;
 border: none;
 border-radius: 10px;
-background: ${ props=>props.type==="Approved"? "#e5faf2" : 
-props.type==="Declined"? "#fff0f1" :  "#ebf1fe" };
-
-color:${ props=>props.type==="Approved"? "#3bb077" : 
-props.type==="Declined"? "#d95087" :  "#2a7ade" };
+background: ${ props=>props.type==="Approved"? "#74f0c0" : 
+props.type==="Declined"? "#f7ced1" :  "#9fb9f0" };
+color:${ props=>props.type==="Approved"? "#117042" : 
+props.type==="Declined"? "#8d1847" :  "#103a6d" };
 `
 
 

@@ -1,21 +1,25 @@
-.productList{
-    flex: 4;
-}
+import styled from 'styled-components'
 
-.productListItem{
+
+export const Container = styled.div`
+flex: 4;
+background: rgb(233, 233, 241);
+`
+
+export const ListItem = styled.div`
     display: flex;
     align-items: center;
-}
-
-.productListImg {
+    `
+    
+export const Image = styled.img`
     width: 32px;
     height: 32px;
     border-radius: 50%;
     object-fit: cover;
     margin-right: 10px;
-  }
+`
 
-.productListEdit{
+export const ButtonEdit = styled.button`
     border: none;
     border-radius: 10px;
     padding: 5px 10px;
@@ -23,9 +27,4 @@
     color: white;
     cursor: pointer;
     margin-right: 20px;
-}
-
-.productListDelete{
-    color: red;
-    cursor: pointer;
-}
+`

@@ -1,4 +1,4 @@
-import "./productList.css";
+import {Container,ListItem,Image,ButtonEdit} from './style'
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { productRows } from "../../dummyData";
@@ -20,10 +20,10 @@ export default function ProductList() {
       width: 200,
       renderCell: (params) => {
         return (
-          <div className="productListItem">
-            <img className="productListImg" src={params.row.img} alt="" />
+          <ListItem>
+            <Image className="productListImg" src={params.row.img} alt="" />
             {params.row.name}
-          </div>
+          </ListItem>
         );
       },
     },
@@ -46,10 +46,9 @@ export default function ProductList() {
         return (
           <>
             <Link to={"/product/" + params.row.id}>
-              <button className="productListEdit">Edit</button>
+              <ButtonEdit>Edit</ButtonEdit>
             </Link>
-            <DeleteOutline
-              className="productListDelete"
+            <DeleteOutline style={{'color':'red'}}
               onClick={() => handleDelete(params.row.id)}
             />
           </>
@@ -59,7 +58,7 @@ export default function ProductList() {
   ];
 
   return (
-    <div className="productList">
+    <Container>
       <DataGrid
         rows={data}
         disableSelectionOnClick
@@ -67,6 +66,6 @@ export default function ProductList() {
         pageSize={8}
         checkboxSelection
       />
-    </div>
+    </Container>
   );
 }

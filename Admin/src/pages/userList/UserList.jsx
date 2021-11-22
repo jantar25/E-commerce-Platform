@@ -1,4 +1,4 @@
-import "./userList.css";
+import { Container,ListUser,Image,Button } from "./style";
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { userRows } from "../../dummyData";
@@ -20,10 +20,10 @@ export default function UserList() {
       width: 200,
       renderCell: (params) => {
         return (
-          <div className="userListUser">
-            <img className="userListImg" src={params.row.avatar} alt="" />
+          <ListUser>
+            <Image src={params.row.avatar} alt="" />
             {params.row.username}
-          </div>
+          </ListUser>
         );
       },
     },
@@ -46,10 +46,9 @@ export default function UserList() {
         return (
           <>
             <Link to={"/user/" + params.row.id}>
-              <button className="userListEdit">Edit</button>
+              <Button>Edit</Button>
             </Link>
-            <DeleteOutline
-              className="userListDelete"
+            <DeleteOutline style={{'color':'red'}}
               onClick={() => handleDelete(params.row.id)}
             />
           </>
@@ -59,7 +58,7 @@ export default function UserList() {
   ];
 
   return (
-    <div className="userList">
+    <Container>
       <DataGrid
         rows={data}
         disableSelectionOnClick
@@ -67,6 +66,6 @@ export default function UserList() {
         pageSize={8}
         checkboxSelection
       />
-    </div>
+    </Container>
   );
 }
