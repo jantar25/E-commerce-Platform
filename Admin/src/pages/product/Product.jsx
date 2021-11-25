@@ -1,50 +1,52 @@
 import { Link } from "react-router-dom";
-import "./product.css";
+import {Container,TitleContainer,Button,Top,TopLeft,TopRight,InfoTop,Image,Name,InfoBottom,InfoItem,InfoValue,
+    InfoKey,Form,FormLeft,FormRight,Upload,UploadImage } from './style'
 import Chart from "../../components/chart/Chart"
 import {productData} from "../../dummyData"
 import { Publish } from "@material-ui/icons";
+import { Bottom } from "../user/styles";
 
 export default function Product() {
   return (
-    <div className="product">
-      <div className="productTitleContainer">
+    <Container>
+      <TitleContainer>
         <h1 className="productTitle">Product</h1>
         <Link to="/newproduct">
-          <button className="productAddButton">Create</button>
+          <Button>Create</Button>
         </Link>
-      </div>
-      <div className="productTop">
-          <div className="productTopLeft">
+      </TitleContainer>
+      <Top>
+          <TopLeft>
               <Chart data={productData} dataKey="Sales" title="Sales Performance"/>
-          </div>
-          <div className="productTopRight">
-              <div className="productInfoTop">
-                  <img src="https://images.pexels.com/photos/7156886/pexels-photo-7156886.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="" className="productInfoImg" />
-                  <span className="productName">Apple Airpods</span>
-              </div>
-              <div className="productInfoBottom">
-                  <div className="productInfoItem">
-                      <span className="productInfoKey">id:</span>
-                      <span className="productInfoValue">123</span>
-                  </div>
-                  <div className="productInfoItem">
-                      <span className="productInfoKey">sales:</span>
-                      <span className="productInfoValue">5123</span>
-                  </div>
-                  <div className="productInfoItem">
-                      <span className="productInfoKey">active:</span>
-                      <span className="productInfoValue">yes</span>
-                  </div>
-                  <div className="productInfoItem">
-                      <span className="productInfoKey">in stock:</span>
-                      <span className="productInfoValue">no</span>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <div className="productBottom">
-          <form className="productForm">
-              <div className="productFormLeft">
+          </TopLeft>
+          <TopRight>
+              <InfoTop>
+                  <Image src="https://images.pexels.com/photos/7156886/pexels-photo-7156886.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="" />
+                  <Name>Apple Airpods</Name>
+              </InfoTop>
+              <InfoBottom>
+                  <InfoItem>
+                      <InfoKey>id:</InfoKey>
+                      <InfoValue>123</InfoValue>
+                  </InfoItem>
+                  <InfoItem>
+                      <InfoKey>sales:</InfoKey>
+                      <InfoValue>5123</InfoValue>
+                  </InfoItem>
+                  <InfoItem>
+                      <InfoKey>active:</InfoKey>
+                      <InfoValue>yes</InfoValue>
+                  </InfoItem>
+                  <InfoItem>
+                      <InfoKey>in stock:</InfoKey>
+                      <InfoValue>no</InfoValue>
+                  </InfoItem>
+              </InfoBottom>
+          </TopRight>
+      </Top>
+      <Bottom>
+          <Form>
+              <FormLeft>
                   <label>Product Name</label>
                   <input type="text" placeholder="Apple AirPod" />
                   <label>In Stock</label>
@@ -57,19 +59,19 @@ export default function Product() {
                       <option value="yes">Yes</option>
                       <option value="no">No</option>
                   </select>
-              </div>
-              <div className="productFormRight">
-                  <div className="productUpload">
-                      <img src="https://images.pexels.com/photos/7156886/pexels-photo-7156886.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="" className="productUploadImg" />
+              </FormLeft>
+              <FormRight>
+                  <Upload>
+                      <UploadImage src="https://images.pexels.com/photos/7156886/pexels-photo-7156886.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="" />
                       <label for="file">
                           <Publish/>
                       </label>
                       <input type="file" id="file" style={{display:"none"}} />
-                  </div>
+                  </Upload>
                   <button className="productButton">Update</button>
-              </div>
-          </form>
-      </div>
-    </div>
+              </FormRight>
+          </Form>
+      </Bottom>
+    </Container>
   );
 }
