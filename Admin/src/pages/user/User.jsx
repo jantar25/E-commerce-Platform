@@ -66,7 +66,6 @@ export default function User() {
                 <UpdateItemInput
                   type="text"
                   placeholder="annabeck99"
-                  className="userUpdateInput"
                 />
               </UpdateItem>
               <UpdateItem>
@@ -74,7 +73,6 @@ export default function User() {
                 <UpdateItemInput
                   type="text"
                   placeholder="Anna Becker"
-                  className="userUpdateInput"
                 />
               </UpdateItem>
               <UpdateItem>
@@ -82,7 +80,6 @@ export default function User() {
                 <UpdateItemInput
                   type="text"
                   placeholder="annabeck99@gmail.com"
-                  className="userUpdateInput"
                 />
               </UpdateItem>
               <UpdateItem>
@@ -90,7 +87,6 @@ export default function User() {
                 <UpdateItemInput
                   type="text"
                   placeholder="+1 123 456 67"
-                  className="userUpdateInput"
                 />
               </UpdateItem>
               <UpdateItem>
@@ -98,7 +94,6 @@ export default function User() {
                 <UpdateItemInput
                   type="text"
                   placeholder="New York | USA"
-                  className="userUpdateInput"
                 />
               </UpdateItem>
             </UpdateLeft>

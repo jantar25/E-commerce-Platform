@@ -127,6 +127,8 @@ font-weight:600;
 `
 
 export const UpdateItemInput = styled.input`
+    margin-bottom: 5px;
+    padding: 5px;
     border: none;
     width: 250px;
     height: 30px;

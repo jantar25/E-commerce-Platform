@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import {Container,TitleContainer,Button,Top,TopLeft,TopRight,InfoTop,Image,Name,InfoBottom,InfoItem,InfoValue,
-    InfoKey,Form,FormLeft,FormRight,Upload,UploadImage } from './style'
+import {Container,TitleContainer,ButtonTop,Top,TopLeft,TopRight,InfoTop,Image,Name,InfoBottom,InfoItem,InfoValue,
+    InfoKey,Form,FormLeft,FormRight,Upload,UploadImage,Label,Bottom,ButtonUpdate,LeftInput,LeftSelect } from './style'
 import Chart from "../../components/chart/Chart"
 import {productData} from "../../dummyData"
 import { Publish } from "@material-ui/icons";
-import { Bottom } from "../user/styles";
+
 
 export default function Product() {
   return (
@@ -12,7 +12,7 @@ export default function Product() {
       <TitleContainer>
         <h1 className="productTitle">Product</h1>
         <Link to="/newproduct">
-          <Button>Create</Button>
+          <ButtonTop>Create</ButtonTop>
         </Link>
       </TitleContainer>
       <Top>
@@ -47,28 +47,28 @@ export default function Product() {
       <Bottom>
           <Form>
               <FormLeft>
-                  <label>Product Name</label>
-                  <input type="text" placeholder="Apple AirPod" />
-                  <label>In Stock</label>
-                  <select name="inStock" id="idStock">
+                  <Label>Product Name</Label>
+                  <LeftInput type="text" placeholder="Apple AirPod" />
+                  <Label>In Stock</Label>
+                  <LeftSelect name="inStock" id="idStock">
                       <option value="yes">Yes</option>
                       <option value="no">No</option>
-                  </select>
-                  <label>Active</label>
-                  <select name="active" id="active">
+                  </LeftSelect>
+                  <Label>Active</Label>
+                  <LeftSelect name="active" id="active">
                       <option value="yes">Yes</option>
                       <option value="no">No</option>
-                  </select>
+                  </LeftSelect>
               </FormLeft>
               <FormRight>
                   <Upload>
                       <UploadImage src="https://images.pexels.com/photos/7156886/pexels-photo-7156886.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="" />
                       <label for="file">
-                          <Publish/>
+                          <Publish style={{color:'#6a9113',cursor:"pointer"}} />
                       </label>
                       <input type="file" id="file" style={{display:"none"}} />
                   </Upload>
-                  <button className="productButton">Update</button>
+                  <ButtonUpdate>Update</ButtonUpdate>
               </FormRight>
           </Form>
       </Bottom>
