@@ -29,10 +29,11 @@ display: flex;
 `
 
 export const TopLeft = styled.div`
-flex: 1;
+flex: 2;
 `
 
 export const TopRight = styled.div`
+flex: 1;
 padding: 20px;
 margin: 20px;
 -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
@@ -43,7 +44,7 @@ border: 2px solid #6a9113;
   `
 
 export const Image = styled.img`
-width: 80px;
+width: 70px;
 height: 70px;
 border-radius: 50%;
 object-fit: cover;
@@ -65,18 +66,16 @@ margin-top: 10px;
 `
 
 export const InfoItem = styled.div`
-width: 150px;
+width: 200px;
 display: flex;
 justify-content: space-between;
 `
 
 export const InfoValue = styled.span`
 font-weight: 600;
-margin-bottom: 10px;
 `
 export const InfoKey = styled.span`
 font-weight: 300;
-margin-bottom: 10px;
 `
  
 

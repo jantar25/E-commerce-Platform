@@ -13,7 +13,7 @@ export default function UserList() {
   };
   
   const columns = [
-    { field: "id", headerName: "ID", width: 90 },
+    { field: "id", headerName: "ID", width: 100 },
     {
       field: "user",
       headerName: "User",
@@ -36,7 +36,7 @@ export default function UserList() {
     {
       field: "transaction",
       headerName: "Transaction Volume",
-      width: 160,
+      width: 180,
     },
     {
       field: "action",
