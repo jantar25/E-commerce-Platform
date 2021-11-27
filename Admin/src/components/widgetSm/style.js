@@ -41,9 +41,7 @@ flex-direction: column;
 export const Username = styled.span`
 font-weight: 600;
 `
-export const UserTitle = styled.span`
-font-weight: 300;
-`
+
 
 export const Button = styled.button`
 display: flex;

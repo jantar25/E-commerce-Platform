@@ -8,15 +8,16 @@ const LoginAdmin = () => {
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();
 
-    const HandleAdminLogin = (e) =>{
+    const HandleClick = (e) =>{
         e.preventDefault();
         login(dispatch,{username,password})
     };
+
     return (
         <Container>
             <input type='text' placeholder='username' onChange={e=>setUsername(e.target.value)} />
             <input type='password' placeholder='password' onChange={e=>setPassword(e.target.value)} />
-            <button onClick={HandleAdminLogin} >LOGIN</button>
+            <button onClick={HandleClick} >LOGIN</button>
         </Container>
     )
 }
