@@ -1,6 +1,7 @@
-import { publicRequest } from "../requestMethode";
+import { publicRequest, userRequest } from "../requestMethode";
 import { loginFailure, loginStart, loginSuccess } from "./userRedux"
-import {getProductStart,getProductSuccess,getProductFailure} from "./productRedux"
+import {getProductStart,getProductSuccess,getProductFailure,
+    deleteProductStart,deleteProductSuccess,deleteProductFailure} from "./productRedux"
 
 export const login = async (dispatch,user) =>{
     dispatch(loginStart());
@@ -22,6 +23,18 @@ export const getProducts = async (dispatch) =>{
         dispatch(getProductSuccess(res.data));
     } catch (error) {
         dispatch(getProductFailure());
+        console.log(error);
+    }
+}
+
+export const deleteProduct = async (id,dispatch) =>{
+    dispatch(deleteProductStart());
+
+    try {
+        const res = await userRequest.delete(`/products/${id}`);
+        dispatch(deleteProductSuccess(id));
+    } catch (error) {
+        dispatch(deleteProductFailure());
         console.log(error);
     }
 }

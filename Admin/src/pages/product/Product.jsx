@@ -1,12 +1,54 @@
-import { Link } from "react-router-dom";
+import { Link,useLocation } from "react-router-dom";
 import {Container,TitleContainer,ButtonTop,Top,TopLeft,TopRight,InfoTop,Image,Name,InfoBottom,InfoItem,InfoValue,
     InfoKey,Form,FormLeft,FormRight,Upload,UploadImage,Label,Bottom,ButtonUpdate,LeftInput,LeftSelect } from './style'
 import Chart from "../../components/chart/Chart"
-import {productData} from "../../dummyData"
 import { Publish } from "@material-ui/icons";
+import { useSelector } from "react-redux";
+import { useState,useEffect } from "react";
+import { useMemo } from "react";
+import {userRequest} from '../../requestMethode'
 
 
 export default function Product() {
+    const location = useLocation();
+    const productId = location.pathname.split("/")[2];
+    const product = useSelector(state => state.product.products.find((product)=>product._id===productId));
+    const [pStats,setPStats] = useState([])
+
+
+    const MONTHS = useMemo(
+        ()=>[
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec",
+      ],[]);
+
+      useEffect(()=>{
+        const getStats = async () =>{
+          try {
+            const res = await userRequest.get("/orders/income? paid=" + productId)
+            const list = res.data.sort((a,b)=>{
+                return a._id - b._id
+            })
+            list.map((item)=>{
+              setPStats(prev=>[...prev,{name:MONTHS[item._id-1], Sales:item.total}]);
+            })
+          } catch (error) {
+            console.log(error)
+          }
+        }
+        getStats();
+      },[MONTHS])
+    
   return (
     <Container>
       <TitleContainer>
@@ -17,29 +59,25 @@ export default function Product() {
       </TitleContainer>
       <Top>
           <TopLeft>
-              <Chart data={productData} dataKey="Sales" title="Sales Performance"/>
+              <Chart data={pStats} dataKey="Sales" title="Sales Performance"/>
           </TopLeft>
           <TopRight>
               <InfoTop>
-                  <Image src="https://images.pexels.com/photos/7156886/pexels-photo-7156886.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="" />
-                  <Name>Apple Airpods</Name>
+                  <Image src={product.img} alt="" />
+                  <Name>{product.title}</Name>
               </InfoTop>
               <InfoBottom>
                   <InfoItem>
-                      <InfoKey>id:</InfoKey>
-                      <InfoValue>123</InfoValue>
+                      <InfoKey>Id:</InfoKey>
+                      <InfoValue>{product._id}</InfoValue>
                   </InfoItem>
                   <InfoItem>
                       <InfoKey>sales:</InfoKey>
                       <InfoValue>5123</InfoValue>
                   </InfoItem>
                   <InfoItem>
-                      <InfoKey>active:</InfoKey>
-                      <InfoValue>yes</InfoValue>
-                  </InfoItem>
-                  <InfoItem>
-                      <InfoKey>in stock:</InfoKey>
-                      <InfoValue>no</InfoValue>
+                      <InfoKey>in Stock</InfoKey>
+                      <InfoValue>{product.inStock}</InfoValue>
                   </InfoItem>
               </InfoBottom>
           </TopRight>
@@ -48,21 +86,20 @@ export default function Product() {
           <Form>
               <FormLeft>
                   <Label>Product Name</Label>
-                  <LeftInput type="text" placeholder="Apple AirPod" />
+                  <LeftInput type="text" placeholder={product.title} />
+                  <Label>Description</Label>
+                  <LeftInput type="text" placeholder={product.description} />
+                  <Label>Price</Label>
+                  <LeftInput type="text" placeholder={product.price} />
                   <Label>In Stock</Label>
                   <LeftSelect name="inStock" id="idStock">
-                      <option value="yes">Yes</option>
-                      <option value="no">No</option>
-                  </LeftSelect>
-                  <Label>Active</Label>
-                  <LeftSelect name="active" id="active">
                       <option value="yes">Yes</option>
                       <option value="no">No</option>
                   </LeftSelect>
               </FormLeft>
               <FormRight>
                   <Upload>
-                      <UploadImage src="https://images.pexels.com/photos/7156886/pexels-photo-7156886.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="" />
+                      <UploadImage src={product.img} alt="" />
                       <label for="file">
                           <Publish style={{color:'#6a9113',cursor:"pointer"}} />
                       </label>

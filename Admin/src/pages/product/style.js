@@ -72,10 +72,10 @@ justify-content: space-between;
 `
 
 export const InfoValue = styled.span`
-font-weight: 600;
+font-weight: 300;
 `
 export const InfoKey = styled.span`
-font-weight: 300;
+font-weight: 600;
 `
  
 

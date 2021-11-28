@@ -1,14 +1,12 @@
 import {Container,ListItem,Image,ButtonEdit} from './style'
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
-import { productRows } from "../../dummyData";
 import { Link } from "react-router-dom";
-import { useState,useEffect } from "react";
+import { useEffect } from "react";
 import {useDispatch, useSelector} from "react-redux"
-import { getProducts } from '../../Redux/apiCalls';
+import { deleteProduct, getProducts } from '../../Redux/apiCalls';
 
 export default function ProductList() {
-  const [data, setData] = useState(productRows);
   const dispatch = useDispatch();
   const products = useSelector(state => state.product.products);
 
@@ -17,7 +15,7 @@ export default function ProductList() {
   }, [dispatch])
 
   const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
+    deleteProduct(id,dispatch)
   };
 
   const columns = [
@@ -48,11 +46,11 @@ export default function ProductList() {
       renderCell: (params) => {
         return (
           <>
-            <Link to={"/product/" + params.row.id}>
+            <Link to={"/product/" + params.row._id}>
               <ButtonEdit>Edit</ButtonEdit>
             </Link>
-            <DeleteOutline style={{'color':'red'}}
-              onClick={() => handleDelete(params.row.id)}
+            <DeleteOutline style={{'color':'red','cursor':'pointer'}}
+              onClick={() => handleDelete(params.row._id)}
             />
           </>
         );
