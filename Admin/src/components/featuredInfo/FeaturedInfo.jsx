@@ -12,7 +12,7 @@ export default function FeaturedInfo() {
     const getIncome = async ()=> {
       try {
         const res = await userRequest.get("/orders/income");
-        setIncome(res.data)
+        setIncome(res.data);
         setPercentage((res.data[1].total * 100)/ res.data[0].total - 100);
       } catch (error) {
         console.log(error)
@@ -26,7 +26,7 @@ export default function FeaturedInfo() {
       <Item>
         <Title>Revenue</Title>
         <MoneyContainer>
-          <Money>{`Rwf ${income[1].total}`}</Money>
+          <Money>{`Rwf ${income[1]?.total}`}</Money>
           <MoneyRate>
           % {Math.floor(percentage)}{""} 
           {percentage<0? <ArrowDownward style={{ color: 'red' }} /> :
