@@ -23,7 +23,7 @@ export const Form = styled.form`
 `
 
 export const Item = styled.div`
-  width: 80%;
+  width: 90%;
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
@@ -37,10 +37,13 @@ export const Item = styled.div`
 
   export const Input = styled.input`
   padding: 10px;
+  border: 1px solid #6a9113;
   `
 
   export const Select = styled.select`
-  padding: 10px;
+  margin-bottom: 10px;
+  height: 40px;
+  border: 1px solid #6a9113;
   `
   export const Option = styled.option``
 

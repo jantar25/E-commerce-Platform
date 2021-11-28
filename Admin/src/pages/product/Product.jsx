@@ -93,8 +93,8 @@ export default function Product() {
                   <LeftInput type="text" placeholder={product.price} />
                   <Label>In Stock</Label>
                   <LeftSelect name="inStock" id="idStock">
-                      <option value="yes">Yes</option>
-                      <option value="no">No</option>
+                      <option value="true">Yes</option>
+                      <option value="false">No</option>
                   </LeftSelect>
               </FormLeft>
               <FormRight>
