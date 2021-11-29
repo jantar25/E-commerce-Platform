@@ -56,7 +56,7 @@ const productSlice = createSlice({
             state.error=true;
         },
 
-         // ADD A PRODUCT
+         //ADD A PRODUCT
          addProductStart:(state)=>{
             state.isFetching=true;
             state.error=false;

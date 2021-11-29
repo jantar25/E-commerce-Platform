@@ -2,11 +2,16 @@ import { useState } from 'react';
 import {Container,Title,Form,Item,Label,Input,Select,Option,Button} from './style'
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import app from '../../firebase'
+import {useDispatch} from 'react-redux'
+import {addProduct} from '../../Redux/apiCalls'
+
+
 
 export default function NewProduct() {
 const [inputs,setInputs] = useState({});
 const [file,setFile] = useState(null);
 const [cat,setCat] = useState([]);
+const dispatch = useDispatch();
 
 const handleChange = (e)=>{
   setInputs(prev=>{
@@ -22,9 +27,8 @@ const handleClick = (e)=>{
   e.preventDefault();
   const fileName = new Date().getTime() + file.name;
   const storage = getStorage(app); 
-  const storageRef = (storage,fileName);
-  
-const uploadTask = uploadBytesResumable(storageRef, file);
+  const storageRef = ref(storage,fileName);  
+  const uploadTask = uploadBytesResumable(storageRef, file);
 
 // Register three observers:
 // 1. 'state_changed' observer, called any time the state changes
@@ -43,6 +47,7 @@ uploadTask.on('state_changed',
       case 'running':
         console.log('Upload is running');
         break;
+        default:
     }
   }, 
   (error) => {
@@ -52,7 +57,8 @@ uploadTask.on('state_changed',
     // Handle successful uploads on complete
     // For instance, get the download URL: https://firebasestorage.googleapis.com/...
     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-      console.log('File available at', downloadURL);
+      const product = {...inputs,img: downloadURL,categories:cat};
+      addProduct(product,dispatch);
     });
   }
 );
@@ -80,7 +86,7 @@ uploadTask.on('state_changed',
         </Item>
         <Item>
         <Label>In Stock</Label>
-          <Select name="inStock" name="inStock" id="idStock" onChange={handleChange} >
+          <Select name="inStock" id="idStock" onChange={handleChange} >
               <Option value="true">Yes</Option>
               <Option value="false">No</Option>
           </Select>
