@@ -11,6 +11,8 @@ export default function NewProduct() {
 const [inputs,setInputs] = useState({});
 const [file,setFile] = useState(null);
 const [cat,setCat] = useState([]);
+const [size,setSize] = useState([]);
+const [content,setContent] = useState([]);
 const dispatch = useDispatch();
 
 const handleChange = (e)=>{
@@ -20,8 +22,15 @@ const handleChange = (e)=>{
 }
 
 const handleCat = (e)=>{
-  setCat(e.target.value.split(","))
+  setCat(e.target.value.split(","));
 }
+const handleSize = (e)=>{
+  setSize(e.target.value.split(","));
+}
+const handleContent = (e)=>{
+  setContent(e.target.value.split(","));
+}
+
 
 const handleClick = (e)=>{
   e.preventDefault();
@@ -51,18 +60,18 @@ uploadTask.on('state_changed',
     }
   }, 
   (error) => {
-    // Handle unsuccessful uploads
+    console.log(error)
   }, 
   () => {
-    // Handle successful uploads on complete
-    // For instance, get the download URL: https://firebasestorage.googleapis.com/...
     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-      const product = {...inputs,img: downloadURL,categories:cat};
+      const product = {...inputs,img: downloadURL,categories:cat,content:content,size:size};
       addProduct(product,dispatch);
     });
   }
 );
 }
+
+
 
   return (
     <Container>
@@ -79,6 +88,14 @@ uploadTask.on('state_changed',
         <Item>
           <Label>Categories</Label>
           <Input type="text" placeholder="Fruits,vegetables..." onChange={handleCat} />
+        </Item>
+        <Item>
+          <Label>Size</Label>
+          <Input type="text" placeholder="small,medium,big..." onChange={handleSize} />
+        </Item>
+        <Item>
+          <Label>Content</Label>
+          <Input type="text" placeholder="Green,white,red..." onChange={handleContent} />
         </Item>
         <Item>
           <Label>Price/Kg</Label>

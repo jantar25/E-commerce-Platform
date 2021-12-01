@@ -1,4 +1,4 @@
-import {Container} from './Styles'
+import {Container,Title,Popular} from './Styles'
 import PopularsItem from './PopularItem/PopularItem'
 import { useState,useEffect } from 'react'
 import axios from "axios"
@@ -50,11 +50,13 @@ const PopularsItems = ({cat,filters,sort}) => {
 
     return (
         <Container>
+            <Title>Popular Items</Title>
+            <Popular>
             {cat 
             ? filteredProducts.map((item)=>(<PopularsItem item={item} key={item._id} />))
                 : products.slice(0,8).map((item)=>(<PopularsItem item={item} key={item._id} />))
                 }
-            
+            </Popular>
         </Container>
     )
 }

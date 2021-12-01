@@ -26,11 +26,17 @@ const Navbar = () => {
         <Container>
             <Wrapper>
                 <Left>
-                    <Logo>KIVUGREEN</Logo>
-                </Left>
+                    <Link to="/" style={{textDecoration:"none"}}>
+                        <Logo>KIVUGREEN</Logo>
+                    </Link>
+                 </Left>
                 <Center>
-                    <MenuItem>Register</MenuItem>
-                    <MenuItem>Login</MenuItem>
+                    <Link to="/register" style={{textDecoration:"none"}}>
+                        <MenuItem>Register</MenuItem>
+                    </Link>
+                    <Link to="/login" style={{textDecoration:"none"}}>
+                        <MenuItem>Login</MenuItem>
+                    </Link>
                     <Link to="/cart" >
                         <MenuItem>
                             <Badge badgeContent={quantity} color="primary">
