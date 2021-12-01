@@ -47,12 +47,13 @@ export const deleteProduct = async (id,dispatch) =>{
 }
 
 // UPDATE A PRODUCT
-export const updateProduct = async (id,product,dispatch) =>{
+export const updateProduct = async (id,updatedProduct,dispatch) =>{
     dispatch(updateProductStart());
 
     try {
-        //UPDATE const res = await userRequest.put(`/products/${id}`);
-        dispatch(updateProductSuccess({id,product}));
+        const res = await userRequest.put(`/products/${id}`,updatedProduct);
+        dispatch(updateProductSuccess({id,updatedProduct}));
+        console.log(res)
     } catch (error) {
         dispatch(updateProductFailure());
         console.log(error);
