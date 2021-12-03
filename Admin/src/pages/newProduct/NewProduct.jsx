@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {Container,Title,Form,Item,Label,Input,Select,Option,Button} from './style'
+import {Container,Title,Form,Item,Label,Input,Select,Option,Button,InputItems} from './style'
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import app from '../../firebase'
 import {useDispatch} from 'react-redux'
@@ -77,41 +77,49 @@ uploadTask.on('state_changed',
     <Container>
       <Title>New Product</Title>
       <Form>
-        <Item>
-          <Label>Title</Label>
-          <Input name="title" type="text" placeholder="Mango" onChange={handleChange} />
-        </Item>
-        <Item>
-          <Label>Description</Label>
-          <Input name="description" type="text" placeholder="Good Fruits" onChange={handleChange}  />
-        </Item>
-        <Item>
-          <Label>Categories</Label>
-          <Input type="text" placeholder="Fruits,vegetables..." onChange={handleCat} />
-        </Item>
-        <Item>
-          <Label>Size</Label>
-          <Input type="text" placeholder="small,medium,big..." onChange={handleSize} />
-        </Item>
-        <Item>
-          <Label>Content</Label>
-          <Input type="text" placeholder="Green,white,red..." onChange={handleContent} />
-        </Item>
-        <Item>
-          <Label>Price/Kg</Label>
-          <Input name="price" type="number" placeholder="200" onChange={handleChange} />
-        </Item>
-        <Item>
-        <Label>In Stock</Label>
-          <Select name="inStock" id="idStock" onChange={handleChange} >
-              <Option value="true">Yes</Option>
-              <Option value="false">No</Option>
-          </Select>
-        </Item>
-        <Item>
-          <Label>Image</Label>
-          <Input type="file" id="file" onChange={e=>setFile(e.target.files[0])} />
-        </Item>
+      <InputItems>
+          <Item>
+            <Label>Title</Label>
+            <Input name="title" type="text" placeholder="Mango" onChange={handleChange} />
+          </Item>
+          <Item>
+            <Label>Description</Label>
+            <Input name="description" type="text" placeholder="Good Fruits" onChange={handleChange}  />
+          </Item>
+        </InputItems>
+        <InputItems>
+          <Item>
+            <Label>Categories</Label>
+            <Input type="text" placeholder="Fruits,vegetables..." onChange={handleCat} />
+          </Item>
+          <Item>
+            <Label>Size</Label>
+            <Input type="text" placeholder="small,medium,big..." onChange={handleSize} />
+          </Item>
+        </InputItems>
+        <InputItems>
+          <Item>
+            <Label>Content</Label>
+            <Input type="text" placeholder="Green,white,red..." onChange={handleContent} />
+          </Item>
+          <Item>
+            <Label>Price/Kg</Label>
+            <Input name="price" type="number" placeholder="200" onChange={handleChange} />
+          </Item>
+        </InputItems>
+        <InputItems>
+          <Item>
+          <Label>In Stock</Label>
+            <Select name="inStock" id="idStock" onChange={handleChange} >
+                <Option value="true">Yes</Option>
+                <Option value="false">No</Option>
+            </Select>
+          </Item>
+          <Item>
+            <Label>Image</Label>
+            <Input type="file" id="file" onChange={e=>setFile(e.target.files[0])} />
+          </Item>
+        </InputItems>
         <Button onClick={handleClick} >Create</Button>
       </Form>
     </Container>

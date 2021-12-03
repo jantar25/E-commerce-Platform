@@ -15,18 +15,26 @@ export const Form = styled.form`
   border-radius: 10px;
   background: rgb(233, 233, 241);
   padding:20px;
-  width:40%;
+  width:80%;
   display:flex;
   flex-direction: column;
   align-items:center;
   justify-content:center;
 `
 
+
+export const InputItems = styled.div`
+display: flex;
+align-items:center;
+justify-content:center;
+width:90%;
+`
+
 export const Item = styled.div`
-  width: 90%;
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
+  margin: 10px;
+  width:100%;
   `
 
   export const Label = styled.label`
@@ -44,6 +52,7 @@ export const Item = styled.div`
   margin-bottom: 10px;
   height: 40px;
   border: 1px solid #6a9113;
+  width: 200px;
   `
   export const Option = styled.option``
 

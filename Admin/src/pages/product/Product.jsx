@@ -119,12 +119,6 @@ export default function Product() {
     
   return (
     <Container>
-      <TitleContainer>
-        <h1 className="productTitle">Product</h1>
-        <Link to="/newproduct">
-          <ButtonTop>Create</ButtonTop>
-        </Link>
-      </TitleContainer>
       <Top>
           <TopLeft>
               <Chart data={pStats} dataKey="Sales" title="Sales Performance"/>

@@ -9,9 +9,15 @@ const LoginAdmin = () => {
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();
 
+    const Clear = ()=>{
+        setUsername("");
+        setPassword("");
+    }
+
     const HandleClick = (e) =>{
         e.preventDefault();
-        login(dispatch,{username,password})
+        login(dispatch,{username,password});
+        Clear();
     };
 
     return (

@@ -1,4 +1,4 @@
-import {Container,ListItem,Image,ButtonEdit} from './style'
+import {Container,ListItem,Image,ButtonEdit,TitleContainer,ButtonTop} from './style'
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
@@ -60,12 +60,19 @@ export default function ProductList() {
 
   return (
     <Container>
+      <TitleContainer>
+        <h1 className="productTitle">Products</h1>
+        <Link to="/newproduct">
+          <ButtonTop>Create</ButtonTop>
+        </Link>
+      </TitleContainer>
       <DataGrid
+        autoHeight 
         rows={products}
         disableSelectionOnClick
         columns={columns}
         getRowId={(row)=>row._id}
-        pageSize={8}
+        pageSize={6}
         checkboxSelection
       />
     </Container>
