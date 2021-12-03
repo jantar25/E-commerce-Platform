@@ -2,7 +2,6 @@ import { useLocation } from "react-router"
 import styled from "styled-components"
 
 const Container = styled.div`
-display:flex;
 height:100vh;
 display:flex;
 justify-content:center;

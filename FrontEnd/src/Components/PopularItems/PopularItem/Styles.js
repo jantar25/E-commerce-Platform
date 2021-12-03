@@ -14,7 +14,6 @@ background:whitesmoke;
 &:hover{
     background:orange; 
 }
-}
 `
 
 
