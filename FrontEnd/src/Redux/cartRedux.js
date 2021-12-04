@@ -1,4 +1,5 @@
 import { createSlice} from '@reduxjs/toolkit'
+import {toast } from 'react-toastify';
 
 const cartSlice = createSlice({
     name:"cart",
@@ -13,6 +14,8 @@ const cartSlice = createSlice({
             state.quantity +=1;
             state.products.push(action.payload);
             state.total += action.payload.price * action.payload.quantity;
+            toast.success(`${action.payload.title} is added to cart`,{position:"bottom-left"});
+            
         },
 
          // DELETE A PRODUCT

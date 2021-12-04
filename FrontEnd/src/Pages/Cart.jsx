@@ -169,6 +169,7 @@ const Cart = () => {
 
     const cart = useSelector(state=>state.cart)
     const [stripeToken,setStripeToken]= useState(null);
+    const [quantity,setQuantity] = useState(cart.product.quantity);
     const history = useHistory();
     const dispatch = useDispatch();
     const onToken=(token)=>{
@@ -193,6 +194,14 @@ const Cart = () => {
         dispatch(deleteProduct(product))
     }
 
+    const handleQuantity = (type)=>{
+        if(type==="dec"){
+           quantity >1 && setQuantity(quantity-1)
+        } else {
+            setQuantity(quantity+1)
+        }
+    }
+
     return (
         <Container>
            <Navbar />
@@ -205,7 +214,6 @@ const Cart = () => {
                         <TopText>Your Bag(2)</TopText>
                         <TopText>Your Tea(0)</TopText>
                     </TopTexts>
-                    <TopButton type="filled">CHECKOUT NOW</TopButton>
                 </Top>
                 <Bottom>
                     <Info>
@@ -223,11 +231,11 @@ const Cart = () => {
                             </ProductDetail>
                             <PriceDetail>
                                 <ProductAmountContainer>
-                                    <Add />
-                                    <ProductAmount>{product.quantity}</ProductAmount>
-                                    <Remove />
+                                    <Add onClick={()=> handleQuantity("inc")} />
+                                    <ProductAmount>{quantity}</ProductAmount>
+                                    <Remove onClick={()=> handleQuantity("dec")} />
                                 </ProductAmountContainer>
-                                <ProductPrice>Rwf {product.price * product.quantity}</ProductPrice>
+                                <ProductPrice>Rwf {product.price * quantity}</ProductPrice>
                             </PriceDetail>
                             <RemoveProduct><Clear onClick={()=>RemoveCartItem(product)}>REMOVE</Clear> </RemoveProduct>
                         </Product>
