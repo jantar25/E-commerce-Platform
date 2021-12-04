@@ -10,6 +10,8 @@ import { useState,useEffect } from 'react';
 import StripeCheckout from 'react-stripe-checkout'
 import {userRequest} from '../requestMethode'
 import {useHistory} from "react-router"
+import { deleteProduct } from '../Redux/cartRedux';
+import { useDispatch } from 'react-redux';
 
 
 const Container = styled.div`
@@ -61,7 +63,7 @@ justify-content:space-between;
 ${mobile({flexDirection:"column"})}
 `
 const ProductDetail = styled.div`
-flex:2;
+flex:6;
 display:flex;
 `
 const Image = styled.img`
@@ -89,12 +91,24 @@ const ProductSize = styled.span`
 
 `
 const PriceDetail = styled.div`
-flex:1;
+flex:3;
 display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
 `
+const RemoveProduct = styled.div`
+flex:1;
+display:flex;
+padding:30px;
+`
+
+const Clear = styled.span`
+color:red;
+cursor:pointer;
+font-weight:700;
+`
+
 const ProductAmountContainer = styled.div`
 display:flex;
 align-items:center;
@@ -156,6 +170,7 @@ const Cart = () => {
     const cart = useSelector(state=>state.cart)
     const [stripeToken,setStripeToken]= useState(null);
     const history = useHistory();
+    const dispatch = useDispatch();
     const onToken=(token)=>{
         setStripeToken(token);
     }
@@ -174,7 +189,9 @@ const Cart = () => {
         stripeToken && cart.total>=1 && makeRequest();  
     },[stripeToken,cart.total,history])
 
-
+    const RemoveCartItem = (product) =>{
+        dispatch(deleteProduct(product))
+    }
 
     return (
         <Container>
@@ -193,6 +210,7 @@ const Cart = () => {
                 <Bottom>
                     <Info>
                         {cart.products.map(product=>(
+                            <>
                             <Product >
                             <ProductDetail>
                                 <Image src={product.img} />
@@ -211,9 +229,12 @@ const Cart = () => {
                                 </ProductAmountContainer>
                                 <ProductPrice>Rwf {product.price * product.quantity}</ProductPrice>
                             </PriceDetail>
+                            <RemoveProduct><Clear onClick={()=>RemoveCartItem(product)}>REMOVE</Clear> </RemoveProduct>
                         </Product>
-                        ))}
                         <Hr />
+                        </>
+                        ))}
+                        
                     </Info>
                     <Summary>
                         <SummayTitle>ORDER SUMMARY</SummayTitle>

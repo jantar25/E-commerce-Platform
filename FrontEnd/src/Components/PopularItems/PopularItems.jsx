@@ -50,7 +50,6 @@ const PopularsItems = ({cat,filters,sort}) => {
 
     return (
         <Container>
-            <Title>Popular Items</Title>
             <Popular>
             {cat 
             ? filteredProducts.map((item)=>(<PopularsItem item={item} key={item._id} />))

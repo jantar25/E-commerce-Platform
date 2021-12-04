@@ -13,11 +13,17 @@ import { useState } from "react"
 const Container = styled.div`
 
 `
-const Title = styled.h1`
-margin:20px;
+
+export const Title = styled.span`
+display:flex;
+font-size:50px;
 text-transform: capitalize;
+margin:20px;
+justify-content:center;
+color:orange;
 ${mobile({margin:"20px 10px"})}
 `
+
 const FilterContainer = styled.div`
 display:flex;
 justify-content:space-between;
