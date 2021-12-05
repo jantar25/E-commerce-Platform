@@ -3,7 +3,6 @@ import {mobile} from "../../Responsive"
 
 export const Container = styled.div`
 height:60px;
-background: #fff;
 color:#fff;
 ${mobile({height:"50px"})}
 `
@@ -18,12 +17,6 @@ ${mobile({padding:"10px 5px"})}
 export const Left = styled.div`
 flex:1;
 `
-export const Center = styled.div`
-flex:1;
-display:flex;
-align-items:center;
-justify-content:center;
-`
 export const Rigth = styled.div`
 flex:1;
 display:flex;
@@ -31,14 +24,11 @@ align-items:center;
 justify-content:flex-end;
 ${mobile({flex:2,justifyContent:"center"})}
 `
-export const Language = styled.span`
-color:#6a9113;
-${mobile({display:"none"})}
-`
+
 export const SearchContainer = styled.div`
 display:flex;
 align-items:center;
-border: 1px solid #6a9113;
+border: 1px solid #CCF07F;
 margin-left:25px;
 padding:1px;
 
@@ -49,6 +39,7 @@ border: none;
 ${mobile({width:"50px"})}
 `
 export const Logo = styled.h1`
+font-size: 40px;
 text-decoration: none;
 background-color: #6a9113;
 background-image: linear-gradient(to top, #6a9113 0%, #cacebf 100%);
@@ -64,7 +55,7 @@ export const MenuItem = styled.div`
 font-size:20px;
 cursor:pointer;
 margin-left:25px;
-color:#6a9113;
+color:#CCF07F;
 transition: all 1s ease;
 
 ${mobile({fontSize:"15px",marginLeft:"10px"})}

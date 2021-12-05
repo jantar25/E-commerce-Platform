@@ -22,15 +22,15 @@ const Slider = () => {
             <Wrapper slideIndex={slideIndex}>
                 {SlideItems.map(item=>(
                 <Slide bg={item.bg} key={item.id} >
-                <ImgContainer>
-                    <Image src={item.img} />
-                </ImgContainer>
                 <InfoContainer>
                     <Title>{item.title}</Title><br />
                     <Intro>{item.intro}</Intro>
                     <Description>{item.description}</Description>
                     <Button>SHOW NOW</Button>
                 </InfoContainer>
+                <ImgContainer>
+                    <Image src={item.img} />
+                </ImgContainer>
             </Slide>
                 ))}
             </Wrapper>

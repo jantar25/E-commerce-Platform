@@ -10,7 +10,7 @@ display:flex;
 align-items:center;
 justify-content:center;
 background:whitesmoke;
-
+overflow:hidden;
 &:hover{
     background:orange; 
 }

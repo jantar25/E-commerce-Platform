@@ -1,15 +1,24 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import {mobile} from "../../Responsive"
 
+
+const animation = keyframes`
+0%,100%{
+    opacity:1;
+}
+50%{
+    opacity:0;
+}
+`
 export const Container = styled.div`
 height:30px;
-background: #6a9113;
-color:#fff;
+color:#CCF07F;
 display: flex;
 align-items:center;
 justify-content:center;
 font-size:20px;
-font-weight:200;
+font-weight:400;
+animation:${animation} 2s infinite;
 ${mobile({fontSize:"15px"})}
 `
 

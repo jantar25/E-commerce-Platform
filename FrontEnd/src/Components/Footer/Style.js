@@ -13,6 +13,9 @@ flex-direction: column;
 padding:20px;
 `
 export const Logo = styled.h2`
+display:flex;
+align-items:center;
+justify-content:center;
 background-color: #6a9113;
 background-image: linear-gradient(to top, #6a9113 0%, #cacebf 100%);
 background-size: 100%;

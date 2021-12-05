@@ -3,7 +3,7 @@ import {mobile} from "../../Responsive"
 
 export const Container = styled.div`
 width:100%;
-height:90vh;
+height:85vh;
 display:flex;
 position:relative;
 overflow:hidden;
@@ -13,7 +13,6 @@ ${mobile({display:"none"})}
 export const Arrow = styled.div`
 width:50px;
 height:50px;
-background-color:green;
 border-radius:50%;
 display: flex;
 align-items:center;
@@ -46,6 +45,10 @@ background-color: # ${ props=>props.bg};
 export const ImgContainer = styled.div`
 flex:1;
 height:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+
 `
 export const InfoContainer = styled.div`
 flex:1;
@@ -53,8 +56,8 @@ padding:50px;
 `
 
 export const Image = styled.img`
-height:100%;
-width:100%;
+height:80%;
+width:80%;
 `
 export const Title = styled.span`
 font-size:60px;

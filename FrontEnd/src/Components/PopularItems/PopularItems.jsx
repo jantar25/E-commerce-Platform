@@ -1,4 +1,4 @@
-import {Container,Title,Popular} from './Styles'
+import {Container,Popular} from './Styles'
 import PopularsItem from './PopularItem/PopularItem'
 import { useState,useEffect } from 'react'
 import axios from "axios"

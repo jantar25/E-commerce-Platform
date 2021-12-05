@@ -1,5 +1,6 @@
-
-import Chemical from "../Images/Chemical.jpg"
+import organics from "../Images/organics.png"
+import farmer from "../Images/farmer.png"
+import banan from "../Images/banan.png"
 import Potetoes from "../Images/potetoes.jpg"
 import Meats from "../Images/meats.jpg"
 import Fruits from "../Images/fruits.jpg"
@@ -9,7 +10,7 @@ import Vegetables from "../Images/vegetables.jpg"
 export const SlideItems=[
     {
         id:1,
-        img:Chemical,
+        img:farmer,
         title:"Organic-Farming",
         intro:"Best technique of cultivation",
         description: "That avoid the use of chemicals leading to better quality food products with high nutritive values.",
@@ -18,7 +19,7 @@ export const SlideItems=[
 
     {
         id:2,
-        img:Chemical,
+        img:organics,
         title:"Bio-Food",
         intro:"Eat Healthy",
         description: "We guarantees that at least 95% of the ingredients of agricultural origin come from organic farming.",
@@ -27,7 +28,7 @@ export const SlideItems=[
 
     {
         id:3,
-        img:Chemical,
+        img:banan,
         title:"Banana",
         intro:"Best quality of fruits",
         description: "Footwear and accessories. Shop the best outfits for this season at our online store.",
