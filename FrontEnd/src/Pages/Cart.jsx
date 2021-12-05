@@ -10,7 +10,7 @@ import { useState,useEffect } from 'react';
 import StripeCheckout from 'react-stripe-checkout'
 import {userRequest} from '../requestMethode'
 import {useHistory} from "react-router"
-import { deleteProduct } from '../Redux/cartRedux';
+import { decreaseProductQuantity, deleteProduct,IncreamentProductQuantity } from '../Redux/cartRedux';
 import { useDispatch } from 'react-redux';
 
 
@@ -169,7 +169,6 @@ const Cart = () => {
 
     const cart = useSelector(state=>state.cart)
     const [stripeToken,setStripeToken]= useState(null);
-    const [quantity,setQuantity] = useState(cart.product.quantity);
     const history = useHistory();
     const dispatch = useDispatch();
     const onToken=(token)=>{
@@ -194,12 +193,12 @@ const Cart = () => {
         dispatch(deleteProduct(product))
     }
 
-    const handleQuantity = (type)=>{
-        if(type==="dec"){
-           quantity >1 && setQuantity(quantity-1)
-        } else {
-            setQuantity(quantity+1)
-        }
+    const decrementQuantity = (product) =>{
+        dispatch(decreaseProductQuantity(product))
+    }
+
+    const incrementQuantity = (product) =>{
+        dispatch(IncreamentProductQuantity(product))
     }
 
     return (
@@ -218,7 +217,7 @@ const Cart = () => {
                 <Bottom>
                     <Info>
                         {cart.products.map(product=>(
-                            <>
+                            <div key={product._id}>
                             <Product >
                             <ProductDetail>
                                 <Image src={product.img} />
@@ -231,16 +230,16 @@ const Cart = () => {
                             </ProductDetail>
                             <PriceDetail>
                                 <ProductAmountContainer>
-                                    <Add onClick={()=> handleQuantity("inc")} />
-                                    <ProductAmount>{quantity}</ProductAmount>
-                                    <Remove onClick={()=> handleQuantity("dec")} />
+                                    <Remove onClick={()=> decrementQuantity(product)} />
+                                    <ProductAmount>{product.quantity}</ProductAmount>
+                                    <Add onClick={()=> incrementQuantity(product)} />   
                                 </ProductAmountContainer>
-                                <ProductPrice>Rwf {product.price * quantity}</ProductPrice>
+                                <ProductPrice>Rwf {product.price * product.quantity}</ProductPrice>
                             </PriceDetail>
                             <RemoveProduct><Clear onClick={()=>RemoveCartItem(product)}>REMOVE</Clear> </RemoveProduct>
                         </Product>
                         <Hr />
-                        </>
+                        </div>
                         ))}
                         
                     </Info>

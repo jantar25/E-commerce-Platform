@@ -2,22 +2,20 @@ import React, { useState } from 'react'
 import { Container,Input,Button,Title,Form } from './styles'
 import {useDispatch} from 'react-redux'
 import {login} from '../../Redux/apiCalls'
+import { useHistory } from 'react-router'
 
 
 const LoginAdmin = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();
+    const history = useHistory();
 
-    const Clear = ()=>{
-        setUsername("");
-        setPassword("");
-    }
 
     const HandleClick = (e) =>{
         e.preventDefault();
         login(dispatch,{username,password});
-        Clear();
+        history.push("/home");
     };
 
     return (

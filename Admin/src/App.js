@@ -13,16 +13,16 @@ import Login from "./pages/login/LoginAdmin";
 
 function App() {
 
-  const admin = JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser?.isAdmin;
+  const admin = "";
   return (
     <Router>
      <Switch>
-      <Route path="/login" component={()=>(!admin ? <Login /> : <Redirect to='/' />)} />
+      <Route path="/"><Login /></Route>
       { admin && <>
              <Topbar />
               <div className="container">
                 <Sidebar />
-                  <Route exact path="/">
+                  <Route exact path="/home">
                     <Home />
                   </Route>
                   <Route path="/users">
