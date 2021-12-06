@@ -43,7 +43,7 @@ const Navbar = () => {
                     </Link>
                     <SearchContainer>
                         <Input placeholder="Search" />
-                        <Search style={{color:'#CCF07F',fontSize:20}}/>
+                        <Search style={{color:'#577516',fontSize:20}}/>
                     </SearchContainer>
                 </Rigth>
             </Wrapper>

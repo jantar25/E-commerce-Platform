@@ -3,7 +3,7 @@ import {mobile} from "../../Responsive"
 
 export const Container = styled.div`
 height:60px;
-color:#fff;
+
 ${mobile({height:"50px"})}
 `
 
@@ -28,7 +28,7 @@ ${mobile({flex:2,justifyContent:"center"})}
 export const SearchContainer = styled.div`
 display:flex;
 align-items:center;
-border: 1px solid #CCF07F;
+border: 1px solid #577516;
 margin-left:25px;
 padding:1px;
 
@@ -55,7 +55,7 @@ export const MenuItem = styled.div`
 font-size:20px;
 cursor:pointer;
 margin-left:25px;
-color:#CCF07F;
+color:#577516;
 transition: all 1s ease;
 
 ${mobile({fontSize:"15px",marginLeft:"10px"})}

@@ -23,12 +23,15 @@ const Slider = () => {
                 {SlideItems.map(item=>(
                 <Slide bg={item.bg} key={item.id} >
                 <InfoContainer>
-                    <Title>{item.title}</Title><br />
                     <Intro>{item.intro}</Intro>
+                    <Title>{item.title}</Title>
                     <Description>{item.description}</Description>
-                    <Button>SHOW NOW</Button>
+                    <Button href="https://blog.agrivi.com/post/the-most-important-facts-about-organic-farming">LEARN MORE</Button>
                 </InfoContainer>
                 <ImgContainer>
+                    <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="100%" id="blobSvg">
+                        <path id="blob" d="M425.5,288.5Q356,327,338.5,398.5Q321,470,249,471.5Q177,473,149,408.5Q121,344,84.5,297Q48,250,64,188.5Q80,127,140.5,112.5Q201,98,259,71Q317,44,334.5,110Q352,176,423.5,213Q495,250,425.5,288.5Z" fill={item.bg}></path>
+                    </svg>
                     <Image src={item.img} />
                 </ImgContainer>
             </Slide>

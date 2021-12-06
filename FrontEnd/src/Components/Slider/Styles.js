@@ -3,7 +3,7 @@ import {mobile} from "../../Responsive"
 
 export const Container = styled.div`
 width:100%;
-height:85vh;
+height:100vh;
 display:flex;
 position:relative;
 overflow:hidden;
@@ -34,30 +34,35 @@ display:flex;
 transition: all 2s ease;
 transform:translateX(${props=>props.slideIndex * -100}vw);
 
+
 `
 export const Slide = styled.div`
 height:90vh;
 width:100vw;
 display:flex;
 align-items:center;
-background-color: # ${ props=>props.bg};
 `
 export const ImgContainer = styled.div`
 flex:1;
-height:100%;
 display:flex;
 align-items:center;
 justify-content:center;
-
+height:100%;
+position:relative;
 `
 export const InfoContainer = styled.div`
 flex:1;
+display:flex;
+flex-direction:column;
 padding:50px;
 `
 
 export const Image = styled.img`
 height:80%;
 width:80%;
+z-index:2;
+position:absolute;
+top:0;
 `
 export const Title = styled.span`
 font-size:60px;
@@ -89,12 +94,15 @@ font-size:20px;
 font-weigth:500;
 letter-spacing:2px;
 `
-export const Button = styled.button`
+export const Button = styled.a`
+display:flex;
+align-items:center;
+justify-content:center;
 padding:10px 20px;
 font-size:20px;
 background:#577516;
-cursor:pointer;
-border:none;
+text-decoration:none;
 color:white;
 border-radius:10px;
+width:30%;
 `
