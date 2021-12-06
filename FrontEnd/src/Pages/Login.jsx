@@ -4,6 +4,7 @@ import styled from "styled-components"
 import LoginImg from "../Images/Chemical.jpg"
 import { login } from "../Redux/apiCalls"
 import { mobile } from "../Responsive"
+import { Link } from "react-router-dom"
 
 
 const Container = styled.div`
@@ -48,13 +49,6 @@ margin-bottom:10px;
     color:teal;
     cursor:not-allowed;
 }
-`
-
-const Link = styled.a`
-font-size:12px;
-margin:10px 0px;
-text-decoration:underline;
-cursor:pointer;
 `
 const Error = styled.span`
 color:red;

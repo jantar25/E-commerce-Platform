@@ -24,6 +24,14 @@ align-items:center;
 justify-content:flex-end;
 ${mobile({flex:2,justifyContent:"center"})}
 `
+export const LogContainer = styled.div`
+`
+export const Profile = styled.div`
+`
+
+export const Avatar = styled.div`
+`
+
 
 export const SearchContainer = styled.div`
 display:flex;
