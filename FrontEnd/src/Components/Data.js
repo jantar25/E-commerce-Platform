@@ -62,6 +62,7 @@ export const CategoriesItems=[
         title:"Meat",
         cat:"meat",
     },
+
 ]
 
 

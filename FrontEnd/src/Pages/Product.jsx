@@ -28,7 +28,7 @@ const Image = styled.img`
 width:100%;
 height:80hv;
 object-fit:cover;
-${mobile({height:"40vh"})}
+${mobile({height:"50vh"})}
 `
 const InfoContainer = styled.div`
 flex:1;
@@ -38,7 +38,7 @@ ${mobile({padding:"10px"})}
 const Title = styled.span`
 font-size:40px;
 font-weight:600;
-color:teal;
+color:orange;
 `
 const Description = styled.p`
 margin: 20px 0px;
@@ -91,7 +91,7 @@ font-weight:700;
 const Amount = styled.span`
 width:30px;
 height:30px;
-border:1px solid teal;
+border:1px solid orange;
 border-radius:10px;
 display:flex;
 align-items:center;
@@ -101,7 +101,7 @@ margin:0px 10px;
 const Button = styled.button`
 padding:15px;
 background:white;
-border:3px solid teal;
+border:3px solid orange;
 cursor:pointer;
 font-weight:700;
 

@@ -7,7 +7,7 @@ height:100vh;
 display:flex;
 position:relative;
 overflow:hidden;
-${mobile({display:"none"})}
+${mobile({height:"50vh"})}
 `
 
 export const Arrow = styled.div`
@@ -41,6 +41,7 @@ height:90vh;
 width:100vw;
 display:flex;
 align-items:center;
+${mobile({height:"50vh"})}
 `
 export const ImgContainer = styled.div`
 flex:1;
@@ -54,7 +55,9 @@ export const InfoContainer = styled.div`
 flex:1;
 display:flex;
 flex-direction:column;
+justify-content:center;
 padding:50px;
+${mobile({height:"100%",padding:"10px"})}
 `
 
 export const Image = styled.img`
@@ -63,6 +66,7 @@ width:80%;
 z-index:2;
 position:absolute;
 top:0;
+${mobile({width:"100%"})}
 `
 export const Title = styled.span`
 font-size:60px;
@@ -74,6 +78,7 @@ background-size: 100%;
 -moz-background-clip: text;
 -webkit-text-fill-color: transparent;
 -moz-text-fill-color: transparent;
+${mobile({fontSize:"20px",marginBottom:"0px"})}
 `
 
 export const Intro = styled.span`
@@ -86,13 +91,15 @@ background-size: 100%;
 -moz-background-clip: text;
 -webkit-text-fill-color: transparent;
 -moz-text-fill-color: transparent;
+${mobile({fontSize:"10px"})}
 `
 
 export const Description = styled.p`
 margin:30px 0 50px;
 font-size:20px;
 font-weigth:500;
-letter-spacing:2px;
+
+${mobile({fontSize:"10px",margin:"5px 0px 10px",letterSpacing:"0px"})}
 `
 export const Button = styled.a`
 display:flex;
@@ -105,4 +112,5 @@ text-decoration:none;
 color:white;
 border-radius:10px;
 width:30%;
+${mobile({fontSize:"10px",padding:"5px 10px",width:"50%"})}
 `

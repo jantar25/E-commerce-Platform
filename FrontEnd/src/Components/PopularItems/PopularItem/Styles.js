@@ -9,10 +9,10 @@ height:400px;
 display:flex;
 align-items:center;
 justify-content:center;
-background:whitesmoke;
+background:#F1FCF0;
 overflow:hidden;
 &:hover{
-    background:orange; 
+    background:rgba(0, 0, 0, 0.5); 
 }
 `
 
@@ -58,7 +58,7 @@ export const Circular = styled.div`
 width:150px;
 height:150px;
 border-radius:50%;
-background:orange;
+background:#1D751B;
 position: absolute;
 `
 export const Image = styled.img`

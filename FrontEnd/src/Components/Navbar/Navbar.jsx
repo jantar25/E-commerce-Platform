@@ -56,7 +56,7 @@ const Navbar = () => {
             <Wrapper>
                 <Left>
                     <Link to="/" style={{textDecoration:"none"}}>
-                        <Logo><Spa style={{color:'#6a9113',fontSize:40}}/>KIVUGREEN</Logo>
+                        <Logo>KIVUGREEN</Logo>
                     </Link>
                  </Left>
                 <Rigth>

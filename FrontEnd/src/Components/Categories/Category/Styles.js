@@ -4,14 +4,15 @@ import { mobile } from "../../../Responsive";
 export const Container = styled.div`
 flex:1;
 margin:5px;
-height:70vh;
+height:40vh;
+width:45vw;
 position:relative;
 &::before {
     content: "";
     position: absolute;
     z-index: 2;
     width: 100%;
-    height: 70vh;
+    height: 40vh;
     bottom: 0vh;
     left: 0;
     overflow: hidden;
@@ -21,12 +22,13 @@ position:relative;
       rgba(0, 0, 0, 1) 100%
     );
   }
+  ${mobile({width:"100%"})}
 `
 export const Image = styled.img`
 width:100%;
 height:100%;
 object-fit:cover;
-${mobile({height:"30vh"})}
+${mobile({height:"40vh"})}
 `
 export const Info = styled.div`
 position:absolute;

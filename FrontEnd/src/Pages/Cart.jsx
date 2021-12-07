@@ -12,7 +12,7 @@ import {userRequest} from '../requestMethode'
 import {useHistory} from "react-router"
 import { decreaseProductQuantity, deleteProduct,IncreamentProductQuantity } from '../Redux/cartRedux';
 import { useDispatch } from 'react-redux';
-
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
 
@@ -36,7 +36,7 @@ const TopButton = styled.button`
 padding:10px;
 font-weight:600;
 cursor:pointer;
-border: ${props=>props.type==="filled" ? "none" : "2px solid teal"};
+border: ${props=>props.type==="filled" ? "none" : "2px solid orange"};
 background: ${props=>props.type==="filled" ? "teal" : "transparent"};
 color: ${props=>props.type==="filled" && "white"};
 `
@@ -69,6 +69,7 @@ display:flex;
 const Image = styled.img`
 width:200px;
 height:25vh;
+${mobile({width:"150px"})}
 `
 const Details = styled.div`
 padding:20px;
@@ -79,7 +80,7 @@ justify-content:space-around;
 const ProductName = styled.span`
 `
 const ProductId = styled.span`
-
+${mobile({display:"none"})}
 `
 const ProductTurnary = styled.div`
 width:20px;
@@ -115,8 +116,15 @@ align-items:center;
 margin-bottom:20px;
 `
 const ProductAmount = styled.div`
+width:30px;
+height:30px;
+border-radius:10px;
+display:flex;
+align-items:center;
+justify-content:center;
 font-size:24px;
 margin:5px;
+border:2px solid orange;
 ${mobile({margin:"5px 20px"})}
 `
 const ProductPrice = styled.div`
@@ -208,7 +216,9 @@ const Cart = () => {
             <Wrapper>
                 <Title>YOUR BAG</Title>
                 <Top>
-                    <TopButton>CONTINUE SHOPPING</TopButton>
+                    <Link to="/productItems/all" style={{textDecoration:"none"}} > 
+                        <TopButton>CONTINUE SHOPPING</TopButton>
+                    </Link>
                     <TopTexts>
                         <TopText>Your Bag(2)</TopText>
                         <TopText>Your Tea(0)</TopText>

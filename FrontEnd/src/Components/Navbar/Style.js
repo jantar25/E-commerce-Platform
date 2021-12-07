@@ -22,7 +22,7 @@ flex:1;
 display:flex;
 align-items:center;
 justify-content:flex-end;
-${mobile({flex:2,justifyContent:"center"})}
+${mobile({flex:1,justifyContent:"center"})}
 `
 export const LogContainer = styled.div`
 `

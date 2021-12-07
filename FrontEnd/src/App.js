@@ -5,6 +5,7 @@ import Cart from './Pages/Cart'
 import Register from './Pages/Register'
 import Login from './Pages/Login'
 import Product from './Pages/Product'
+import AllProducts from './Pages/AllProductList'
 import ProductList from './Pages/ProductList'
 import Pay from './Pages/Pay';
 import PaySuccess from './Pages/PaySuccess';
@@ -21,6 +22,7 @@ function App() {
         <Route exact path="/"><Home /></Route>
         <Route exact path="/products/:category"><ProductList /></Route>
         <Route exact path="/product/:id"><Product /></Route>
+        <Route exact path="/productItems/all"><AllProducts /></Route>
         <Route exact path="/cart"><Cart /></Route>
         <Route exact path="/register">{user? <Redirect to="/" /> : <Register />}</Route>
         <Route exact path="/login"> {user? <Redirect to="/" /> : <Login />}</Route>
