@@ -15,7 +15,7 @@ const LoginAdmin = () => {
     const HandleClick = (e) =>{
         e.preventDefault();
         login(dispatch,{username,password});
-        history.push("/home");
+        history.push("/");
     };
 
     return (

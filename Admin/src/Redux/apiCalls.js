@@ -1,5 +1,5 @@
 import { publicRequest, userRequest } from "../requestMethode";
-import { loginFailure, loginStart, loginSuccess } from "./userRedux"
+import { loginFailure, loginStart, loginSuccess,logoutSuccess } from "./userRedux"
 import {getProductStart,getProductSuccess,getProductFailure,
     deleteProductStart,deleteProductSuccess,deleteProductFailure,
     updateProductStart,updateProductSuccess,updateProductFailure,
@@ -8,7 +8,7 @@ import {getProductStart,getProductSuccess,getProductFailure,
 
 // LOGIN ADMIN   
 export const login = async (dispatch,user) =>{
-    dispatch(loginStart());
+    dispatch(loginStart()); 
 
     try {
         const res = await publicRequest.post("/auth/login",user);
@@ -17,6 +17,11 @@ export const login = async (dispatch,user) =>{
         dispatch(loginFailure());
         console.log(error);
     }
+}
+
+// LOGOUT ADMIN   
+export const logoutDone = async (dispatch) =>{
+    dispatch(logoutSuccess());
 }
 
 // GET ALL PRODUCTS

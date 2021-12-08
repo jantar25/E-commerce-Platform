@@ -10,17 +10,16 @@ import ProductList from "./pages/productList/ProductList";
 import Product from "./pages/product/Product";
 import NewProduct from "./pages/newProduct/NewProduct";
 import Login from "./pages/login/LoginAdmin";
+import { useState } from "react";
 
 function App() {
 
-const currentToken = JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser;
-const admin =currentToken? 
-JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser.isAdmin : "";
-
+const admin = (JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser?.isAdmin);
+console.log(admin)
   return (
     <Router>
      <Switch>
-      { admin? (<>
+      { !admin? (<Route path="/"><Login /></Route>) : (<>
              <Topbar />
               <div className="container">
                 <Sidebar />
@@ -46,7 +45,7 @@ JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser.is
                     <NewProduct />
                   </Route>
               </div>
-              </>) : (<Route path="/login"><Login /></Route>)}
+              </>)}
       </Switch>
     </Router>
   );

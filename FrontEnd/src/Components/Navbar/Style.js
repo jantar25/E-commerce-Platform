@@ -27,9 +27,17 @@ ${mobile({flex:1,justifyContent:"center"})}
 export const LogContainer = styled.div`
 `
 export const Profile = styled.div`
+display:flex;
+align-items:center;
+justify-content:center;
 `
 
-export const Avatar = styled.div`
+export const Image = styled.img`
+width: 30px;
+height: 30px;
+border-radius: 50%;
+object-fit: cover;
+margin-left:20px;
 `
 
 

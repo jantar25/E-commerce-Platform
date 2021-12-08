@@ -72,3 +72,7 @@ export const Image = styled.img`
     border-radius: 50%;
     cursor: pointer;
 `
+
+export const Button = styled.button`
+padding: 0px 10px;
+`

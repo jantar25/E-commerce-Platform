@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 import decode from 'jwt-decode';
 import { useEffect,useState } from 'react';
 import { useHistory,useLocation } from 'react-router';
-import {Container,Wrapper,Left,Rigth,Profile,Avatar,LogContainer,
+import {Container,Wrapper,Left,Rigth,Profile,Image,LogContainer,
     SearchContainer,Input,Logo,MenuItem} from './Style'
 import { logoutDone } from '../../Redux/apiCalls'; 
 
@@ -26,29 +26,25 @@ const Navbar = () => {
     const dispatch=useDispatch();
     const history= useHistory();
     const location= useLocation();
-    const [user,setUser]=useState(JSON.parse(JSON.parse(localStorage.getItem("persist:root"))?.user).currentUser);
-    
+    const currentToken=JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser;
+    const [user,setUser]=useState(currentToken);
 
     const Logout=()=>{
         logoutDone(dispatch);
         history.push('/');
+        setUser(null);
     }
 
-    // useEffect(()=>{
-    //     const token=JSON.parse(JSON.parse(localStorage.getItem("persist:root"))?.user).currentUser.accessToken;
-    //    if(token){
-    //        const decodedToken=decode(token);
-    //        const today = new Date().getTime();
-    //        const inToken=decodedToken.exp*1000;
-    //        console.log(today,inToken)
-    //     //    if (inToken< today){
-    //     //         logout();
-    //     //    }
-           
-    //    }
-
-    //     setUser(JSON.parse(localStorage.getItem("persist:root")));
-    // },[location])
+    useEffect(()=>{
+        const token=JSON.parse(JSON.parse(localStorage.getItem("persist:root"))?.user).currentUser?.accessToken;
+       if(token){
+           const decodedToken=decode(token);
+           const today = new Date().getTime();
+           const inToken=decodedToken.exp*1000;
+           if (inToken < today) Logout();
+                  }
+        setUser(JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser)
+    },[location])
 
     return (
         <MuiThemeProvider theme={theme}>
@@ -70,8 +66,8 @@ const Navbar = () => {
                     <LogContainer>
                         {user?(
                         <Profile>
-                            <Avatar></Avatar>
-                                <MenuItem onClick={Logout}>Logout</MenuItem>
+                            <Image src={user.img || "https://crowd-literature.eu/wp-content/uploads/2015/01/no-avatar.gif"} />
+                            <MenuItem onClick={Logout}>Logout</MenuItem>
                         </Profile>)
                         :(
                         <Link to="/login" style={{textDecoration:"none"}}>
