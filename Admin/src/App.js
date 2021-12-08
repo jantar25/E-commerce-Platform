@@ -13,16 +13,18 @@ import Login from "./pages/login/LoginAdmin";
 
 function App() {
 
-  const admin = "";
+const currentToken = JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser;
+const admin =currentToken? 
+JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser.isAdmin : "";
+
   return (
     <Router>
      <Switch>
-      <Route path="/"><Login /></Route>
-      { admin && <>
+      { admin? (<>
              <Topbar />
               <div className="container">
                 <Sidebar />
-                  <Route exact path="/home">
+                  <Route exact path="/">
                     <Home />
                   </Route>
                   <Route path="/users">
@@ -44,7 +46,7 @@ function App() {
                     <NewProduct />
                   </Route>
               </div>
-              </>}
+              </>) : (<Route path="/login"><Login /></Route>)}
       </Switch>
     </Router>
   );

@@ -1,6 +1,7 @@
 import Navbar from "../Components/Navbar/Navbar"
 import Announcement from "../Components/Navbar/Announcement"
 import Slider from "../Components/Slider/Slider"
+import About from "../Components/About/About"
 import Categories from "../Components/Categories/Categories"
 import PopularItems from "../Components/PopularItems/PopularItems"
 import Newsletter from "../Components/Newsletter/Newsletter"
@@ -13,6 +14,7 @@ const Home = () => {
             <Announcement />
             <Navbar />
             <Slider />
+            <About />
            <Categories />
            <PopularItems />
            <Newsletter />

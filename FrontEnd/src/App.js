@@ -9,6 +9,7 @@ import AllProducts from './Pages/AllProductList'
 import ProductList from './Pages/ProductList'
 import Pay from './Pages/Pay';
 import PaySuccess from './Pages/PaySuccess';
+import PasswordForget from './Pages/PasswordForget';
 import ScrollToTop from './Pages/scrollToTop' 
 import { useSelector } from 'react-redux';
 
@@ -26,6 +27,7 @@ function App() {
         <Route exact path="/cart"><Cart /></Route>
         <Route exact path="/register">{user? <Redirect to="/" /> : <Register />}</Route>
         <Route exact path="/login"> {user? <Redirect to="/" /> : <Login />}</Route>
+        <Route exact path="/password"><PasswordForget /></Route>
         <Route exact path="/pay"><Pay /></Route>
         <Route exact path="/paysuccess"><PaySuccess /></Route>
       </Switch>

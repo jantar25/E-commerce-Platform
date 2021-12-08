@@ -27,7 +27,7 @@ width:50%;
 heigth:40px;
 display:flex;
 justify-content:space-between;
-border:1px solid #000;
+border:1px solid orange;
 ${mobile({width:"80%"})}
 `
 export const Input =styled.input`

@@ -3,7 +3,7 @@ import { mobile } from "../../../Responsive";
 
 export const Container = styled.div`
 flex:1;
-margin:5px;
+margin:10px 0px;
 height:40vh;
 width:45vw;
 position:relative;
