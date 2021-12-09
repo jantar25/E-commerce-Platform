@@ -10,12 +10,24 @@ import ProductList from "./pages/productList/ProductList";
 import Product from "./pages/product/Product";
 import NewProduct from "./pages/newProduct/NewProduct";
 import Login from "./pages/login/LoginAdmin";
-import { useState } from "react";
+import { useState,useEffect} from "react";
 
 function App() {
 
-const admin = (JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser?.isAdmin);
-console.log(admin)
+      const [admin, setAdmin] = useState(null);
+
+      useEffect(() => {
+      { /*
+          setInterval was used in order to refresh the page constantly
+      in order to have the "logout" button show immediately in place of
+      "login", as soon as user logs out.
+      */}
+          setInterval(() => {
+              const user = JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser?.isAdmin;
+              setAdmin(user);
+              }, 5000)
+      },[]);
+      console.log(admin)
   return (
     <Router>
      <Switch>

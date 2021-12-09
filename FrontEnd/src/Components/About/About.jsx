@@ -6,7 +6,6 @@ import AboutImage from "../../Images/y.jpg";
 import {
   AboutContent,
   AboutWrapper,
-  AboutRows,
   AboutColumn1,
   AboutColumn2,
   Question,

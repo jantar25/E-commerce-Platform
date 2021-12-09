@@ -1,4 +1,4 @@
-import {Search, ShoppingCartOutlined,Spa} from '@material-ui/icons'
+import {Search, ShoppingCartOutlined} from '@material-ui/icons'
 import { Badge } from '@material-ui/core'
 import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';
 import {useDispatch, useSelector} from 'react-redux';
@@ -7,7 +7,7 @@ import decode from 'jwt-decode';
 import { useEffect,useState } from 'react';
 import { useHistory,useLocation } from 'react-router';
 import {Container,Wrapper,Left,Rigth,Profile,Image,LogContainer,
-    SearchContainer,Input,Logo,MenuItem} from './Style'
+    SearchContainer,Input,Logo,MenuItem,Loggedout} from './Style'
 import { logoutDone } from '../../Redux/apiCalls'; 
 
 
@@ -26,14 +26,25 @@ const Navbar = () => {
     const dispatch=useDispatch();
     const history= useHistory();
     const location= useLocation();
-    const currentToken=JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser;
-    const [user,setUser]=useState(currentToken);
+    const [user,setUser]=useState(false);
 
     const Logout=()=>{
         logoutDone(dispatch);
         history.push('/');
         setUser(null);
     }
+
+    useEffect(() => {
+    { /*
+        setInterval was used in order to refresh the page constantly
+    in order to have the "logout" button show immediately in place of
+    "login", as soon as user logs out.
+    */}
+        setInterval(() => {
+            const isLogin = JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser;
+            setUser(isLogin);
+            }, 5000)
+    },[]);
 
     useEffect(()=>{
         const token=JSON.parse(JSON.parse(localStorage.getItem("persist:root"))?.user).currentUser?.accessToken;
@@ -43,7 +54,7 @@ const Navbar = () => {
            const inToken=decodedToken.exp*1000;
            if (inToken < today) Logout();
                   }
-        setUser(JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser)
+        setUser(null)
     },[location])
 
     return (
@@ -67,7 +78,7 @@ const Navbar = () => {
                         {user?(
                         <Profile>
                             <Image src={user.img || "https://crowd-literature.eu/wp-content/uploads/2015/01/no-avatar.gif"} />
-                            <MenuItem onClick={Logout}>Logout</MenuItem>
+                            <Loggedout onClick={Logout}>Logout</Loggedout>
                         </Profile>)
                         :(
                         <Link to="/login" style={{textDecoration:"none"}}>

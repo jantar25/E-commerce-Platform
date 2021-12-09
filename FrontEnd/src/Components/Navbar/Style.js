@@ -33,8 +33,8 @@ justify-content:center;
 `
 
 export const Image = styled.img`
-width: 30px;
-height: 30px;
+width: 20px;
+height: 20px;
 border-radius: 50%;
 object-fit: cover;
 margin-left:20px;
@@ -71,6 +71,18 @@ export const MenuItem = styled.div`
 font-size:20px;
 cursor:pointer;
 margin-left:25px;
+color:#577516;
+transition: all 1s ease;
+
+${mobile({fontSize:"15px",marginLeft:"10px"})}
+
+&:hover{
+    color:#cacebf;
+}
+`
+export const Loggedout = styled.div`
+font-size:20px;
+cursor:pointer;
 color:#577516;
 transition: all 1s ease;
 

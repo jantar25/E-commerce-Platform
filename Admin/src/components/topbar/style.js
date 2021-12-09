@@ -74,5 +74,11 @@ export const Image = styled.img`
 `
 
 export const Button = styled.button`
-padding: 0px 10px;
+padding: 10px 20px;
+border: none;
+background-color: #6a9113;
+font-weight:600;
+border-radius:10px;
+margin:0px 10px;
+cursor:pointer;
 `
