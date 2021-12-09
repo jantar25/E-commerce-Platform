@@ -26,25 +26,11 @@ const Navbar = () => {
     const dispatch=useDispatch();
     const history= useHistory();
     const location= useLocation();
-    const [user,setUser]=useState(false);
 
     const Logout=()=>{
         logoutDone(dispatch);
         history.push('/');
-        setUser(null);
     }
-
-    useEffect(() => {
-    { /*
-        setInterval was used in order to refresh the page constantly
-    in order to have the "logout" button show immediately in place of
-    "login", as soon as user logs out.
-    */}
-        setInterval(() => {
-            const isLogin = JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser;
-            setUser(isLogin);
-            }, 5000)
-    },[]);
 
     useEffect(()=>{
         const token=JSON.parse(JSON.parse(localStorage.getItem("persist:root"))?.user).currentUser?.accessToken;
@@ -54,8 +40,11 @@ const Navbar = () => {
            const inToken=decodedToken.exp*1000;
            if (inToken < today) Logout();
                   }
-        setUser(null)
     },[location])
+
+    
+    const user = JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser;
+
 
     return (
         <MuiThemeProvider theme={theme}>

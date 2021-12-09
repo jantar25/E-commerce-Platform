@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { userRequest } from "../requestMethode";
 import { useLocation } from "react-router"
 import styled from "styled-components"
+import { Link } from "react-router-dom";
+import { mobile } from "../Responsive"
 
 const Container = styled.div`
 height:100vh;
@@ -28,6 +30,7 @@ background-size: 100%;
 -moz-text-fill-color: transparent;
 margin-bottom:40px;
 text-align:center;
+${mobile({fontSize:"40px"})}
 `
 const TitleContainer = styled.div`
 border: 2px solid gray;
@@ -43,22 +46,41 @@ border-radius:10px;
 const Title = styled.div`
 font-size:40px;
 color:#6a9113;
+${mobile({fontSize:"20px"})}
 `
 
 const Desc = styled.span`
 font-size:30px;
 color:#cacebf;
 text-align:center;
+${mobile({fontSize:"15px"})}
+`
+
+const Span = styled.span`
+font-weight:600;
+color:black;
+`
+const Button = styled.button`
+padding:10px;
+margin-top:20px;
+background:white;
+border: 2px solid black;
+font-size:20px;
+color:#6a9113;
+&:hover{
+    background:gray; 
+}
 `
 
 const PaySuccess = () => {
     const location = useLocation();
-    console.log(location);
+    
 //in Cart.jsx I sent data and cart. Please check that page for the changes.(in video it's only data)
-    const data = location.state.stripeData;
+    const data = location.state.data;
     const cart = location.state.cart;
     const currentUser = useSelector((state) => state.user.currentUser);
     const [orderId, setOrderId] = useState(null);
+    console.log(cart,data,currentUser);
 
     useEffect(() => {
     const createOrder = async () => {
@@ -85,9 +107,11 @@ const PaySuccess = () => {
                 <Logo>KIVUGREEN</Logo>
                 <TitleContainer><Title>SUCCESSFULL</Title></TitleContainer>
                 {orderId
-                ?  <Desc>Your order number ${orderId}` is being Prepared.Thanks for choosing KivuGreen Shop</Desc>
+                ?  <Desc>Your order number <Span>{orderId}</Span> is being Prepared.Thanks for choosing KivuGreen Shop</Desc>
                 :   <Desc>Your order is being Prepared.Thanks for choosing KivuGreen Shop</Desc>}
-                <button style={{ padding: 10, marginTop: 20 }}>Go to Homepage</button>
+                <Link to="/" style={{textDecoration:"none"}}>
+                    <Button>Go to Homepage</Button>
+                </Link>
                 
             </Wrap>
         </Container>
