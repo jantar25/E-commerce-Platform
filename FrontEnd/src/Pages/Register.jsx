@@ -1,6 +1,9 @@
 import styled from "styled-components"
 import RegisterImg from "../Images/local.jpg"
 import { mobile } from "../Responsive"
+import { useState } from "react"
+import { publicRequest } from "../requestMethode"
+import { useHistory } from "react-router"
 
 
 const Container = styled.div`
@@ -48,19 +51,40 @@ cursor:pointer;
 
 
 const Register = () => {
+    const [username,setUsername] = useState("");
+    const [password,setPassword] = useState("");
+    const [email,setEmail] = useState("");
+    const [ConfirmPassword,setConfirmPassword] = useState("");
+    const history = useHistory();
+
+    const handleRegister=async (e)=>{
+        e.preventDefault();
+        if(password===ConfirmPassword){
+            try {
+                const res = await publicRequest.post("/auth/register",
+                {username,password,email});
+                history.push("/login");
+                console.log(res)
+            } catch(err){
+                console.log(err)
+            }
+    } else {
+
+    }
+
+    }
+
     return (
         <Container>
             <Wrapper>
                 <Title>CREATE AN ACCOUNT</Title>
                 <Form>
-                    <Input placeholder="Name" />
-                    <Input placeholder="LastName" />
-                    <Input placeholder="UserName" />
-                    <Input placeholder="Email" />
-                    <Input placeholder="Password" />
-                    <Input placeholder="Confirm-Password" />
+                    <Input placeholder="UserName" onChange={(e)=>setUsername(e.target.value)} />
+                    <Input placeholder="Email" onChange={(e)=>setEmail(e.target.value)}/>
+                    <Input placeholder="Password" onChange={(e)=>setPassword(e.target.value)} />
+                    <Input placeholder="Confirm-Password" onChange={(e)=>setConfirmPassword(e.target.value)}/>
                     <Agreement>By creating an account,I consent to the processing of my personal data in accordance with the <b>PRIVACY POLICY</b></Agreement>
-                    <Button>CREATE</Button>
+                    <Button onClick={handleRegister}>CREATE</Button>
                 </Form>
             </Wrapper>
         </Container>

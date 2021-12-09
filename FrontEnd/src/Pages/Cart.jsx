@@ -189,7 +189,6 @@ const Cart = () => {
                 const res = await userRequest.post("/checkout/payment",
                 {tokenId:stripeToken.id,amount:cart.total});
                 history.push("/paySuccess",{data:res.data,cart});
-                console.log(res.data) 
             } catch(err){
                 console.log(err)
             }

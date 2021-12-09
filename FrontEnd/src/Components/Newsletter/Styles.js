@@ -40,4 +40,7 @@ flex:1;
 border:none;
 background:orange;
 color:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
 `
