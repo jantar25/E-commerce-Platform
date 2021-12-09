@@ -38,7 +38,10 @@ const Navbar = () => {
            const decodedToken=decode(token);
            const today = new Date().getTime();
            const inToken=decodedToken.exp*1000;
-           if (inToken < today) Logout();
+           if (inToken < today) {
+            logoutDone(dispatch);
+            history.push('/');
+           }
                   }
     },[location])
 
