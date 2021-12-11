@@ -1,7 +1,8 @@
 import React from "react";
 import decode from 'jwt-decode';
 import {useDispatch} from 'react-redux';
-import { useEffect,useState } from 'react';
+import { useSelector} from "react-redux";
+import { useEffect} from 'react';
 import { useHistory,useLocation } from 'react-router';
 import { logoutDone } from '../../Redux/apiCalls'; 
 import {Container,Wrapper,Logo,Right,Left,IconContainer,IconBadge,Image,Button} from './style';
@@ -11,14 +12,12 @@ export default function Topbar() {
 
   const dispatch=useDispatch();
   const history= useHistory();
-  const location= useLocation();
-  const currentToken=JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser;
-  const [user,setUser]=useState(currentToken);
+  const location= useLocation()
+  const user=useSelector((state)=>state.user.currentUser);
 
   const Logout=()=>{
     logoutDone(dispatch);
     history.push('/');
-    setUser(null);
 }
 
 useEffect(()=>{
@@ -27,9 +26,11 @@ useEffect(()=>{
      const decodedToken=decode(token);
      const today = new Date().getTime();
      const inToken=decodedToken.exp*1000;
-     if (inToken < today) Logout();
+     if (inToken < today) {
+      logoutDone(dispatch);
+      history.push('/');
+     };
             }
-  setUser(currentToken)
 },[location])
 
   return (
@@ -51,7 +52,7 @@ useEffect(()=>{
             <Settings />
           </IconContainer>
           <Button onClick={Logout}>LOG OUT</Button>
-          <Image src="https://images.pexels.com/photos/1526814/pexels-photo-1526814.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="Image"/>
+          <Image src={user.img || "https://crowd-literature.eu/wp-content/uploads/2015/01/no-avatar.gif"} />
         </Right>
       </Wrapper>
     </Container>

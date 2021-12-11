@@ -4,7 +4,7 @@ import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';
 import {useDispatch, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 import decode from 'jwt-decode';
-import { useEffect,useState } from 'react';
+import { useEffect} from 'react';
 import { useHistory,useLocation } from 'react-router';
 import {Container,Wrapper,Left,Rigth,Profile,Image,LogContainer,
     SearchContainer,Input,Logo,MenuItem,Loggedout} from './Style'
@@ -26,8 +26,9 @@ const Navbar = () => {
     const dispatch=useDispatch();
     const history= useHistory();
     const location= useLocation();
+    const user=useSelector((state)=>state.user.currentUser);
 
-    const Logout=()=>{
+    const Logout= ()=>{
         logoutDone(dispatch);
         history.push('/');
     }
@@ -44,9 +45,6 @@ const Navbar = () => {
            }
                   }
     },[location])
-
-    
-    const user = JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser;
 
 
     return (

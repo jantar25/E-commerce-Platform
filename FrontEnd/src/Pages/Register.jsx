@@ -69,7 +69,7 @@ const Register = () => {
                 console.log(err)
             }
     } else {
-
+        window.alert("Confirmed password is no equal to password")
     }
 
     }

@@ -10,24 +10,12 @@ import ProductList from "./pages/productList/ProductList";
 import Product from "./pages/product/Product";
 import NewProduct from "./pages/newProduct/NewProduct";
 import Login from "./pages/login/LoginAdmin";
-import { useState,useEffect} from "react";
+import { useSelector} from "react-redux";
 
 function App() {
 
-      const [admin, setAdmin] = useState(null);
+  const admin=useSelector((state)=>state.user.currentUser?.isAdmin);
 
-      useEffect(() => {
-      { /*
-          setInterval was used in order to refresh the page constantly
-      in order to have the "logout" button show immediately in place of
-      "login", as soon as user logs out.
-      */}
-          setInterval(() => {
-              const user = JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser?.isAdmin;
-              setAdmin(user);
-              }, 5000)
-      },[]);
-      console.log(admin)
   return (
     <Router>
      <Switch>
