@@ -1,5 +1,5 @@
-import { Link,useLocation } from "react-router-dom";
-import {Container,TitleContainer,ButtonTop,Top,TopLeft,TopRight,InfoTop,Image,Name,InfoBottom,InfoItem,InfoValue,
+import { useLocation } from "react-router-dom";
+import {Container,Top,TopLeft,TopRight,InfoTop,Image,Name,InfoBottom,InfoItem,InfoValue,
     InfoKey,Form,FormLeft,FormRight,Upload,UploadImage,Label,Bottom,ButtonUpdate,LeftInput,LeftSelect } from './style'
 import Chart from "../../components/chart/Chart"
 import { Publish } from "@material-ui/icons";
@@ -115,7 +115,7 @@ export default function Product() {
           }
         }
         getStats();
-      },[MONTHS])
+      },[MONTHS,productId])
     
   return (
     <Container>

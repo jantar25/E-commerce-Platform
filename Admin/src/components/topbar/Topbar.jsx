@@ -30,8 +30,8 @@ useEffect(()=>{
       logoutDone(dispatch);
       history.push('/');
      };
-            }
-},[location])
+   }
+},[location,history,dispatch])
 
   return (
     <Container>

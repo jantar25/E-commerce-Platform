@@ -44,7 +44,7 @@ const Navbar = () => {
             history.push('/');
            }
                   }
-    },[location])
+    },[location,dispatch,history])
 
 
     return (

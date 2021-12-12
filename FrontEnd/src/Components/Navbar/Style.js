@@ -38,6 +38,7 @@ height: 20px;
 border-radius: 50%;
 object-fit: cover;
 margin-left:20px;
+${mobile({marginLeft:"10px"})}
 `
 
 
@@ -47,11 +48,12 @@ align-items:center;
 border: 1px solid #577516;
 margin-left:25px;
 padding:1px;
-
+${mobile({marginLeft:"10px"})}
 `
 
 export const Input = styled.input`
 border: none;
+
 ${mobile({width:"50px"})}
 `
 export const Logo = styled.h1`

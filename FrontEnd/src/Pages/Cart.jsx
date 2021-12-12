@@ -194,7 +194,7 @@ const Cart = () => {
             }
         };
         stripeToken && cart.total>=1 && makeRequest();  
-    },[stripeToken,cart.total,history])
+    },[stripeToken,cart.total,history,cart])
 
     const RemoveCartItem = (product) =>{
         dispatch(deleteProduct(product))
