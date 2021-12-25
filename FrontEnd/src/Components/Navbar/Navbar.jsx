@@ -34,7 +34,9 @@ const Navbar = () => {
     }
 
     useEffect(()=>{
-        const token=JSON.parse(JSON.parse(localStorage.getItem("persist:root"))?.user).currentUser?.accessToken;
+        const currentToken = localStorage.getItem("persist:root");
+        const token =currentToken? 
+        JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser?.accessToken : "";   
        if(token){
            const decodedToken=decode(token);
            const today = new Date().getTime();

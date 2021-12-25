@@ -21,15 +21,15 @@ function App() {
       <ScrollToTop />
       <Switch>
         <Route exact path="/"><Home /></Route>
-        <Route path="/products/:category"><ProductList /></Route>
-        <Route path="/product/:id"><Product /></Route>
-        <Route path="/productItems/all"><AllProducts /></Route>
-        <Route path="/cart"><Cart /></Route>
-        <Route path="/register">{user? <Redirect to="/" /> : <Register />}</Route>
-        <Route path="/login"> {user? <Redirect to="/" /> : <Login />}</Route>
-        <Route path="/password"><PasswordForget /></Route>
-        <Route path="/pay"><Pay /></Route>
-        <Route path="/paysuccess"><PaySuccess /></Route>
+        <Route exact path="/products/:category"><ProductList /></Route>
+        <Route exact path="/product/:id"><Product /></Route>
+        <Route exact path="/productItems/all"><AllProducts /></Route>
+        <Route exact path="/cart"><Cart /></Route>
+        <Route exact path="/register">{user? <Redirect to="/" /> : <Register />}</Route>
+        <Route exact path="/login"> {user? <Redirect to="/" /> : <Login />}</Route>
+        <Route exact exact path="/password"><PasswordForget /></Route>
+        <Route exact path="/pay"><Pay /></Route>
+        <Route exact path="/paysuccess"><PaySuccess /></Route>
       </Switch>
     </Router>
   );

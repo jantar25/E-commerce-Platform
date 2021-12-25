@@ -12,8 +12,8 @@ const PopularsItems = ({cat,filters,sort}) => {
         const getProducts= async ()=>{
             try {
                 const res = await axios.get(cat?
-                     `http://localhost:5000/api/products?category=${cat}` 
-                : "http://localhost:5000/api/products")
+                     `https://kivugree.herokuapp.com/api/products?category=${cat}` 
+                : "https://kivugree.herokuapp.com/api/products")
 
                 setProducts(res.data);
                 // history.push("/paySuccess");

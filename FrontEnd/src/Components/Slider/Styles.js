@@ -26,6 +26,7 @@ right: ${ props=>props.direction==="right" && "10px"};
 opacity:0.5;
 cursor:pointer;
 z-index:2;
+${mobile({margin:"0px"})}
 `
 
 export const Wrapper = styled.div`
