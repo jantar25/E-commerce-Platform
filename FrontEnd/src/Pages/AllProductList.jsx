@@ -1,10 +1,8 @@
 import styled from "styled-components"
-
 import Navbar from "../Components/Navbar/Navbar"
 import Announcement from "../Components/Navbar/Announcement"
 import AllProducts from "../Components/Allproducts/AllProducts"
 import Footer from "../Components/Footer/Footer"
-import Newsletter from "../Components/Newsletter/Newsletter"
 import { mobile } from "../Responsive"
 import { useLocation } from "react-router"
 import { useState } from "react"
@@ -90,7 +88,6 @@ const ProductList = () => {
                 </Filter>
            </FilterContainer>
            <AllProducts filters={filters} sort={sort} />
-           <Newsletter />
            <Footer />
         </Container>
     )

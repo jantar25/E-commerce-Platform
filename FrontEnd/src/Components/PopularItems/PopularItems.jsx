@@ -1,4 +1,3 @@
-import {Container,Popular} from './Styles'
 import PopularsItem from './PopularItem/PopularItem'
 import { useState,useEffect } from 'react'
 import axios from "axios"
@@ -16,7 +15,6 @@ const PopularsItems = ({cat,filters,sort}) => {
                 : "https://kivugree.herokuapp.com/api/products")
 
                 setProducts(res.data);
-                // history.push("/paySuccess");
             } catch(err){
                 console.log(err)
             }
@@ -49,14 +47,14 @@ const PopularsItems = ({cat,filters,sort}) => {
   }, [sort])
 
     return (
-        <Container>
-            <Popular>
+        <div className='flex justify-center items-center px-5 py-10 sm:px-20'>
+            <div className='flex justify-around items-center flex-wrap'>
             {cat 
             ? filteredProducts.map((item)=>(<PopularsItem item={item} key={item._id} />))
                 : products.slice(0,8).map((item)=>(<PopularsItem item={item} key={item._id} />))
                 }
-            </Popular>
-        </Container>
+            </div>
+        </div>
     )
 }
 

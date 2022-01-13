@@ -1,47 +1,38 @@
-import { useState } from "react"
-import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons"
-import { Container,Arrow,Wrapper,Slide,ImgContainer,InfoContainer,Image,Title,Intro,Description,Button } from "./Styles"
-import {SlideItems} from '../Data'
+import React from "react"
+import people from '../../Images/people.png'
+import farmer from '../../Images/farmer.png'
+
 
 
 const Slider = () => {
-    const [slideIndex,setSlideIndex]= useState(0);
-    const handleClick=(direction)=>{
-        if(direction==="left") {
-            setSlideIndex(slideIndex > 0 ? slideIndex -1 : 2)
-        } else {
-            setSlideIndex(slideIndex < 2 ? slideIndex +1 : 0)
-        }
-    }
+
 
     return (
-        <Container>
-            <Arrow direction="left" onClick={()=>handleClick('left')}>
-                <KeyboardArrowLeft />
-            </Arrow>
-            <Wrapper slideIndex={slideIndex}>
-                {SlideItems.map(item=>(
-                <Slide bg={item.bg} key={item.id} >
-                <InfoContainer>
-                    <Intro>{item.intro}</Intro>
-                    <Title>{item.title}</Title>
-                    <Description>{item.description}</Description>
-                    <Button href="https://blog.agrivi.com/post/the-most-important-facts-about-organic-farming">LEARN MORE</Button>
-                </InfoContainer>
-                <ImgContainer>
-                    <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="100%" id="blobSvg">
-                        <path id="blob" d="M425.5,288.5Q356,327,338.5,398.5Q321,470,249,471.5Q177,473,149,408.5Q121,344,84.5,297Q48,250,64,188.5Q80,127,140.5,112.5Q201,98,259,71Q317,44,334.5,110Q352,176,423.5,213Q495,250,425.5,288.5Z" fill={item.bg}></path>
-                    </svg>
-                    <Image src={item.img} />
-                </ImgContainer>
-            </Slide>
-                ))}
-            </Wrapper>
-            <Arrow direction="right" onClick={()=>handleClick('right')}>
-                <KeyboardArrowRight />
-            </Arrow>
-            
-        </Container>
+        <div className='flex flex-col lg:flex-row px-5 py-10 sm:px-20' id='Home'>
+            <div className='flex-1 flex justify-center items-start flex-col mb-24 lg:mr-32'>
+                <h1 className='text-transparent py-2 bg-clip-text bg-gradient-to-r from-[#5aff15] via-[#00b712] to-[#63d471] font-Manrope
+                text-3xl md:text-5xl font-black'>
+                    Keep you body healthier with organic products</h1>
+                <p className='font-Manrope text-md md:text-lg text-[#00b712] mt-3'>
+                    Farming Techniques that involves the cultivation of plants and rearing of animals in natural ways</p>
+                <p className='font-Manrope text-sm md:text-md text-[#5aff15] mt-12'>
+                    Get timely updates from your favorite products by subscribing to our newsletter</p>
+                <div className='flex w-full mt-2 mb-4'>
+                    <input className='bg-[#232B2B] rounded-l font-Manrope text-md md:text-lg text-white px-4 flex-2 w-full 
+                    min-h-[40px] md:min-h-[50px]' type='Email' placeholder='Your Email'/>
+                    <button className='flex-[1_1_60%] bg-[#04AA6D] min-h-[40px] md:min-h-[50px] px-4 w-full rounded-r font-Manrope 
+                    font-bold text-white text-md md:text-lg' type='button'>Subscribe</button>
+                </div>
+                <div className='flex flex-col md:flex-row w-full justify-start items-center mt-8'> 
+                    <img className='w-[181px] h-[38px]' src={people} alt="people" />
+                    <p className='font-Manrope text-sm text-center text-white md:ml-4'>
+                        1,850 people requested access a visit in last 24 hours.</p>
+                </div>
+            </div>
+            <div className='flex-1 flex justify-center items-center'>
+                <img className='w-full h-full' src={farmer} alt="ai" />
+            </div>
+        </div>
     )
 }
 

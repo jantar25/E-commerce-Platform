@@ -4,7 +4,6 @@ import Navbar from "../Components/Navbar/Navbar"
 import Announcement from "../Components/Navbar/Announcement"
 import PopularItems from "../Components/PopularItems/PopularItems"
 import Footer from "../Components/Footer/Footer"
-import Newsletter from "../Components/Newsletter/Newsletter"
 import { mobile } from "../Responsive"
 import { useLocation } from "react-router"
 import { useState } from "react"
@@ -90,7 +89,6 @@ const ProductList = () => {
                 </Filter>
            </FilterContainer>
            <PopularItems cat={cat} filters={filters} sort={sort} />
-           <Newsletter />
            <Footer />
         </Container>
     )

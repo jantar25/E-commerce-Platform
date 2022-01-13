@@ -2,7 +2,6 @@ import styled from "styled-components"
 import Navbar from "../Components/Navbar/Navbar"
 import Announcement from "../Components/Navbar/Announcement"
 import Footer from "../Components/Footer/Footer"
-import Newsletter from "../Components/Newsletter/Newsletter"
 import { Add, Remove } from "@material-ui/icons"
 import { mobile } from "../Responsive"
 import { useLocation } from "react-router"
@@ -182,7 +181,6 @@ const Product = () => {
                    </AddContainer>
                 </InfoContainer>
            </Wrapper>
-           <Newsletter />
            <Footer />
         </Container>
     )

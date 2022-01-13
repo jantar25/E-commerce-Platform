@@ -3,6 +3,7 @@ import { mobile } from "../../Responsive";
 
 
 export const Container = styled.div`
+margin:40px 0px 0px;
 display:flex;
 ${mobile({flexDirection:"column"})}
 `
@@ -78,6 +79,7 @@ export const ContactItem = styled.div`
 margin-bottom:20px;
 display:flex;
 align-items:center;
+color:gray;
 `
 export const Payment = styled.img`
 width:50%

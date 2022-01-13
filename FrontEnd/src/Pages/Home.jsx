@@ -1,23 +1,15 @@
-import Navbar from "../Components/Navbar/Navbar"
-import Announcement from "../Components/Navbar/Announcement"
-import Slider from "../Components/Slider/Slider"
-import About from "../Components/About/About"
+import Header from "../Components/header"
 import Categories from "../Components/Categories/Categories"
 import PopularItems from "../Components/PopularItems/PopularItems"
-import Newsletter from "../Components/Newsletter/Newsletter"
 import Footer from "../Components/Footer/Footer"
 
 
 const Home = () => {
     return (
-        <div>
-            <Announcement />
-            <Navbar />
-            <Slider />
-            <About />
+        <div className="bg-[#000]">
+            <Header />
            <Categories />
            <PopularItems />
-           <Newsletter />
            <Footer />
         </div>
     )

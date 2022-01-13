@@ -1,14 +1,6 @@
 import styled from "styled-components";
 import {mobile} from "../../Responsive"
 
-export const Container = styled.div`
-width:100%;
-height:100vh;
-display:flex;
-position:relative;
-overflow:hidden;
-${mobile({height:"50vh"})}
-`
 
 export const Arrow = styled.div`
 width:50px;
@@ -42,7 +34,7 @@ height:90vh;
 width:100vw;
 display:flex;
 align-items:center;
-${mobile({height:"50vh"})}
+${mobile({flexDirection:"column"})}
 `
 export const ImgContainer = styled.div`
 flex:1;
@@ -64,7 +56,6 @@ ${mobile({height:"100%",padding:"10px"})}
 export const Image = styled.img`
 height:80%;
 width:80%;
-z-index:2;
 position:absolute;
 top:0;
 ${mobile({width:"100%"})}
