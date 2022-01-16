@@ -26,7 +26,7 @@ const Slider = () => {
                 <div className='flex flex-col md:flex-row w-full justify-start items-center mt-8'> 
                     <img className='w-[181px] h-[38px]' src={people} alt="people" />
                     <p className='font-Manrope text-sm text-center text-white md:ml-4'>
-                        1,850 people requested access a visit in last 24 hours.</p>
+                        2,135 people got subscribed in last 24 hours.</p>
                 </div>
             </div>
             <div className='flex-1 flex justify-center items-center'>

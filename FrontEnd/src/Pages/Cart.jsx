@@ -5,7 +5,7 @@ import Announcement from "../Components/Navbar/Announcement"
 import Footer from "../Components/Footer/Footer"
 import { Add, Remove } from "@material-ui/icons"
 import { mobile } from "../Responsive"
-import Brocoli from "../Images/brocoli.png"
+import logo from "../Images/logo.png"
 import { useState,useEffect } from 'react';
 import StripeCheckout from 'react-stripe-checkout'
 import {userRequest} from '../requestMethode'
@@ -275,7 +275,7 @@ const Cart = () => {
                         ) : (
                             <StripeCheckout 
                                 name="KivuGreen Shop"
-                                image={Brocoli}
+                                image={logo}
                                 billingAddress
                                 shippingAddress
                                 description={`Your tottal is ${cart.total}`}

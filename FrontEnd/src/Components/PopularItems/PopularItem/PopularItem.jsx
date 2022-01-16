@@ -22,7 +22,7 @@ const PopularItem = ({item}) => {
     }
     
     const handleClick = ()=>{
-        dispatch (addProduct({ ...product, quantity, content, size}));
+        dispatch (addProduct({ ...item, quantity, content, size}));
         }
 
     const toggleModal = () =>{
