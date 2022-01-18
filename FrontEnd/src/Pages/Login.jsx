@@ -1,56 +1,7 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import styled from "styled-components"
-import LoginImg from "../Images/Chemical.jpg"
 import { login } from "../Redux/apiCalls"
-import { mobile } from "../Responsive"
 import { Link } from "react-router-dom"
-
-
-const Container = styled.div`
-width:100vw;
-height:100vh;
-background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.7)), url(${LoginImg})  no-repeat center;
-background-size: cover;
-display:flex;
-align-items:center;
-justify-content:center;
-
-`
-const Wrapper = styled.div`
-width:30%;
-padding:20px;
-background:whitesmoke;
-${mobile({width:"80%"})}
-`
-const Title = styled.h1`
-font-size:24px;
-`
-const Form = styled.form`
-display:flex;
-flex-direction: column;
-
-`
-const Input = styled.input`
-flex:1;
-min-width:40%;
-margin: 10px 0px;
-padding:10px;
-`
-const Button = styled.button`
-width:40%;
-border:none;
-padding:15px 20px;
-background:teal;
-color:whitesmoke;
-cursor:pointer;
-margin-bottom:10px;
-&:disabled{
-    color:teal;
-    cursor:not-allowed;
-}
-`
-
 
 
 const Login = () => {
@@ -66,18 +17,21 @@ const Login = () => {
     }
 
     return (
-        <Container>
-            <Wrapper>
-                <Title>SIGN IN</Title>
-                <Form>
-                    <Input placeholder="Username" onChange={(e)=> setUsername(e.target.value)} />
-                    <Input placeholder="Password" type="password" onChange={(e)=> setPassword(e.target.value)} />
-                    <Button onClick={handleClick} disabled={isFetching} >LOGIN</Button>
-                    <Link to="/password">Don't you remember your password?</Link>
-                    <Link to="/register">Create a new account</Link>
-                </Form>
-            </Wrapper>
-        </Container>
+        <div className="w-screen h-screen flex items-center justify-center bg-black">
+            <div className="w-full md:w-2/3 lg:w-1/2 bg-gray-800 p-8 m-8">
+                <h1 className="text-2xl text-[#04AA6D]">SIGN IN</h1>
+                <form className="flex flex-col">
+                    <input className="my-3 p-3" placeholder="Username" onChange={(e)=> setUsername(e.target.value)} />
+                    <input className="my-3 p-3" placeholder="Password" type="password" onChange={(e)=> setPassword(e.target.value)} />
+                    <button className="w-1/2 py-2 p-4 bg-[#04AA6D] rounded font-[600] mb-4 disabled:cursor-wait 
+                    hover:text-white" onClick={handleClick} disabled={isFetching} >LOGIN</button>
+                    <Link to="/password">
+                        <p className="hover:text-red-500">Don't you remember your password?</p></Link>
+                    <Link to="/register">
+                        <p className="hover:text-red-500">Create a new account</p></Link>
+                </form>
+            </div>
+        </div>
     )
 }
 

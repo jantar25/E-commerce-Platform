@@ -1,51 +1,10 @@
-import styled from "styled-components"
-
 import Navbar from "../Components/Navbar/Navbar"
 import Announcement from "../Components/Navbar/Announcement"
 import PopularItems from "../Components/PopularItems/PopularItems"
 import Footer from "../Components/Footer/Footer"
-import { mobile } from "../Responsive"
 import { useLocation } from "react-router"
 import { useState } from "react"
 
-
-const Container = styled.div`
-
-`
-
-export const Title = styled.span`
-display:flex;
-font-size:50px;
-text-transform: capitalize;
-margin:20px;
-justify-content:center;
-color:orange;
-${mobile({margin:"20px 10px"})}
-`
-
-const FilterContainer = styled.div`
-display:flex;
-justify-content:space-between;
-`
-const Filter = styled.div`
-margin:20px;
-${mobile({margin:"0px 15px",display:"flex",flexDirection:"column"})}
-`
-const FilterText = styled.span`
-font-size:20px;
-font-weight:700;
-margin-right:20px;
-${mobile({marginRight:"0px"})}
-`
-const Select = styled.select`
-margin-right:20px;
-padding:10px;
-font-weight:600;
-${mobile({margin:"5px 0px"})}
-`
-const Option = styled.option`
-margin:20px;
-`
 
 const ProductList = () => {
     const location=useLocation();
@@ -59,38 +18,42 @@ const ProductList = () => {
     }
 
     return (
-        <Container>
+        <div className="bg-black">
            <Navbar />
            <Announcement />
-           <Title>{cat}</Title>
-           <FilterContainer>
-                <Filter><FilterText>Filter Products:</FilterText>
-                    <Select name="content" onChange={handleFilters}>
-                        <Option disabled>Content</Option>
-                        <Option>white</Option>
-                        <Option>yellow</Option>
-                        <Option>green</Option>
-                        <Option>orange</Option>
-                        <Option>red</Option>
-                    </Select>   
-                    <Select name="size" onChange={handleFilters}>
-                        <Option disabled>Size</Option>
-                        <Option>big</Option>
-                        <Option>medium</Option>
-                        <Option>small</Option>
-                    </Select>             
-                </Filter>
-                <Filter><FilterText>Sort Products:</FilterText>
-                <Select onChange={(e)=>setSort(e.target.value)}>
-                        <Option value ="newest">Newest</Option>
-                        <Option value ="asc">Price(Asc)</Option>
-                        <Option value ="desc">Price(Desc)</Option>
-                    </Select> 
-                </Filter>
-           </FilterContainer>
+           <h1 className="text-orange-500 text-center m-4 text-[50px]">{cat}</h1>
+           <div className="flex flex-col md:flex-row justify-between">
+                <div className="flex m-4 items-center justify-start flex-wrap">
+                    <h3 className="text-gray-600 font-[700] mr-4">Filter Products:</h3>
+                    <div>
+                        <select className="mr-4 p-2 my-2 font-[600] rounded bg-gray-500" name="content" onChange={handleFilters}>
+                            <option disabled>Content</option>
+                            <option>white</option>
+                            <option>yellow</option>
+                            <option>green</option>
+                            <option>orange</option>
+                            <option>red</option>
+                        </select>   
+                        <select className="mr-4 p-2 my-2 font-[600] rounded bg-gray-500" name="size" onChange={handleFilters}>
+                            <option disabled>Size</option>
+                            <option>big</option>
+                            <option>medium</option>
+                            <option>small</option>
+                        </select> 
+                    </div>            
+                </div>
+                <div className="flex m-4 items-center justify-start flex-wrap">
+                    <h3 className="text-gray-600 font-[700] mr-4">Sort Products:</h3>
+                    <select className="mr-4 p-2 my-2 font-[600] rounded bg-gray-500" onChange={(e)=>setSort(e.target.value)}>
+                        <option value ="newest">Newest</option>
+                        <option value ="asc">Price(Asc)</option>
+                        <option value ="desc">Price(Desc)</option>
+                    </select> 
+                </div>
+           </div>
            <PopularItems cat={cat} filters={filters} sort={sort} />
            <Footer />
-        </Container>
+        </div>
     )
 }
 

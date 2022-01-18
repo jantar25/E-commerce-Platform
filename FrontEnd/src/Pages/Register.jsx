@@ -1,53 +1,6 @@
-import styled from "styled-components"
-import RegisterImg from "../Images/local.jpg"
-import { mobile } from "../Responsive"
 import { useState } from "react"
 import { publicRequest } from "../requestMethode"
 import { useHistory } from "react-router"
-
-
-const Container = styled.div`
-width:100vw;
-height:100vh;
-background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.7)), url(${RegisterImg})  no-repeat center;
-background-size: cover;
-display:flex;
-align-items:center;
-justify-content:center;
-
-`
-const Wrapper = styled.div`
-width:40%;
-padding:20px;
-background:whitesmoke;
-${mobile({width:"80%"})}
-`
-const Title = styled.h1`
-font-size:24px;
-`
-const Form = styled.form`
-display:flex;
-flex-wrap:wrap;
-
-`
-const Input = styled.input`
-flex:1;
-min-width:40%;
-margin: 20px 10px 0px 0px;
-padding:10px;
-`
-const Agreement = styled.span`
-font-size:12px;
-margin:20px 0px;
-`
-const Button = styled.button`
-width:40%;
-border:none;
-padding:15px 20px;
-background:teal;
-color:whitesmoke;
-cursor:pointer;
-`
 
 
 const Register = () => {
@@ -75,19 +28,21 @@ const Register = () => {
     }
 
     return (
-        <Container>
-            <Wrapper>
-                <Title>CREATE AN ACCOUNT</Title>
-                <Form>
-                    <Input placeholder="UserName" onChange={(e)=>setUsername(e.target.value)} />
-                    <Input placeholder="Email" onChange={(e)=>setEmail(e.target.value)}/>
-                    <Input placeholder="Password" onChange={(e)=>setPassword(e.target.value)} />
-                    <Input placeholder="Confirm-Password" onChange={(e)=>setConfirmPassword(e.target.value)}/>
-                    <Agreement>By creating an account,I consent to the processing of my personal data in accordance with the <b>PRIVACY POLICY</b></Agreement>
-                    <Button onClick={handleRegister}>CREATE</Button>
-                </Form>
-            </Wrapper>
-        </Container>
+        <div className="w-screen h-screen flex items-center justify-center bg-black">
+            <div className="w-full md:w-2/3 lg:w-1/2 bg-gray-800 p-8 m-8">
+            <h1 className="text-lg md:text-2xl text-[#04AA6D]">CREATE AN ACCOUNT</h1>
+                <form className="flex flex-col">
+                    <input className="my-2 md:my-3 p-3" placeholder="UserName" onChange={(e)=>setUsername(e.target.value)} />
+                    <input className="my-2 md:my-3 p-3" placeholder="Email" onChange={(e)=>setEmail(e.target.value)}/>
+                    <input className="my-2 md:my-3 p-3" placeholder="Password" type='password' onChange={(e)=>setPassword(e.target.value)} />
+                    <input className="my-2 md:my-3 p-3" placeholder="Confirm-Password" type='password' onChange={(e)=>setConfirmPassword(e.target.value)}/>
+                    <span className="my-4 text-sm">By creating an account,I consent to the processing of my personal
+                     data in accordance with the <b>PRIVACY POLICY</b></span>
+                    <button className="w-1/2 py-2 p-4 bg-[#04AA6D] rounded font-[600] mb-4 disabled:cursor-wait 
+                    hover:text-white" onClick={handleRegister} >CREATE</button>
+                </form>
+            </div>
+        </div>
     )
 }
 

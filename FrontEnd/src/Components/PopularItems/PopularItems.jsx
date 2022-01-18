@@ -10,8 +10,8 @@ const PopularsItems = ({cat,filters,sort}) => {
     useEffect(()=>{
         const getProducts= async ()=>{
             try {
-                const res = await axios.get(cat?
-                     `https://kivugree.herokuapp.com/api/products?category=${cat}` 
+                const res = await axios.get(cat==="All"? "https://kivugree.herokuapp.com/api/products":
+                cat? `https://kivugree.herokuapp.com/api/products?category=${cat}`
                 : "https://kivugree.herokuapp.com/api/products")
 
                 setProducts(res.data);

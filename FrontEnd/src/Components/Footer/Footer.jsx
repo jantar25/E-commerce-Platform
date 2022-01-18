@@ -18,16 +18,16 @@ const Footer = () => {
                 <p className='text-gray-500 px-3 py-8 text-center'>Full of goodness. We have a passion for fresh, healthy food. 
                 Our ambition is simple: To make healthy food yummier, easier to get ...</p>
                 <div className='flex'>
-                    <div className='bg-[#3B5999] h-[40px] w-40px] flex justify-center items-center mr-[10px] rounded-[50px]'>
+                    <div className='bg-[#3B5999] h-10 w-10 flex justify-center items-center mr-[10px] rounded-full'>
                         <Facebook />
                     </div>
-                    <div className='bg-[#E4405F] h-[40px] w-40px] flex justify-center items-center mr-[10px] rounded-[50px]'>
+                    <div className='bg-[#E4405F] h-10 w-10 flex justify-center items-center mr-[10px] rounded-full'>
                         <Instagram />
                     </div>
-                    <div className='bg-[#55ACEE] h-[40px] w-40px] flex justify-center items-center mr-[10px] rounded-[50px]'>
+                    <div className='bg-[#55ACEE] h-10 w-10 flex justify-center items-center mr-[10px] rounded-full'>
                         <Twitter />
                     </div>
-                    <div className='bg-[#6a9113] h-[40px] w-40px] flex justify-center items-center mr-[10px] rounded-[50px]'>
+                    <div className='bg-[#6a9113] h-10 w-10 flex justify-center items-center mr-[10px] rounded-full'>
                         <WhatsApp />
                     </div>
                 </div>

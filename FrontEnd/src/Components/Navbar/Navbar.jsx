@@ -72,44 +72,52 @@ const Navbar = () => {
                             </Badge>
                         </div>
                     </Link>
-                    <div className='hidden md:flex ml-6 border rounded border-[#04AA6D]'>
-                        <input className='bg-[#232B2B] rounded-l font-Manrope text-md text-white px-4 flex-2 w-full 
-                    min-h-[30px]' placeholder="Search" />
+                    <div className='flex ml-6 '>
+                        {/* <input className='bg-[#232B2B] rounded-l font-Manrope text-md text-white px-4 flex-2 w-full 
+                    min-h-[30px]' placeholder="Search" /> */}
                         <Search style={{color:'#04AA6D',fontSize:30}}/>
                     </div>
                     <div className='ml-6 hidden md:flex'>
                         {user?(
-                        <div className=''>
-                            <img src={user.img || "https://crowd-literature.eu/wp-content/uploads/2015/01/no-avatar.gif"} />
-                            <p className='text-[#04AA6D] hover:text-[#24FE41]' onClick={Logout}>Logout</p>
+                        <div className='flex items-center justify-center' >
+                            <div className='w-[32px] h-[32px] mr-2'>
+                                <img className='w-full h-full rounded-full' src={user.img || "https://crowd-literature.eu/wp-content/uploads/2015/01/no-avatar.gif"} />
+                            </div>
+                            <p className='text-[#04AA6D] hover:text-[#24FE41]' onClick={Logout}>Sign Out</p>
                         </div>)
                         :(
                         <Link to="/login" style={{textDecoration:"none"}}>
-                            <p className='text-[#04AA6D] hover:text-[#24FE41] text-xl'>Login</p>
+                            <p className='text-[#04AA6D] hover:text-[#24FE41] text-xl'>Sign In</p>
                         </Link>)}
                     </div>
+                    <Link to="/register" style={{textDecoration:"none"}}>
+                        <p className='bg-[#04AA6D] text-black font-[600] rounded py-2 px-6 hover:bg-[#24FE41] 
+                        text-xl ml-4 hidden md:flex'>Sign Up</p>
+                    </Link>
                     <div className='flex md:hidden ml-8 relative'>
                         {toggle ?
                         <RiCloseLine style={{cursor:'pointer'}} color="#04AA6D" size={27} onClick={()=>{setToggle(false)}}/>
                     : <RiMenu4Line style={{cursor:'pointer'}} color="#04AA6D" size={27} onClick={()=>{setToggle(true)}}/>}
                     {toggle && (
-                        <div className="flex justify-end items-end flex-col bg-black text-left p-8 absolute
+                        <div className="flex justify-end items-center flex-col bg-black text-left p-8 absolute
                         top-8 right-0 mt-4 min-w-[210px] rounded shadow-lg shadow-[#04AA6D] z-10">
-                            <div className='flex ml-6 border rounded border-[#04AA6D]'>
-                                <input className='bg-[#232B2B] rounded-l font-Manrope text-md text-white px-4 flex-2 w-full 
-                                min-h-[30px]' placeholder="Search" /><Search style={{color:'#04AA6D',fontSize:30}}/>
-                            </div>
-                            <div className='ml-6 flex text-left'>
+                            <div className='flex text-left'>
                                 {user?(
-                                <div className='flex'>
-                                    <img src={user.img || "https://crowd-literature.eu/wp-content/uploads/2015/01/no-avatar.gif"} />
-                                    <p className='text-[#04AA6D] hover:text-[#24FE41]' onClick={Logout}>Logout</p>
+                                <div className='flex justify-center items-center'>
+                                    <div className='w-[32px] h-[32px] mr-2'>
+                                         <img className='w-full h-full rounded-full' src={user.img || "https://crowd-literature.eu/wp-content/uploads/2015/01/no-avatar.gif"} />
+                                    </div>
+                                    <p className='text-[#04AA6D] hover:text-[#24FE41]' onClick={Logout}>Sign Out</p>
                                 </div>)
                                 :(
                                 <Link to="/login" style={{textDecoration:"none"}}>
-                                    <p className='text-[#04AA6D] hover:text-[#24FE41] text-xl'>Login</p>
+                                    <p className='text-[#04AA6D] hover:text-[#24FE41] text-xl'>Sign In</p>
                                 </Link>)}
                             </div>
+                            <Link to="/register" style={{textDecoration:"none"}}>
+                                <p className='bg-[#04AA6D] text-black font-[600] rounded py-2 px-6 hover:bg-[#24FE41] 
+                                text-xl mt-4'>Sign Up</p>
+                            </Link>
                         </div>
                     )}
                 </div>       

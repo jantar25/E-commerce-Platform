@@ -14,13 +14,7 @@ import { decreaseProductQuantity, deleteProduct,IncreamentProductQuantity } from
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const Container = styled.div`
 
-`
-const Wrapper = styled.div`
-padding:20px;
-${mobile({padding:"10px"})}
-`
 const Title = styled.h1`
 text-align:center;
 font-weight:400;
@@ -209,13 +203,13 @@ const Cart = () => {
     }
 
     return (
-        <Container>
+        <div className='bg-black'>
            <Navbar />
            <Announcement />
-            <Wrapper>
+            <div className='p-4 text-gray-500'>
                 <Title>YOUR BAG</Title>
                 <Top>
-                    <Link to="/productItems/all" style={{textDecoration:"none"}} > 
+                    <Link to="/products/All" style={{textDecoration:"none"}} > 
                         <TopButton>CONTINUE SHOPPING</TopButton>
                     </Link>
                     <TopTexts>
@@ -288,9 +282,9 @@ const Cart = () => {
                          )}
                     </Summary>
                 </Bottom>
-            </Wrapper>
+            </div>
             <Footer />
-        </Container>
+        </div>
     )
 }
 

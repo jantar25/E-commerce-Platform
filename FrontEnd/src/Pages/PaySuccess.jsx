@@ -2,75 +2,9 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { userRequest } from "../requestMethode";
 import { useLocation } from "react-router"
-import styled from "styled-components"
 import { Link } from "react-router-dom";
-import { mobile } from "../Responsive"
+import logoimage from '../Images/logo.png'
 
-const Container = styled.div`
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-`
-const Wrap = styled.div`
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-margin-bottom:20px;
-`
-const Logo = styled.h1`
-font-size:70px;
-background-color: #6a9113;
-background-image: linear-gradient(to top, #6a9113 0%, #cacebf 100%);
-background-size: 100%;
--webkit-background-clip: text;
--moz-background-clip: text;
--webkit-text-fill-color: transparent;
--moz-text-fill-color: transparent;
-margin-bottom:40px;
-text-align:center;
-${mobile({fontSize:"40px"})}
-`
-const TitleContainer = styled.div`
-border: 2px solid gray;
-width:50%;
-height:60px;
-display:flex;
-justify-content:center;
-align-items:center;
-background:black;
-margin-bottom:20px;
-border-radius:10px;
-`
-const Title = styled.div`
-font-size:40px;
-color:#6a9113;
-${mobile({fontSize:"20px"})}
-`
-
-const Desc = styled.span`
-font-size:30px;
-color:#cacebf;
-text-align:center;
-${mobile({fontSize:"15px"})}
-`
-
-const Span = styled.span`
-font-weight:600;
-color:black;
-`
-const Button = styled.button`
-padding:10px;
-margin-top:20px;
-background:white;
-border: 2px solid black;
-font-size:20px;
-color:#6a9113;
-&:hover{
-    background:gray; 
-}
-`
 
 const PaySuccess = () => {
     const location = useLocation();
@@ -102,19 +36,27 @@ const PaySuccess = () => {
     }, [cart, data, currentUser]);
 
     return (
-        <Container>
-            <Wrap>
-                <Logo>KIVUGREEN</Logo>
-                <TitleContainer><Title>SUCCESSFULL</Title></TitleContainer>
+        <div className="h-screen w-screen flex items-center justify-center bg-black">
+            <div className="flex flex-col items-center justify-center">
+                <div className='flex-1 flex items-center mb-4'>
+                    <div className='mr-1 w-12'>
+                        <img className='min-w-full' src={logoimage} alt="logo" />
+                    </div>
+                    <h1 className='flex text-3xl font-[800] font-Manrope text-transparent bg-clip-text 
+                        bg-gradient-to-tr from-[#04AA6D] to-[#24FE41]'>KIVUGREEN</h1>
+                 </div>
+                <div className="border border-2 border-gray-500 rounded mb-4 py-4 px-8">
+                    <h2 className="text-xl text-[#6a9113]">SUCCESSFULL</h2>
+                </div>
                 {orderId
-                ?  <Desc>Your order number <Span>{orderId}</Span> is being Prepared.Thanks for choosing KivuGreen Shop</Desc>
-                :   <Desc>Your order is being Prepared.Thanks for choosing KivuGreen Shop</Desc>}
+                ?  <p className="text-center text-md text-gray-600">Your order number   
+                <span className="text-[#04AA6D]">{orderId}</span>  is being Prepared.Thanks for choosing KivuGreen Shop</p>
+                :   <p className="text-center text-md text-gray-600">Your order is being Prepared.Thanks for choosing KivuGreen Shop</p>}
                 <Link to="/" style={{textDecoration:"none"}}>
-                    <Button>Go to Homepage</Button>
+                    <button className="text-[#04AA6D] mt-12">Go to Homepage</button>
                 </Link>
-                
-            </Wrap>
-        </Container>
+            </div>
+        </div>
 
         )
 }

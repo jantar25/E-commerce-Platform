@@ -49,17 +49,17 @@ const PopularItem = ({item}) => {
                     <div className='h-screen w-screen overflow-auto fixed bottom-0 left-0 right-0 top-0'>
                         <div className='h-screen w-screen fixed top-0 bottom-0 left-0 right-0 bg-black/[0.9]'></div>
                         <div className='absolute top-8 bottom-8 left-0 right-0 w-3/4 bg-slate-50 max-h-full 
-                        container ml-auto mr-auto overflow-auto'>              
+                        container ml-auto mr-auto overflow-auto '>              
                             <div>
                                 <div className="flex flex-col md:flex-row p-8">
                                     <div className="flex-1">
-                                        <img className="w-full h-[80vh]" src={item.img} />
+                                        <img className="w-full h-[50vh] sm:h-[80vh]" src={item.img} />
                                     </div>
                                     <div className="flex-1 flex flex-col justify-center ml-2">
                                             <h1 className="text-lg text-orange-500 mb-4 font-[500]">{item.title}</h1>
                                             <p className="text-[11px] mb-2">{item.description}</p>
                                             <p className="font-[900]">Rwf {item.price}</p>
-                                            <div className=" flex justify-between">
+                                            <div className=" flex flex-col md:flex-row justify-between">
                                                 <div className=" flex items-center">
                                                     <h3 className="font-[600] mr-1">Content:</h3>
                                                     {item.content?.map((c)=>(
@@ -85,19 +85,19 @@ const PopularItem = ({item}) => {
                                                 mx-3 justify-center items-center">{quantity}</p>
                                                 <Add onClick={()=> handleQuantity("inc")} />
                                             </div>
-                                            <div className="flex justify-between">
-                                                <button className="flex px-3 py-1 border border-2 border-orange-400 font-Manrope
-                                                font-[700] rounded text-gray-500 items-center tex-sm" onClick={handleClick}>ADD TO CART
+                                            <div className="flex flex-col md:flex-row justify-between">
+                                                <button className="flex px-3 py-1 border border-2 border-orange-400 font-Manrope justify-center
+                                                font-[700] rounded text-gray-500 items-center my-2 tex-sm" onClick={handleClick}>ADD TO CART
                                                 <ShoppingCartOutlined style={{fontSize:"16px",marginLeft:'5px'}}/></button>
-                                                <button className="px-3 py-1 rounded font-[700] bg-[#04AA6D] tex-sm font-Manrope">BUY NOW</button>
+                                                <button className="px-3 py-1 my:2 rounded font-[700] bg-[#04AA6D] tex-sm font-Manrope">BUY NOW</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <button className='absolute top-1 right-2 flex-shrink-0 hover:border-red-500 text-5xl
+                            <button className='absolute top-1 right-1 flex-shrink-0 hover:border-red-500 text-3xl
                             text-red-700 py-1 px-2' onClick={toggleModal}><RiCloseLine /></button>
+                        </div>
                     </div>}
             </div>
     )
