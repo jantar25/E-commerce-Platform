@@ -1,0 +1,10 @@
+.container{
+    display: flex;
+    background: rgb(190, 185, 185);
+}
+
+
+.link{
+    text-decoration: none;
+    color: inherit;
+}
