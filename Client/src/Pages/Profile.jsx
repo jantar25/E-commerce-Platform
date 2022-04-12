@@ -2,7 +2,6 @@ import React,{useEffect, useState } from 'react'
 import {useDispatch, useSelector} from 'react-redux';
 import { useHistory,useLocation } from 'react-router';
 import decode from 'jwt-decode';
-import axios from "axios"
 import { farmerLogoutDone } from '../Redux/apiCalls'; 
 import Navbar from '../Components/Navbar/Navbar';
 import Announcement from '../Components/Navbar/Announcement';
@@ -15,9 +14,9 @@ import FarmerProduct from '../Components/FarmerProduct/FarmerProduct';
 
 
 const Profile = () => {
-  const [products,setProducts] = useState([]);
   const [toggleCreate,setToggleCreate] = useState(false)
   const [img,setImg] = useState('')
+  const products = useSelector(state => state.product.products);
   const farmer=useSelector((state)=>state.farmer.currentFarmer);
   const dispatch=useDispatch();
   const history= useHistory();
@@ -31,18 +30,6 @@ const Profile = () => {
     setToggleCreate(!toggleCreate)
   }
 
-  useEffect(()=>{
-    const getProducts= async ()=>{
-        try {
-            // const res = await axios.get("https://kivugree.herokuapp.com/api/products")
-            const res = await axios.get("http://localhost:5000/api/products")
-            setProducts(res.data);
-        } catch(err){
-            console.log(err)
-        }
-    };
-    getProducts();  
-},[])
 
 const farmerProduct = products.filter(
   (product) => product.farmer[0]?._id === farmer._id
@@ -93,7 +80,7 @@ const farmerProduct = products.filter(
           <button className='flex items-center text-[#04AA6D] mt-8 font-[600]' onClick={handleToggle}>
               ADD NEW PRODUCT{toggleCreate? <AiFillCaretUp style={{fontSize:'20px'}}/> : <AiFillCaretDown style={{fontSize:'20px'}}/>} </button>
           <div className='my-8'>
-            {toggleCreate? <CreateProduct farmer={farmer} /> : null}
+            {toggleCreate? <CreateProduct farmer={farmer} setToggleCreate={setToggleCreate} /> : null}
           </div>
           <h1 className='flex items-center text-[#04AA6D] font-[600] py-4'>PRODUCTS YOU ADDED</h1>
           <div className='flex bg-[#232B2B] flex-col justify-center items-center px-5 py-4 sm:px-20'>

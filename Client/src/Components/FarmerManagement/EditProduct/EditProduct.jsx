@@ -1,17 +1,18 @@
 import React,{useState} from 'react'
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import app from '../../../firebase'
-import {useDispatch} from 'react-redux'
+import {useDispatch,useSelector} from 'react-redux'
 import {addProduct} from '../../../Redux/apiCalls'
 
+const EditProduct = ({product}) => {
 
-const CreateProduct = ({farmer,setToggleCreate}) => {
     const [inputs,setInputs] = useState({});
     const [file,setFile] = useState(null);
     const [cat,setCat] = useState([]);
     const [size,setSize] = useState([]);
     const [content,setContent] = useState([]);
     const dispatch = useDispatch();
+    const farmer=useSelector((state)=>state.farmer.currentFarmer);
 
     const handleChange = (e)=>{
     setInputs(prev=>{
@@ -64,21 +65,19 @@ const CreateProduct = ({farmer,setToggleCreate}) => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
         const product = ({...inputs,img: downloadURL,categories:cat,content:content,size:size,farmer:farmer});
         addProduct(product,dispatch);
-        setToggleCreate(false)
         });
     }
     );
     }
 
-
   return (
-    <div className='my-8 p-2 md:px-8 border border-[#04AA6D] rounded'>
+<div className='my-8 p-2 md:px-8 border border-[#04AA6D] rounded'>
         <h1>New Product</h1>
         <form className='my-4 flex flex-col md:flex-row items-center justify-between'>
             <div className='flex-1 w-full md:mr-4'>
                 <div className='flex flex-col my-2'>
                     <label>Title</label>
-                    <input className='px-4 py-1 rounded bg-[#232B2B]' name="title" type="text" placeholder="Mango" onChange={handleChange} />
+                    <input className='px-4 py-1 rounded bg-[#232B2B]' name="title" type="text" placeholder={product.title} onChange={handleChange} />
                 </div>
                 <div className='flex flex-col my-2'>
                     <label>Description</label>
@@ -115,9 +114,9 @@ const CreateProduct = ({farmer,setToggleCreate}) => {
                 </div>
             </div>
         </form>
-        <button className='py-2 px-4 my-4 bg-[#04AA6D] rounded' onClick={handleClick} >Create</button>
+        <button className='py-2 px-4 my-4 bg-[#04AA6D] rounded' onClick={handleClick} >Update</button>
     </div>
   )
 }
 
-export default CreateProduct
+export default EditProduct

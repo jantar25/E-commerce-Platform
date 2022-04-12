@@ -27,9 +27,9 @@ const Footer = () => {
                     <div className='bg-[#55ACEE] h-10 w-10 flex justify-center items-center mr-[10px] rounded-full'>
                         <Twitter />
                     </div>
-                    <div className='bg-[#6a9113] h-10 w-10 flex justify-center items-center mr-[10px] rounded-full'>
+                    <a href='https://api.whatsapp.com/send?phone=+250784624822' className='bg-[#6a9113] cursor-pointer h-10 w-10 flex justify-center items-center mr-[10px] rounded-full'>
                         <WhatsApp />
-                    </div>
+                    </a>
                 </div>
             </div>
             <div className='flex-1 flex flex-col p-4 items-center'>

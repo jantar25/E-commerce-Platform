@@ -25,7 +25,7 @@ export const deleteProduct = async (id,dispatch) =>{
     dispatch(deleteProductStart());
 
     try {
-        await userRequest.delete(`/products/${id}`);
+        await farmerRequest.delete(`/products/${id}`);
         dispatch(deleteProductSuccess(id));
     } catch (error) {
         dispatch(deleteProductFailure());

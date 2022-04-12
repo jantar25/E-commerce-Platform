@@ -1,8 +1,17 @@
 import React from 'react'
 import styled from "styled-components"
 import { DeleteOutline } from "@material-ui/icons";
+import {deleteProduct} from '../../Redux/apiCalls'
+import {useDispatch} from 'react-redux';
+import EditProduct from '../FarmerManagement/EditProduct/EditProduct';
 
 const FarmerProduct = ({product}) => {
+    const dispatch=useDispatch();
+
+    const handleDelete = (id) => {
+        deleteProduct(id,dispatch)
+      };
+
     const ProductTurnary = styled.div`
     width:20px;
     height:20px;
@@ -11,6 +20,7 @@ const FarmerProduct = ({product}) => {
     cursor:pointer;
     background: ${props=>props.color}
     `
+
     return (
     <div className=' flex-1 flex flex-col bg-black m-1 max-w-[280px] rounded'>              
             <div className=" flex flex-col w-full h-[400px]">
@@ -38,9 +48,13 @@ const FarmerProduct = ({product}) => {
                          </div>
                     <div className="flex justify-between items-center py-4 px-2">
                         <button className='bg-[#04AA6D] px-2 rounded'>Edit</button>
-                        <DeleteOutline style={{'color':'red','cursor':'pointer'}}/>            
+                        <DeleteOutline style={{'color':'red','cursor':'pointer'}}
+                        onClick={() => handleDelete(product._id)}/>            
                     </div>
                 </div>
+            </div>
+            <div className='absolute'>
+                <EditProduct product={product} />
             </div>
     </div>
     )
