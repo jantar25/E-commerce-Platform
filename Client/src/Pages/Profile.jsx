@@ -10,11 +10,13 @@ import { BsCamera } from 'react-icons/bs'
 import { AiFillCaretUp,AiFillCaretDown } from "react-icons/ai";
 import avatar from '../Images/avatar.png'
 import CreateProduct from '../Components/FarmerManagement/CreateProduct/CreateProduct';
+import EditProduct from '../Components/FarmerManagement/EditProduct/EditProduct';
 import FarmerProduct from '../Components/FarmerProduct/FarmerProduct';
 
 
 const Profile = () => {
   const [toggleCreate,setToggleCreate] = useState(false)
+  const [toggleEdit,setToggleEdit] = useState(false)
   const [img,setImg] = useState('')
   const products = useSelector(state => state.product.products);
   const farmer=useSelector((state)=>state.farmer.currentFarmer);
@@ -26,8 +28,12 @@ const Profile = () => {
     farmerLogoutDone(dispatch);
     history.push('/');
 }
-  const handleToggle = () => {
+  const handleToggleCreate = () => {
     setToggleCreate(!toggleCreate)
+  }
+
+  const handleToggleEdit = () => {
+    setToggleEdit(!toggleEdit)
   }
 
 
@@ -77,15 +83,23 @@ const farmerProduct = products.filter(
                   </div>
                 </div>
           </div>
-          <button className='flex items-center text-[#04AA6D] mt-8 font-[600]' onClick={handleToggle}>
+          <button className='flex items-center text-[#04AA6D] mt-8 font-[600]' onClick={handleToggleCreate}>
               ADD NEW PRODUCT{toggleCreate? <AiFillCaretUp style={{fontSize:'20px'}}/> : <AiFillCaretDown style={{fontSize:'20px'}}/>} </button>
           <div className='my-8'>
             {toggleCreate? <CreateProduct farmer={farmer} setToggleCreate={setToggleCreate} /> : null}
           </div>
           <h1 className='flex items-center text-[#04AA6D] font-[600] py-4'>PRODUCTS YOU ADDED</h1>
-          <div className='flex bg-[#232B2B] flex-col justify-center items-center px-5 py-4 sm:px-20'>
-            <div className='flex justify-around items-center flex-wrap'>
-              {farmerProduct.map((product)=>(<FarmerProduct product={product} key={product._id}/>))}
+          <div className='relative bg-[#232B2B]'>
+            <div>
+              {farmerProduct.map((product)=>(
+                <div key={product._id}>
+                  <div className='flex justify-around items-center flex-wrap'>
+                    <FarmerProduct product={product} handleToggleEdit={handleToggleEdit} />
+                  </div>
+                  <div className='absolute top-0 w-full'>
+                    {toggleEdit? <EditProduct product={product} handleToggleEdit={handleToggleEdit} /> : null}
+                  </div>
+                </div> ))}
             </div>
           </div>
         <Footer />

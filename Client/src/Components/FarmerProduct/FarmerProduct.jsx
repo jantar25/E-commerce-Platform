@@ -3,9 +3,9 @@ import styled from "styled-components"
 import { DeleteOutline } from "@material-ui/icons";
 import {deleteProduct} from '../../Redux/apiCalls'
 import {useDispatch} from 'react-redux';
-import EditProduct from '../FarmerManagement/EditProduct/EditProduct';
 
-const FarmerProduct = ({product}) => {
+
+const FarmerProduct = ({product,handleToggleEdit}) => {
     const dispatch=useDispatch();
 
     const handleDelete = (id) => {
@@ -47,14 +47,11 @@ const FarmerProduct = ({product}) => {
                             </div>
                          </div>
                     <div className="flex justify-between items-center py-4 px-2">
-                        <button className='bg-[#04AA6D] px-2 rounded'>Edit</button>
+                        <button className='bg-[#04AA6D] px-2 rounded' onClick={handleToggleEdit}>Edit</button>
                         <DeleteOutline style={{'color':'red','cursor':'pointer'}}
                         onClick={() => handleDelete(product._id)}/>            
                     </div>
                 </div>
-            </div>
-            <div className='absolute'>
-                <EditProduct product={product} />
             </div>
     </div>
     )

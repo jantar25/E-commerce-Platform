@@ -4,7 +4,7 @@ import app from '../../../firebase'
 import {useDispatch,useSelector} from 'react-redux'
 import {addProduct} from '../../../Redux/apiCalls'
 
-const EditProduct = ({product}) => {
+const EditProduct = ({product,handleToggleEdit}) => {
 
     const [inputs,setInputs] = useState({});
     const [file,setFile] = useState(null);
@@ -71,8 +71,11 @@ const EditProduct = ({product}) => {
     }
 
   return (
-<div className='my-8 p-2 md:px-8 border border-[#04AA6D] rounded'>
-        <h1>New Product</h1>
+<div className='p-2 md:px-8 border bg-black border-[#04AA6D] rounded'>
+        <div className='flex justify-between items-center'>
+            <h1>Edit Product</h1>
+            <p className='text-red-500 font-[600] cursor-pointer' onClick={handleToggleEdit}>Close</p>
+        </div>
         <form className='my-4 flex flex-col md:flex-row items-center justify-between'>
             <div className='flex-1 w-full md:mr-4'>
                 <div className='flex flex-col my-2'>
