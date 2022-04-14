@@ -10,15 +10,12 @@ import { BsCamera } from 'react-icons/bs'
 import { AiFillCaretUp,AiFillCaretDown } from "react-icons/ai";
 import avatar from '../Images/avatar.png'
 import CreateProduct from '../Components/FarmerManagement/CreateProduct/CreateProduct';
-import EditProduct from '../Components/FarmerManagement/EditProduct/EditProduct';
-import FarmerProduct from '../Components/FarmerProduct/FarmerProduct';
+import FarmerProducts from '../Components/FarmerProducts/FarmerProducts';
 
 
 const Profile = () => {
   const [toggleCreate,setToggleCreate] = useState(false)
-  const [toggleEdit,setToggleEdit] = useState(false)
   const [img,setImg] = useState('')
-  const products = useSelector(state => state.product.products);
   const farmer=useSelector((state)=>state.farmer.currentFarmer);
   const dispatch=useDispatch();
   const history= useHistory();
@@ -32,14 +29,6 @@ const Profile = () => {
     setToggleCreate(!toggleCreate)
   }
 
-  const handleToggleEdit = () => {
-    setToggleEdit(!toggleEdit)
-  }
-
-
-const farmerProduct = products.filter(
-  (product) => product.farmer[0]?._id === farmer._id
-);
 
   useEffect(()=>{
       const currentToken = localStorage.getItem("persist:root");
@@ -90,17 +79,7 @@ const farmerProduct = products.filter(
           </div>
           <h1 className='flex items-center text-[#04AA6D] font-[600] py-4'>PRODUCTS YOU ADDED</h1>
           <div className='relative bg-[#232B2B]'>
-            <div>
-              {farmerProduct.map((product)=>(
-                <div key={product._id}>
-                  <div className='flex justify-around items-center flex-wrap'>
-                    <FarmerProduct product={product} handleToggleEdit={handleToggleEdit} />
-                  </div>
-                  <div className='absolute top-0 w-full'>
-                    {toggleEdit? <EditProduct product={product} handleToggleEdit={handleToggleEdit} /> : null}
-                  </div>
-                </div> ))}
-            </div>
+            <FarmerProducts />
           </div>
         <Footer />
     </div>

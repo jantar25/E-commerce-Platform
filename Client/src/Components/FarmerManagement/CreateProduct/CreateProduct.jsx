@@ -73,7 +73,7 @@ const CreateProduct = ({farmer,setToggleCreate}) => {
 
   return (
     <div className='my-8 p-2 md:px-8 border border-[#04AA6D] rounded'>
-        <h1>New Product</h1>
+        <h1 className='text-xl'>Create New Product</h1>
         <form className='my-4 flex flex-col md:flex-row items-center justify-between'>
             <div className='flex-1 w-full md:mr-4'>
                 <div className='flex flex-col my-2'>

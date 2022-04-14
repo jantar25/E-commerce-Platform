@@ -1,11 +1,18 @@
-import React from 'react'
+import React,{useState} from 'react'
 import styled from "styled-components"
 import { DeleteOutline } from "@material-ui/icons";
-import {deleteProduct} from '../../Redux/apiCalls'
+import {deleteProduct} from '../../../Redux/apiCalls'
 import {useDispatch} from 'react-redux';
+import EditProduct from '../../FarmerManagement/EditProduct/EditProduct'
 
 
-const FarmerProduct = ({product,handleToggleEdit}) => {
+const FarmerProduct = ({product}) => {
+    const [toggleEdit,setToggleEdit] = useState(false);
+
+    const handleToggleEdit = () => {
+        setToggleEdit(!toggleEdit)
+      }
+
     const dispatch=useDispatch();
 
     const handleDelete = (id) => {
@@ -20,7 +27,7 @@ const FarmerProduct = ({product,handleToggleEdit}) => {
     cursor:pointer;
     background: ${props=>props.color}
     `
-
+    
     return (
     <div className=' flex-1 flex flex-col bg-black m-1 max-w-[280px] rounded'>              
             <div className=" flex flex-col w-full h-[400px]">
@@ -53,6 +60,16 @@ const FarmerProduct = ({product,handleToggleEdit}) => {
                     </div>
                 </div>
             </div>
+            {toggleEdit && 
+            <div className='h-screen w-screen overflow-auto fixed bottom-0 left-0 right-0 top-0'>
+                <div className='h-screen w-screen fixed top-0 bottom-0 left-0 right-0 bg-black/[0.9]'></div>
+                <div className='absolute top-16 bottom-16 md:bottom-36 left-0 right-0 w-11/12 max-h-full 
+                container ml-auto mr-auto rounded bg-black overflow-auto'>              
+                    <div className="w-full h-full">
+                        <EditProduct product={product} handleToggleEdit={handleToggleEdit} />
+                    </div>
+                </div>
+            </div>}
     </div>
     )
 }
