@@ -36,9 +36,8 @@ export const deleteProduct = async (id,dispatch) =>{
 // UPDATE A PRODUCT
 export const updateProduct = async (id,updatedProduct,dispatch) =>{
     dispatch(updateProductStart());
-
     try {
-        const res = await userRequest.put(`/products/${id}`,updatedProduct);
+        const res = await farmerRequest.put(`/products/${id}`,updatedProduct);
         dispatch(updateProductSuccess({id,updatedProduct}));
         console.log(res)
     } catch (error) {

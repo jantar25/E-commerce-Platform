@@ -1,11 +1,15 @@
 import PopularsItem from './PopularItem/PopularItem'
 import { useState,useEffect } from 'react'
 import axios from "axios"
+import { useDispatch } from 'react-redux'
+import { getProducts } from '../../Redux/apiCalls'
 
 
 const PopularsItems = ({cat,filters,sort}) => {
     const [products,setProducts] = useState([]);
     const [filteredProducts,setFilteredProducts] = useState([]);
+    const dispatch = useDispatch()
+
 
     useEffect(()=>{
         const getProducts= async ()=>{
@@ -26,6 +30,9 @@ const PopularsItems = ({cat,filters,sort}) => {
         getProducts();  
     },[cat])
 
+    useEffect(() => {
+        getProducts(dispatch)
+      }, [dispatch])
 
     useEffect(()=>{
         cat && 

@@ -5,9 +5,10 @@ import {useSelector} from 'react-redux';
 const FarmerProducts = () => {
     const products = useSelector(state => state.product.products);
     const farmer=useSelector((state)=>state.farmer.currentFarmer);
-
-    const farmerProduct = products.filter(
-        (product) => product.farmer[0]?._id === farmer._id
+    const farmerId = farmer?._id
+    const farmerProduct = products?.filter(
+        (product) => 
+        product?.farmer[0]?._id === farmerId
       );
 
   return (

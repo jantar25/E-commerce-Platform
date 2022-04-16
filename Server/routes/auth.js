@@ -27,7 +27,7 @@ router.post("/login", async (req,res)=>{
         
         const user= await User.findOne({username:req.body.username});
         if(!user) {
-            res.status(401).json("Username Not Found");
+            // res.status(401).json("Username Not Found");
         } else {
             const hashedPassword = CryptoJS.AES.decrypt(user.password, process.env.SEC_PASS);
             const OriginalPassword = hashedPassword.toString(CryptoJS.enc.Utf8);

@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import app from '../../../firebase'
 import {useDispatch,useSelector} from 'react-redux'
-import {addProduct} from '../../../Redux/apiCalls'
+import {updateProduct} from '../../../Redux/apiCalls'
 
 const EditProduct = ({product,handleToggleEdit}) => {
 
@@ -33,7 +33,7 @@ const EditProduct = ({product,handleToggleEdit}) => {
 
     const handleClick = (e)=>{
     e.preventDefault();
-    const fileName = new Date().getTime() + file.name;
+    const fileName = new Date().getTime() + file?.name;
     const storage = getStorage(app); 
     const storageRef = ref(storage,fileName);  
     const uploadTask = uploadBytesResumable(storageRef, file);
@@ -63,8 +63,10 @@ const EditProduct = ({product,handleToggleEdit}) => {
     }, 
     () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-        const product = ({...inputs,img: downloadURL,categories:cat,content:content,size:size,farmer:farmer});
-        addProduct(product,dispatch);
+        const updatedProduct = ({...inputs,img: downloadURL,categories:cat,content:content,size:size,farmer:farmer});
+        const id=product._id;
+        updateProduct(id,updatedProduct,dispatch);
+        console.log(updatedProduct)
         });
     }
     );
@@ -84,25 +86,25 @@ const EditProduct = ({product,handleToggleEdit}) => {
                         </div>
                         <div className='flex flex-col my-2'>
                             <label>Description</label>
-                            <input className='px-4 py-1 rounded bg-[#232B2B]' name="description" type="text" placeholder="Good Fruits" onChange={handleChange}  />
+                            <input className='px-4 py-1 rounded bg-[#232B2B]' name="description" type="text" placeholder={product.description} onChange={handleChange}  />
                         </div>
                         <div className='flex flex-col my-2'>
                             <label>Categories</label>
-                            <input className='px-4 py-1 rounded bg-[#232B2B]' type="text" placeholder="Fruits,vegetables..." onChange={handleCat} />
-                        </div>
+                            <input className='px-4 py-1 rounded bg-[#232B2B]' type="text" placeholder={product.categories} onChange={handleCat} />
+                        </div> 
                         <div className='flex flex-col my-2'>
                             <label>Size</label>
-                            <input className='px-4 py-1 rounded bg-[#232B2B]' type="text" placeholder="small,medium,big..." onChange={handleSize} />
+                            <input className='px-4 py-1 rounded bg-[#232B2B]' type="text" placeholder={product.size} onChange={handleSize} />
                         </div>
                     </div>
                     <div className='flex-1 w-full md:ml-4'>
                         <div className='flex flex-col my-2'>
                             <label>Content</label>
-                            <input className='px-4 py-1 rounded bg-[#232B2B]' type="text" placeholder="Green,white,red..." onChange={handleContent} />
+                            <input className='px-4 py-1 rounded bg-[#232B2B]' type="text" placeholder={product.content} onChange={handleContent} />
                         </div>
                         <div className='flex flex-col my-2'>
                             <label>Price/Kg</label>
-                            <input className='px-4 py-1 rounded bg-[#232B2B]' name="price" type="number" placeholder="200" onChange={handleChange} />
+                            <input className='px-4 py-1 rounded bg-[#232B2B]' name="price" type="number" placeholder={product.price} onChange={handleChange} />
                         </div>
                         <div className='flex flex-col my-2'>
                             <label>In Stock</label>
