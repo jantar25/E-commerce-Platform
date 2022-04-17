@@ -3,7 +3,8 @@ import { useState } from "react"
 import { addProduct } from "../../../Redux/cartRedux"
 import { useDispatch } from "react-redux"
 import {RiCloseLine} from 'react-icons/ri'
-import styled from "styled-components"
+import { ProductTurnary } from './styles'
+
 
 
 const PopularItem = ({item}) => {
@@ -13,14 +14,6 @@ const PopularItem = ({item}) => {
     const [size,setSize] = useState("");
     const dispatch = useDispatch();
 
-    const ProductTurnary = styled.div`
-    width:20px;
-    height:20px;
-    border-radius:50%;
-    margin-right: 10px;
-    cursor:pointer;
-    background: ${props=>props.color}
-    `
 
     const handleQuantity = (type)=>{
         if(type==="dec"){

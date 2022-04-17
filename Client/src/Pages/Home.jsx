@@ -1,7 +1,7 @@
 import {useSelector} from 'react-redux';
 import Header from "../Components/header"
 import Categories from "../Components/Categories/Categories"
-import PopularItems from "../Components/PopularItems/PopularItems"
+import NewestItems from "../Components/PopularItems/NewestItems"
 import Footer from "../Components/Footer/Footer"
 import FarmerLogin from "../Components/FarmerLogin/FarmerLogin"
 import FarmerProfile from "../Components/FarmerProfile/FarmerProfile"
@@ -16,7 +16,7 @@ const Home = () => {
            <div>
                 <h1 className='text-2xl md:text-4xl text-orange-500 text-center mb-8'>Newest Items</h1>
             </div>
-           <PopularItems />
+           <NewestItems />
            {farmer? <FarmerProfile farmer={farmer} />: <FarmerLogin /> }
            <Footer />
         </div>

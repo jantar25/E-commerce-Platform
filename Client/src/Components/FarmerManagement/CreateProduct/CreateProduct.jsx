@@ -32,7 +32,7 @@ const CreateProduct = ({farmer,setToggleCreate}) => {
 
     const handleClick = (e)=>{
     e.preventDefault();
-    const fileName = new Date().getTime() + file.name;
+    const fileName = new Date().getTime() + file?.name;
     const storage = getStorage(app); 
     const storageRef = ref(storage,fileName);  
     const uploadTask = uploadBytesResumable(storageRef, file);
@@ -64,8 +64,8 @@ const CreateProduct = ({farmer,setToggleCreate}) => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
         const product = ({...inputs,img: downloadURL,categories:cat,content:content,size:size,farmer:farmer});
         addProduct(product,dispatch);
-        setToggleCreate(false)
         });
+        setToggleCreate(false)
     }
     );
     }

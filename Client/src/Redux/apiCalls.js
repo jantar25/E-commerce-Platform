@@ -1,4 +1,4 @@
-import { publicRequest,userRequest,farmerRequest } from "../requestMethode";
+import { publicRequest,farmerRequest } from "../requestMethode";
 import { loginFailure, loginStart, loginSuccess,logoutSuccess } from "./userRedux"
 import {farmerLoginStart,farmerLoginSuccess,FarmerLoginFailure,FarmerLogoutSuccess} from './farmerRedux'
 import {getProductStart,getProductSuccess,getProductFailure,

@@ -33,6 +33,12 @@ const EditProduct = ({product,handleToggleEdit}) => {
 
     const handleClick = (e)=>{
     e.preventDefault();
+
+    if(!file){
+        const updatedProduct = ({...inputs,categories:cat,content:content,size:size,farmer:farmer});
+        const id=product._id;
+        updateProduct(id,updatedProduct,dispatch);
+    } else{
     const fileName = new Date().getTime() + file?.name;
     const storage = getStorage(app); 
     const storageRef = ref(storage,fileName);  
@@ -66,12 +72,12 @@ const EditProduct = ({product,handleToggleEdit}) => {
         const updatedProduct = ({...inputs,img: downloadURL,categories:cat,content:content,size:size,farmer:farmer});
         const id=product._id;
         updateProduct(id,updatedProduct,dispatch);
-        console.log(updatedProduct)
         });
+        handleToggleEdit();
     }
     );
     }
-
+}
   return (
         <div className='p-2 w-full md:px-8 border bg-black border-[#04AA6D] rounded'>
                 <div className='flex justify-between items-center'>

@@ -15,6 +15,7 @@ import Profile from './Pages/Profile';
 function App() {
 
   const user=useSelector((state)=>state.user.currentUser);
+  const farmer= useSelector((state)=>state.farmer.currentFarmer);
   return (
     <Router>
       <ScrollToTop />
@@ -26,7 +27,7 @@ function App() {
         <Route exact path="/login"> {user? <Redirect to="/" /> : <Login />}</Route>
         <Route exact path="/password"><PasswordForget /></Route>
         <Route exact path="/paysuccess"><PaySuccess /></Route>
-        <Route exact path="/profile/:person"><Profile /></Route>
+        <Route exact path="/profile/:person">{!farmer? <Redirect to="/" /> : <Profile />}</Route>
       </Switch>
     </Router>
   );

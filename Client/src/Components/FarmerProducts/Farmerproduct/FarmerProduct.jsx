@@ -1,9 +1,9 @@
 import React,{useState} from 'react'
-import styled from "styled-components"
 import { DeleteOutline } from "@material-ui/icons";
 import {deleteProduct} from '../../../Redux/apiCalls'
 import {useDispatch} from 'react-redux';
 import EditProduct from '../../FarmerManagement/EditProduct/EditProduct'
+import { ProductTurnary } from './style'
 
 
 const FarmerProduct = ({product}) => {
@@ -18,15 +18,6 @@ const FarmerProduct = ({product}) => {
     const handleDelete = (id) => {
         deleteProduct(id,dispatch)
       };
-
-    const ProductTurnary = styled.div`
-    width:20px;
-    height:20px;
-    border-radius:50%;
-    margin-right: 10px;
-    cursor:pointer;
-    background: ${props=>props.color}
-    `
     
     return (
     <div className=' flex-1 flex flex-col bg-black m-1 max-w-[280px] rounded'>              
