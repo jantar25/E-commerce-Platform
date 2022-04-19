@@ -2,7 +2,9 @@ import React,{useEffect, useState } from 'react'
 import {useDispatch, useSelector} from 'react-redux';
 import { useHistory,useLocation } from 'react-router';
 import decode from 'jwt-decode';
-import { farmerLogoutDone } from '../Redux/apiCalls'; 
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { farmerLogoutDone,updateFarmer } from '../Redux/apiCalls';
+import app from '../firebase' 
 import Navbar from '../Components/Navbar/Navbar';
 import Announcement from '../Components/Navbar/Announcement';
 import Footer from "../Components/Footer/Footer"
@@ -11,6 +13,7 @@ import { AiFillCaretUp,AiFillCaretDown } from "react-icons/ai";
 import avatar from '../Images/avatar.png'
 import CreateProduct from '../Components/FarmerManagement/CreateProduct/CreateProduct';
 import FarmerProducts from '../Components/FarmerProducts/FarmerProducts';
+
 
 
 const Profile = () => {
@@ -29,6 +32,44 @@ const Profile = () => {
     setToggleCreate(!toggleCreate)
   }
 
+if(img){
+const fileName = new Date().getTime() + img?.name;
+const storage = getStorage(app); 
+const storageRef = ref(storage,fileName);  
+const uploadTask = uploadBytesResumable(storageRef, img);
+
+// Register three observers:
+// 1. 'state_changed' observer, called any time the state changes
+// 2. Error observer, called on failure
+// 3. Completion observer, called on successful completion
+uploadTask.on('state_changed', 
+(snapshot) => {
+    // Observe state change events such as progress, pause, and resume
+    // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    console.log('Upload is ' + progress + '% done');
+    switch (snapshot.state) {
+    case 'paused':
+        console.log('Upload is paused');
+        break;
+    case 'running':
+        console.log('Upload is running');
+        break;
+        default:
+    }
+}, 
+(error) => {
+    console.log(error)
+}, 
+() => {
+    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+    const updatedFarmer = {img: downloadURL};
+    const id=farmer._id;
+    updateFarmer(id,updatedFarmer,dispatch);
+    });
+}
+);
+}
 
   useEffect(()=>{
       const currentToken = localStorage.getItem("persist:root");
@@ -63,7 +104,7 @@ const Profile = () => {
               </div>
                 <div className='flex-1 flex items-center justify-center mt-4 md:mt-0'>
                   <div className='relative w-[200px] h-[200px] md:w-[300px] md:h-[300px] my-4 md:ml-4'>
-                      <img src={farmer.avatar || avatar} alt='profileImg' className='w-full h-full rounded-full object-cover ring-2 ring-black' />
+                      <img src={farmer.img || avatar} alt='profileImg' className='w-full h-full rounded-full object-cover ring-2 ring-black' />
                       <div className='absolute w-[40px] h-[40px] rounded-full text-white bg-[#04AA6D] bottom-[10px] md:bottom-[25px] 
                       right-[10px] md:right-[25px]  flex justify-center items-center'>
                           <input type="file" accept='Image/*' style={{display:'none'}} id="file" onChange={(e)=>setImg(e.target.files[0])} />

@@ -22,8 +22,24 @@ const farmerSlice = createSlice({
         FarmerLogoutSuccess:(state)=>{
             state.currentFarmer= null;
         },
+
+        // FARMER UPDATE
+        updateFarmerStart:(state)=>{
+            state.isFetching=true;
+            state.error=false;
+        },
+        updateFarmerSuccess:(state,action)=>{
+            state.isFetching=false;
+            state.products[state.products.findIndex((item)=>item._id === action.payload.id)
+            ]=action.payload.product;
+        },
+        updateFarmerFailure:(state)=>{
+            state.isFetching=false;
+            state.error=true;
+        },
     }
 })
 
-export const {farmerLoginStart,farmerLoginSuccess,FarmerLoginFailure,FarmerLogoutSuccess} = farmerSlice.actions;
+export const {farmerLoginStart,farmerLoginSuccess,FarmerLoginFailure,FarmerLogoutSuccess,
+    updateFarmerStart,updateFarmerSuccess,updateFarmerFailure} = farmerSlice.actions;
 export default farmerSlice.reducer;

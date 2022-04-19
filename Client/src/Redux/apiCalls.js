@@ -1,6 +1,7 @@
 import { publicRequest,farmerRequest } from "../requestMethode";
 import { loginFailure, loginStart, loginSuccess,logoutSuccess } from "./userRedux"
-import {farmerLoginStart,farmerLoginSuccess,FarmerLoginFailure,FarmerLogoutSuccess} from './farmerRedux'
+import {farmerLoginStart,farmerLoginSuccess,FarmerLoginFailure,FarmerLogoutSuccess,
+    updateFarmerStart,updateFarmerSuccess,updateFarmerFailure} from './farmerRedux'
 import {getProductStart,getProductSuccess,getProductFailure,
     deleteProductStart,deleteProductSuccess,deleteProductFailure,
     updateProductStart,updateProductSuccess,updateProductFailure,
@@ -37,9 +38,8 @@ export const deleteProduct = async (id,dispatch) =>{
 export const updateProduct = async (id,updatedProduct,dispatch) =>{
     dispatch(updateProductStart());
     try {
-        const res = await farmerRequest.put(`/products/${id}`,updatedProduct);
+        await farmerRequest.put(`/products/${id}`,updatedProduct);
         dispatch(updateProductSuccess({id,updatedProduct}));
-        console.log(res)
     } catch (error) {
         dispatch(updateProductFailure());
         console.log(error);
@@ -87,4 +87,17 @@ export const logoutDone = async (dispatch) =>{
 
 export const farmerLogoutDone = async (dispatch) =>{
     dispatch(FarmerLogoutSuccess());
+}
+
+
+// UPDATE A FARMER
+export const updateFarmer = async (id,updatedFarmer,dispatch) =>{
+    dispatch(updateFarmerStart());
+    try {
+        await farmerRequest.put(`/farmerAuth/${id}`,updatedFarmer);
+        dispatch(updateFarmerSuccess({id,updatedFarmer}));
+    } catch (error) {
+        dispatch(updateFarmerFailure());
+        console.log(error);
+    }
 }

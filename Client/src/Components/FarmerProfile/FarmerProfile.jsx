@@ -24,7 +24,7 @@ const FarmerProfile = ({farmer}) => {
                  </div>
                  <div className='flex-1 flex items-center justify-center mt-4 md:mt-0'>
                      <div className='w-[200px] h-[200px] md:w-[300px] md:h-[300px] my-4 md:ml-4'>
-                        <img src={farmer.avatar || avatar} alt='profileImg' className='w-full h-full rounded-full object-cover ring-2 ring-black' />
+                        <img src={farmer.img || avatar} alt='profileImg' className='w-full h-full rounded-full object-cover ring-2 ring-black' />
                      </div>
                  </div>
              </div>

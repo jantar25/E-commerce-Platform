@@ -73,7 +73,7 @@ const EditProduct = ({product,handleToggleEdit}) => {
         const id=product._id;
         updateProduct(id,updatedProduct,dispatch);
         });
-        handleToggleEdit();
+        handleToggleEdit()
     }
     );
     }

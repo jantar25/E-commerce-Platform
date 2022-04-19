@@ -27,7 +27,8 @@ const FarmerSchima = new mongoose.Schema(
             type:Boolean,
             default:false
         },
-        img:{type:String},
+        img:{type:String,
+            default:null},
 
 },
 {timestamps:true})
