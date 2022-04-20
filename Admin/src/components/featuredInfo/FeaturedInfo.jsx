@@ -7,13 +7,13 @@ export default function FeaturedInfo() {
 
   const [income,setIncome] = useState([]);
   const [percentage,setPercentage] = useState(0);
-
+  console.log(income[0])
   useEffect(()=>{
     const getIncome = async ()=> {
       try {
         const res = await userRequest.get("/orders/income");
         setIncome(res.data);
-        setPercentage((res.data[1].total * 100)/ res.data[0].total - 100);
+        setPercentage((res.data[0].total * 100)/ res.data[0].total - 100);
       } catch (error) {
         console.log(error)
       }
@@ -26,7 +26,7 @@ export default function FeaturedInfo() {
       <Item>
         <Title>Revenue</Title>
         <MoneyContainer>
-          <Money>{`Rwf ${income[1]?.total}`}</Money>
+          <Money>{`Rwf ${income[0]?.total}`}</Money>
           <MoneyRate>
           % {Math.floor(percentage)}{""} 
           {percentage<0? <ArrowDownward style={{ color: 'red' }} /> :
@@ -39,7 +39,7 @@ export default function FeaturedInfo() {
       <Item>
         <Title>Sales</Title>
         <MoneyContainer>
-          <Money>Rwf 25,460,000</Money>
+          <Money>Rwf 460,000</Money>
           <MoneyRate>
             -1.4 <ArrowDownward style={{ color: 'red' }} />
           </MoneyRate>
@@ -49,7 +49,7 @@ export default function FeaturedInfo() {
       <Item>
         <Title>Cost</Title>
         <MoneyContainer>
-          <Money>Rwf 3,500,000</Money>
+          <Money>Rwf 500,000</Money>
           <MoneyRate>
           +2.4 <ArrowUpward style={{ color: 'green' }} />
           </MoneyRate> 
