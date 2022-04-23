@@ -17,7 +17,7 @@ export default function ProductList() {
   const handleDelete = (id) => {
     deleteProduct(id,dispatch)
   };
-
+  console.log(products)
   const columns = [
     { field: "_id", headerName: "ID", width: 200 },
     {
@@ -33,6 +33,7 @@ export default function ProductList() {
         );
       },
     },
+    
     { field: "inStock", headerName: "Stock", width: 200 },
     {
       field: "price",

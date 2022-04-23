@@ -39,6 +39,7 @@ export default function Home() {
     }
     getStats();
   },[MONTHS])
+  
   return (
     <HomeContainer>
       <FeaturedInfo />

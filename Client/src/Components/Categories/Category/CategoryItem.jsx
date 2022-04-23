@@ -6,7 +6,7 @@ import {useEffect } from "react";
 
 const CategoryItem = ({item}) => {
     useEffect(() => {
-        AOS.init({duration:100});
+        AOS.init({duration:50});
       }, [])
 
     return (

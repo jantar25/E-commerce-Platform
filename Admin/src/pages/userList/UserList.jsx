@@ -8,8 +8,8 @@ import { useState } from "react";
 import { userRequest } from "../../requestMethode";
 
 export default function UserList() {
-  const [data, setData] = useState([]);
-
+  const [data, setData] = useState();
+console.log(userRows)
 console.log(data)
 useEffect(()=>{
   const getUsers = async ()=>{
@@ -25,7 +25,7 @@ useEffect(()=>{
   getUsers();
 },[])
   const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
+    setData(data.filter((item) => item._id !== id));
   };
   
   const columns = [
@@ -76,7 +76,7 @@ useEffect(()=>{
   return (
     <Container>
       <DataGrid
-        rows={data}
+        rows={userRows}
         disableSelectionOnClick
         columns={columns}
         pageSize={8}

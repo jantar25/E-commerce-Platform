@@ -27,7 +27,7 @@ const FarmerProduct = ({product}) => {
                 </div>
                 <div className="flex-1 flex flex-col justify-center ml-2 p-2 ">
                         <h1 className="text-lg text-orange-500 mb-2 font-[500]">{product.title}</h1>
-                        <p className="text-[11px] mb-2 text-neutral-400">{product.description}</p>
+                        <p className="text-[11px] mb-2 text-neutral-400">{product.description.split(' ').splice(0, 15).join(' ')}...</p>
                         <p className="font-[900] text-[#04AA6D]">Rwf {product.price}</p>
                         <div className=" flex flex-row justify-between text-neutral-600 text-sm">
                             <div className=" flex items-center my-2">
