@@ -13,11 +13,13 @@ import { AiFillCaretUp,AiFillCaretDown } from "react-icons/ai";
 import avatar from '../Images/avatar.png'
 import CreateProduct from '../Components/FarmerManagement/CreateProduct/CreateProduct';
 import FarmerProducts from '../Components/FarmerProducts/FarmerProducts';
+import FarmerOrders from '../Components/FarmerOrders/FarmerOrders';
 
 
 
 const Profile = () => {
   const [toggleCreate,setToggleCreate] = useState(false)
+  const [toggleOrders,setToggleOrders] = useState(false)
   const [img,setImg] = useState('')
   const farmer=useSelector((state)=>state.farmer.currentFarmer);
   const dispatch=useDispatch();
@@ -30,6 +32,10 @@ const Profile = () => {
 }
   const handleToggleCreate = () => {
     setToggleCreate(!toggleCreate)
+  }
+
+  const handleToggleOrders = () => {
+    setToggleOrders(!toggleOrders)
   }
 
 if(img){
@@ -118,7 +124,12 @@ uploadTask.on('state_changed',
           <div className='my-8'>
             {toggleCreate? <CreateProduct farmer={farmer} setToggleCreate={setToggleCreate} /> : null}
           </div>
-          <h1 className='flex items-center text-[#04AA6D] font-[600] py-4'>PRODUCTS YOU ADDED</h1>
+          <button className='flex items-center text-[#04AA6D] mt-8 font-[600]' onClick={handleToggleOrders}>
+              VIEW ORDERS{toggleOrders? <AiFillCaretUp style={{fontSize:'20px'}}/> : <AiFillCaretDown style={{fontSize:'20px'}}/>} </button>
+          <div className='my-8'>
+            {toggleOrders? <FarmerOrders farmer={farmer} /> : null}
+          </div>
+          <h1 className='flex items-center text-[#04AA6D] mt-8 font-[600] mb-4'>PRODUCTS YOU ADDED</h1>
           <div className='relative bg-[#232B2B]'>
             <FarmerProducts />
           </div>
