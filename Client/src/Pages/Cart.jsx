@@ -4,7 +4,6 @@ import Navbar from "../Components/Navbar/Navbar"
 import Announcement from "../Components/Navbar/Announcement"
 import Footer from "../Components/Footer/Footer"
 import { Add, Remove } from "@material-ui/icons"
-import { mobile } from "../Responsive"
 import logo from "../Images/logo.png"
 import { useState,useEffect } from 'react';
 import StripeCheckout from 'react-stripe-checkout'
@@ -72,17 +71,13 @@ const Cart = () => {
            <Announcement />
             <div className='p-4 text-gray-500'>
                 <h1 className='text-center text-2xl text-[#04AA6D]'>YOUR BAG</h1>
-                <div className='flex justify-between items-center p-8'>
+                <div className='text-center p-8'>
                     <Link to="/products/All" style={{textDecoration:"none"}} > 
-                        <button className=' p-2 font-[600] border border-2 border-[#04AA6D]'>
+                        <button className='text-white p-2 font-[600] border border-2 border-[#04AA6D]'>
                             CONTINUE SHOPPING</button >
                     </Link>
-                    <div className='hidden sm:flex '>
-                        <p className='text-[#04AA6D] font-[100] text-lg mr-4'>Your Bag(2)</p>
-                        <p className='text-[#04AA6D] font-[100] text-lg'>Your Tea(0)</p>
-                    </div>
                 </div>
-                <div className='flex justify-between flex-col'>
+                <div className='flex justify-between flex-col lg:flex-row'>
                     <div className='flex-auto'>
                         {cart.products.map(product=>(
                         <div  key={product._id}>
@@ -90,9 +85,8 @@ const Cart = () => {
                                 <div className='flex-6 flex justify-between items-center flex-col sm:flex-row'>
                                     <img className='w-[200px] h-[30vh]' src={product.img} />
                                     <div className='flex flex-col p-4'>
-                                        <div className='flex items-center'><b>Product:</b><p className='text-[#04AA6D] ml-2 text-lg'>
-                                            {product.title}</p></div>
-                                        <span><b>ID:</b>{product._id}</span>
+                                        <div className='flex items-center'><b>Product:</b>
+                                        <p className='text-[#04AA6D] ml-2 text-lg'>{product.title}</p></div>
                                         <ProductTurnary color= {product.content} />
                                         <span><b>Size:</b>{product.size}</span>
                                     </div>
@@ -117,7 +111,9 @@ const Cart = () => {
                         ))}
                         
                     </div>
-                    <div className='flex flex-col md:flex-row justify-between items-center mt-4'>
+                    <div className='mt-4'>
+                    <h1 className='text-white text-3xl lg:text-xl text-center'>Choose your payment modal</h1>
+                    <div className='flex flex-col md:flex-row lg:flex-col justify-between items-center mt-2'>
                         <div className='w-full flex-1 h-max border border-[#04AA6D] p-4 rounded m-4'>
                             <p className='text-md text-white'>Order here with</p>
                             <h1 className='text-2xl text-[#04AA6D] font-[400]'>CREDIT CARD</h1>
@@ -197,7 +193,7 @@ const Cart = () => {
                                 ORDER NOW</button>
                         </div>
                     </div>
-                    
+                    </div>
                 </div>
             </div>
             <Footer />

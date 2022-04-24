@@ -30,7 +30,7 @@ const cartSlice = createSlice({
             state.total -= action.payload.price * action.payload.quantity;
          },
 
-                  // DECREASE&INCREASE A PRODUCT QUANTITY
+        // DECREASE&INCREASE A PRODUCT QUANTITY
         decreaseProductQuantity:(state,action)=>{
             const itemIndex = state.products.findIndex((product)=>product._id === action.payload._id)
             if (state.products[itemIndex].quantity>1){

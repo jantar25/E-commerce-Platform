@@ -77,6 +77,8 @@ const FarmerRegistor = ({setSignIn,signIn}) => {
                     <input placeholder='Confirm Password' name='confirmedPassword' value={confirmedPassword} onChange={handleChange} type='password' className='px-4 py-2 bg-[#232B2B] rounded'/>
                 </div>
             </div>
+            <p className='text-sm my-2'>By creating an account,I consent to the processing of my personal data 
+                in accordance with the <b>PRIVACY POLICY</b></p>
             <div>
                 {error? <p className='text-red-900 font-bold text-sm my-2'>{farmer.error}</p> : null}
                 <button className='bg-black text-white py-2 px-8 text-lg font-[700] rounded-md' onClick={handleRegisterFarmer}>

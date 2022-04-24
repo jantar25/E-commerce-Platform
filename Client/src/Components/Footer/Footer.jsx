@@ -38,7 +38,7 @@ const Footer = () => {
             </div>
             <div className='flex-1 flex flex-col p-4 items-center'>
                 <h2 className='mb-8 text-gray-300'>Useful Links</h2>
-                <ul className='flex flex-wrap'>
+                <ul className='flex flex-wrap text-center'>
                     <li className='text-gray-500 w-1/2 hover:text-[#6a9113] mb-2 cursor-pointer'>
                         <Link to="/">Home</Link>
                     </li>
