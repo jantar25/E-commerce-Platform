@@ -21,7 +21,7 @@ const FarmerOrders = () => {
           getOrders();
     },[])
 
-    console.log(orders)
+
   return (
     <div className='flex flex-col justify-center items-center p-4'>
     {orders.length>0? 

@@ -10,6 +10,7 @@ import ProductList from './Pages/ProductList'
 import PaySuccess from './Pages/PaySuccess';
 import PasswordForget from './Pages/PasswordForget';
 import Profile from './Pages/Profile';
+import Order from './Pages/Orders/Order';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route exact path="/password"><PasswordForget /></Route>
         <Route exact path="/paysuccess"><PaySuccess /></Route>
         <Route exact path="/profile/:person">{!farmer? <Redirect to="/" /> : <Profile />}</Route>
+        <Route exact path="/order/:orderId">{!farmer? <Redirect to="/" /> : <Order />}</Route>
       </Switch>
     </Router>
   );

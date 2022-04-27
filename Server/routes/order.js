@@ -39,10 +39,10 @@ router.delete("/:id",(verifyTokenandFarmer || verifyTokenandAdmin),async (req,re
     }
 })
 
-//GET USER ORDER
-router.get("/find/:userId",(verifyTokenandFarmer || verifyTokenandAdmin),async (req,res)=>{
+//GET ORDER BY ID
+router.get("/find/:id",(verifyTokenandFarmer || verifyTokenandAdmin),async (req,res)=>{
     try{
-        const orders = await Order.find({userId: req.params.userId});
+        const orders = await Order.find({_id: req.params.id});
         res.status(200).json(orders)
     } catch(err){
         res.status(500).json(err)
