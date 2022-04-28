@@ -14,7 +14,6 @@ const PaySuccess = () => {
     const cart = location.state.cart;
     const currentUser = useSelector((state) => state.user.currentUser);
     const [orderId, setOrderId] = useState(null);
-    console.log(cart,data,currentUser);
 
     useEffect(() => {
     const createOrder = async () => {
@@ -27,7 +26,7 @@ const PaySuccess = () => {
             amount: cart.total,
             address: data.billing_details.address,
         });
-        console.log(res)
+ 
         setOrderId(res.data._id);
         } catch {}
     };
@@ -49,10 +48,11 @@ const PaySuccess = () => {
                 </div>
                 {orderId
                 ?  <p className="text-center text-md text-gray-600">Your order number   
-                <span className="text-[#04AA6D]">{orderId}</span>  is being Prepared.Thanks for choosing KivuGreen Shop</p>
+                <span className="text-[#04AA6D] mx-1">{orderId}</span>is being Prepared.Thanks for choosing KivuGreen Shop</p>
                 :   <p className="text-center text-md text-gray-600">Your order is being Prepared.Thanks for choosing KivuGreen Shop</p>}
+                <p className="text-center text-md text-white mt-4">Keep the order Identity in green to follow up your Commend</p>
                 <Link to="/" style={{textDecoration:"none"}}>
-                    <button className="text-[#04AA6D] mt-12">Go to Homepage</button>
+                    <button className="text-orange-600 mt-12">Go to Homepage</button>
                 </Link>
             </div>
         </div>

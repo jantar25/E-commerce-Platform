@@ -21,13 +21,15 @@ const FarmerOrders = () => {
           getOrders();
     },[])
 
-
+    const newOrders = orders?.sort(function(a, b) {
+      return new Date(b.createdAt).getTime()-new Date(a.createdAt).getTime();
+    });
   return (
     <div className='flex flex-col justify-center items-center p-4'>
-    {orders.length>0? 
+    {newOrders.length>0? 
     (<div className='flex justify-around items-center flex-wrap'>
-        {orders.map((order)=>(
-        <div key={order._id}>
+        {newOrders.map((order)=>(
+        <div key={order._id} className='m-1'>
             <FarmerOrder order={order} />
         </div> ))}
     </div>) : 

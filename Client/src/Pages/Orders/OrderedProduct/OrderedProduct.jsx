@@ -1,9 +1,11 @@
 import React from 'react'
 import { ProductTurnary } from './style';
+import avatar from '../../../Images/avatar.png'
 
 const OrderedProduct = (orderedProduct) => {
 
   const product=orderedProduct.orderedProduct.product[0];
+  const productOwner=product.farmer[0]
 
   return (
     <div className=' flex-1 flex flex-col bg-black m-1 max-w-[280px] rounded'>              
@@ -27,9 +29,22 @@ const OrderedProduct = (orderedProduct) => {
                         </p>
                     </div>
                  </div>
-                <div className='flex my-4 justify-center items-center bg-[#04AA6D] px-2 rounded'>
+                <div className='flex my-2 justify-center items-center bg-[#04AA6D] px-2 rounded'>
                   <span>Quantity:</span> 
                   <p className='ml-1 font-[600] text-black'>{product.quantity}</p>
+                </div>
+                <div className='flex mb-1 p-1 justify-between items-center rounded bg-gray-700'>
+                  <div className='flex items-center w-[20px] h-[20px]'> 
+                    <img src={avatar || productOwner.img} alt='owner image' className='w-full h-full rounded-full' />
+                  </div>
+                  <div className='flex text-[10px] flex-col'>
+                    <p className='font-[600] text-white'>{productOwner.company}</p>
+                    <p className='text-white'>{productOwner.title}</p>
+                  </div>
+                  <div className='flex text-[10px] flex-col'>
+                    <p className='text-white'>{productOwner.username}</p>
+                    <p className='font-[600] text-white'>{productOwner.telephone}</p>
+                  </div>
                 </div>
         </div>
     </div>

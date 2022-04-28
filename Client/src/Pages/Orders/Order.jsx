@@ -41,7 +41,7 @@ const Order = () => {
             <div className='px-2 md:px-8 py-8 min-h-[50vh]'>
                 <div className='flex flex-wrap justify-between items-center'>
                     <div className='flex items-center m-2'>
-                        <span className='mr-1 text-gray-500'>OrderID:</span>
+                        <span className='hidden sm:flex mr-1 text-gray-500'>OrderID:</span>
                         <p className='text-lg text-green-500'>{orderData._id}</p>
                     </div>
                     <div className='flex items-center m-2'>

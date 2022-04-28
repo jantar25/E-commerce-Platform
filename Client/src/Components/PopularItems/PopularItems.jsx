@@ -19,8 +19,7 @@ const PopularsItems = ({cat,filters,sort}) => {
                 // : "https://kivugree.herokuapp.com/api/products")
 
                 const res = await axios.get(cat==="All"? "http://localhost:5000/api/products":
-                cat? `http://localhost:5000/api/products?category=${cat}`
-                : "http://localhost:5000/api/products")
+                 `http://localhost:5000/api/products?category=${cat}`)
 
                 setProducts(res.data);
             } catch(err){
@@ -58,13 +57,17 @@ const PopularsItems = ({cat,filters,sort}) => {
   }, [sort])
 
     return (
-        <div className='flex flex-col justify-center items-center px-5 py-10 sm:px-20'>
-            <div className='flex justify-around items-center flex-wrap'>
-            {cat 
-            ? filteredProducts.map((item)=>(<PopularsItem item={item} key={item._id} />))
-                : products.slice(0,8).map((item)=>(<PopularsItem item={item} key={item._id} />))
-                }
-            </div>
+        <div className='flex flex-col justify-center min-h-[50vh] items-center px-5 py-10 sm:px-20'>
+            {filteredProducts.length>0? (
+                <div className='flex justify-around items-center flex-wrap'>
+                    {filteredProducts.map((item)=>(<PopularsItem item={item} key={item._id} />))}
+                </div>
+            ) : (
+                <div className='text-center'>
+                    <p className='text-gray-500 text-lg'>No more Products</p>
+                </div>
+            )}
+
         </div>
     )
 }
