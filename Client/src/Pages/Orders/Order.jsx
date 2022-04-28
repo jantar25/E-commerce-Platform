@@ -15,7 +15,8 @@ const Order = () => {
     const date= new Date(orderData?.createdAt)
     const orderDate = date.getHours() + ":" + date.getMinutes() + ", " + date.toDateString();
     const orderedProducts = orderData?.products
-    console.log(orderedProducts)
+    const deliveryAddress = orderData?.address
+    console.log(deliveryAddress)
 
     useEffect(() => {
         const getOrder = async ()=>{
@@ -64,6 +65,27 @@ const Order = () => {
                                 </div> ))}
                             </div>
                         )}       
+                    </div>
+                </div>
+                <div className='text-white m-2'>
+                    <h3 className='my-4 text-gray-300 text-lg'>Delivery Address</h3>
+                    <div className='flex justify-between flex-wrap bg-[#232B2B] p-4'>
+                        <div className='flex items-center m-2'>
+                            <span className='text-gray-400'>Country:</span>
+                            <p className='font-[600] text-lg ml-1'>{deliveryAddress.country}</p>
+                        </div>
+                        <div className='flex items-center m-2'>
+                            <span className='text-gray-400'>City:</span>
+                            <p className='font-[600] text-lg ml-1'>{deliveryAddress.city}</p>
+                        </div>
+                        <div className='flex items-center m-2'>
+                            <span className='text-gray-400'>Phone:</span>
+                            <p className='font-[600] text-lg ml-1'>{deliveryAddress.line1}</p>
+                        </div>
+                        <div className='flex items-center m-2'>
+                            <span className='text-gray-400'>P.BOX:</span>
+                            <p className='font-[600] text-lg ml-1'>{deliveryAddress.line1}</p>
+                        </div>
                     </div>
                 </div>             
             </div>

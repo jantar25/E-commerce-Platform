@@ -85,12 +85,9 @@ const PopularItem = ({item}) => {
                                             mx-3 justify-center items-center">{quantity}</p>
                                             <Add onClick={()=> handleQuantity("inc")} />
                                         </div>
-                                        <div className="flex flex-col md:flex-row justify-between">
-                                            <button className="flex px-3 py-1 border border-2 border-orange-400 font-Manrope justify-center
-                                            font-[700] rounded text-orange-500 items-center my-2 tex-sm" onClick={handleCart}>ADD TO CART
-                                            <ShoppingCartOutlined style={{fontSize:"16px",marginLeft:'5px'}}/></button>
-                                            <button className="text-black px-3 py-1 my:2 rounded font-[700] bg-[#04AA6D] tex-sm font-Manrope">BUY NOW</button>
-                                        </div>
+                                        <button className="flex px-3 py-1 border border-2 border-orange-400 font-Manrope justify-center
+                                        font-[700] rounded text-orange-500 items-center my-2 tex-sm" onClick={handleCart}>ADD TO CART
+                                        <ShoppingCartOutlined style={{fontSize:"16px",marginLeft:'5px'}}/></button>
                                     </div>
                                 </div>
                             </div>
