@@ -26,16 +26,16 @@ router.post("/login", async (req,res)=>{
     try{ 
         
         const user= await User.findOne({username:req.body.username});
-        if(!user) {
-            // res.status(401).json("Username Not Found");
-        } else {
-            const hashedPassword = CryptoJS.AES.decrypt(user.password, process.env.SEC_PASS);
-            const OriginalPassword = hashedPassword.toString(CryptoJS.enc.Utf8);
-            const accessToken = jwt.sign({id: user._id,isAdmin: user.isAdmin,},process.env.SEC_JWT,{expiresIn:"3d"});     
-            const {password,...others}= user._doc;
-            OriginalPassword !== req.body.password?res.status(401).json("Wrong Password") :
-            res.status(200).json({...others, accessToken}); 
-        }
+        // if(!user) {
+        //     return res.status(401).json("Username Not Found");
+        // } 
+        const hashedPassword = CryptoJS.AES.decrypt(user.password, process.env.SEC_PASS);
+        const OriginalPassword = hashedPassword.toString(CryptoJS.enc.Utf8);
+        const accessToken = jwt.sign({id: user._id,isAdmin: user.isAdmin,},process.env.SEC_JWT,{expiresIn:"3d"});     
+        const {password,...others}= user._doc;
+        OriginalPassword !== req.body.password?res.status(401).json("Wrong Password") :
+        res.status(200).json({...others, accessToken}); 
+        
    
     } catch(err){
         res.status(500).json(err)

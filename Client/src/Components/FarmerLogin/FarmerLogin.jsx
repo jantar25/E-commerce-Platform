@@ -4,7 +4,7 @@ import FarmerRegistor from '../FarmerRegistor/FarmerRegistor';
 import { farmerLogin } from "../../Redux/apiCalls"
 
 
-const FarmerLogin = ({isFarmerLoggedIn,setIsFarmerLoggedIn}) => {
+const FarmerLogin = () => {
     const [signIn, setSignIn] = useState(true)
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
@@ -14,7 +14,6 @@ const FarmerLogin = ({isFarmerLoggedIn,setIsFarmerLoggedIn}) => {
     const handleClick = (e)=>{
         e.preventDefault();
         farmerLogin(dispatch,{password,email});
-        setIsFarmerLoggedIn(!isFarmerLoggedIn)
     }
    
   return (

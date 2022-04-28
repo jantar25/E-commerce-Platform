@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import { publicRequest } from "../../requestMethode"
-import { useHistory } from "react-router"
+
 
 const FarmerRegistor = ({setSignIn,signIn}) => {
     const [farmer,setFarmer] = useState({
@@ -17,7 +17,6 @@ const FarmerRegistor = ({setSignIn,signIn}) => {
         loading:false,
     });
     const {username,title,company,email,telephone,description,password,confirmedPassword,error,loading} = farmer;
-    const history = useHistory();
 
     const handleChange = (e) =>{
         setFarmer({ ...farmer, [e.target.name] : e.target.value })

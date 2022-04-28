@@ -15,8 +15,6 @@ import { Link } from 'react-router-dom';
 
 
 
-
-
 const ProductTurnary = styled.div`
 width:20px;
 height:20px;

@@ -3,10 +3,9 @@ const mongoose = require ("mongoose")
 
 const OrderSchima = new mongoose.Schema(
     {
-        userId:{type:String,required:true},
         products:[
             {
-                productId:{type:String},
+                product:{type:Array},
                 quantity:{type:Number,default:1},
             }
         ],

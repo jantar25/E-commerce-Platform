@@ -20,9 +20,8 @@ const PaySuccess = () => {
     const createOrder = async () => {
         try {
         const res = await userRequest.post("/orders", {
-            userId: currentUser._id,
             products: cart.products.map((item) => ({
-            productId: item._id,
+            product: item,
             quantity: item._quantity,
             })),
             amount: cart.total,

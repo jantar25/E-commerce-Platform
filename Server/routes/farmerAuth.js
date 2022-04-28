@@ -45,8 +45,9 @@ router.put("/:id",(verifyTokenandFarmer || verifyTokenandAdmin),async (req,res)=
 router.post("/login", async (req,res)=>{
     try{ 
         const farmer= await Farmer.findOne({email:req.body.email});
-        // !farmer && res.status(401).json("Wrong Credentials");
-
+        // if(!farmer) {
+        //     return res.status(401).json("Wrong Credentials");
+        // }
         const hashedPassword = CryptoJS.AES.decrypt(farmer.password, process.env.SEC_PASS);
         const OriginalPassword = hashedPassword.toString(CryptoJS.enc.Utf8);
         const accessToken = jwt.sign({id: farmer._id,isAdmin: farmer.isAdmin,isFarmer:farmer.isFarmer},process.env.SEC_JWT,{expiresIn:"3d"});     
