@@ -72,12 +72,6 @@ const Navbar = () => {
                             </Badge>
                         </div>
                     </Link>
-                    <div className='hidden md:flex ml-6'>
-                        <input className='bg-[#232B2B] rounded-l font-Manrope text-md text-white px-4 flex-2 w-full 
-                         min-h-[30px]' placeholder="Search" />
-                        <Search style={{color:'#04AA6D',fontSize:30,background:'#000',borderTopRightRadius:'5px'
-                    ,borderBottomRightRadius:'5px'}} />
-                    </div>
                     <div className='ml-6 hidden md:flex text-[16px]'>
                         {user?(
                         <div className='flex items-center justify-center' >
@@ -99,12 +93,6 @@ const Navbar = () => {
                     {toggle && (
                         <div className="flex justify-end items-center flex-col bg-black text-left p-4 absolute
                         top-8 right-0 mt-4 min-w-[210px] rounded shadow-lg shadow-[#04AA6D] z-10 text-[16px]">
-                            <div className='flex ml-6 '>
-                                <input className='bg-[#232B2B] rounded-l font-Manrope text-md text-white px-4 flex-2 w-full 
-                                min-h-[30px]' placeholder="Search" />
-                                <Search style={{color:'#04AA6D',fontSize:30,background:'#232B2B',borderTopRightRadius:'5px'
-                    ,borderBottomRightRadius:'5px'}} />
-                            </div>
                             <div className='flex text-left '>
                                 {user?(
                                 <div className='flex justify-center items-center'>
