@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { userRequest } from "../requestMethode";
+import { publicRequest } from "../requestMethode";
 import { useLocation } from "react-router"
 import { Link } from "react-router-dom";
 import logoimage from '../Images/logo.png'
@@ -18,13 +18,13 @@ const PaySuccess = () => {
     useEffect(() => {
     const createOrder = async () => {
         try {
-        const res = await userRequest.post("/orders", {
+        const res = await publicRequest.post("/orders", {
             products: cart.products.map((item) => ({
             product: item,
             quantity: item._quantity,
             })),
             amount: cart.total,
-            address: data.billing_details.address,
+            address: data.billing_details,
         });
  
         setOrderId(res.data._id);

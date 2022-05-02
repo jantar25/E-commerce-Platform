@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {Search, ShoppingCartOutlined} from '@material-ui/icons'
+import {ShoppingCartOutlined} from '@material-ui/icons'
 import {RiCloseLine,RiMenu4Line} from 'react-icons/ri'
 import { Badge } from '@material-ui/core'
 import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';

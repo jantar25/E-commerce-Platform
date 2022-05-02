@@ -2,15 +2,25 @@ import PopularsItem from './PopularItem/PopularItem'
 import { useState,useEffect } from 'react'
 import axios from "axios"
 import { useDispatch } from 'react-redux'
-import {Search} from '@material-ui/icons'
 import { getProducts } from '../../Redux/apiCalls'
 
 
 const PopularsItems = ({cat,filters,sort}) => {
     const [products,setProducts] = useState([]);
     const [filteredProducts,setFilteredProducts] = useState([]);
-    const dispatch = useDispatch()
+    const [search,setSearch] = useState('');
+    const dispatch = useDispatch();
 
+    //In case of multiple search
+    const searchKeys = ["title","price"];
+    const searchItems = (filteredProducts) => {
+        return filteredProducts.filter(
+            (searchProduct)=>searchKeys.some(
+                key=>typeof searchProduct[key] === "string" && searchProduct[key].toLowerCase().includes(search)
+                )
+            )
+    } 
+    const searchProducts = searchItems(filteredProducts);
 
     useEffect(()=>{
         const getProducts= async ()=>{
@@ -59,14 +69,21 @@ const PopularsItems = ({cat,filters,sort}) => {
 
     return (
         <div className='flex flex-col justify-center min-h-[50vh] items-center px-5 py-10 sm:px-20'>
-            <div className='hidden md:flex ml-6'>
-                <input className='bg-[#232B2B] rounded-l font-Manrope text-md text-white px-4 flex-2 w-full 
-                 min-h-[30px]' placeholder="Search" />
-                <Search style={{color:'#04AA6D',fontSize:30,background:'#000',borderTopRightRadius:'5px',borderBottomRightRadius:'5px'}} />
+            <div className='flex my-8 h-[40px] w-full sm:w-3/4'>
+                <input className='bg-[#232B2B] rounded font-Manrope text-md text-white px-4 w-full 
+                 h-full border border-[#04AA6D]' placeholder="Search..." onChange={(e)=>setSearch(e.target.value)}/>
             </div>
             {filteredProducts.length>0? (
                 <div className='flex justify-around items-center flex-wrap'>
-                    {filteredProducts.map((item)=>(<PopularsItem item={item} key={item._id} />))}
+                    {searchProducts.length>0? (
+                        <div className='flex justify-around items-center flex-wrap'>
+                            {searchProducts.map((item)=>(<PopularsItem item={item} key={item._id} />))}
+                        </div>
+                    ) : (
+                        <div className='text-center'>
+                        <p className='text-gray-500 text-lg'>No more Products with that Specification</p>
+                    </div>
+                    )}
                 </div>
             ) : (
                 <div className='text-center'>

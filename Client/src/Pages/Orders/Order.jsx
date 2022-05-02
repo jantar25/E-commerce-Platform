@@ -71,6 +71,14 @@ const Order = () => {
                     <h3 className='my-4 text-gray-300 text-lg'>Delivery Address</h3>
                     <div className='flex justify-between flex-wrap bg-[#232B2B] p-4'>
                         <div className='flex items-center m-2'>
+                            <span className='text-gray-400'>Name:</span>
+                            <p className='font-[600] text-lg ml-1'>{deliveryAddress.name}</p>
+                        </div>
+                        <div className='flex items-center m-2'>
+                            <span className='text-gray-400'>Email:</span>
+                            <p className='font-[600] text-lg ml-1'>{deliveryAddress.email}</p>
+                        </div>
+                        {/* <div className='flex items-center m-2'>
                             <span className='text-gray-400'>Country:</span>
                             <p className='font-[600] text-lg ml-1'>{deliveryAddress.country}</p>
                         </div>
@@ -85,7 +93,7 @@ const Order = () => {
                         <div className='flex items-center m-2'>
                             <span className='text-gray-400'>P.BOX:</span>
                             <p className='font-[600] text-lg ml-1'>{deliveryAddress.line1}</p>
-                        </div>
+                        </div> */}
                     </div>
                 </div>             
             </div>

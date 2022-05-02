@@ -7,7 +7,7 @@ import { Add, Remove } from "@material-ui/icons"
 import logo from "../Images/logo.png"
 import { useState,useEffect } from 'react';
 import StripeCheckout from 'react-stripe-checkout'
-import {userRequest} from '../requestMethode'
+import {publicRequest} from '../requestMethode'
 import {useHistory} from "react-router"
 import { decreaseProductQuantity, deleteProduct,IncreamentProductQuantity } from '../Redux/cartRedux';
 import { useDispatch } from 'react-redux';
@@ -37,7 +37,7 @@ const Cart = () => {
     useEffect(()=>{
         const makeRequest= async ()=>{
             try {
-                const res = await userRequest.post("/checkout/payment",
+                const res = await publicRequest.post("/checkout/payment",
                 {tokenId:stripeToken.id,amount:cart.total});
                 history.push("/paySuccess",{data:res.data,cart});
             } catch(err){
