@@ -1,10 +1,10 @@
 const router = require("express").Router();
 const Product = require("../models/Product");
-const {verifyTokenandAdmin,verifyTokenandFarmer} = require ("./verifyToken")
+const {verifyTokenandAdmin,verifyTokenandFarmer,verifyTokenandFarmerOrAdmin} = require ("./verifyToken")
 
 
 //CREATE PRODUCT
-router.post("/",(verifyTokenandFarmer || verifyTokenandAdmin),async (req,res)=>{
+router.post("/",verifyTokenandFarmerOrAdmin,async (req,res)=>{
     const newProduct = new Product(req.body);
 
     try {
@@ -16,7 +16,7 @@ router.post("/",(verifyTokenandFarmer || verifyTokenandAdmin),async (req,res)=>{
 })
 
 // UPDATE PRODUCT
-router.put("/:id",(verifyTokenandFarmer || verifyTokenandAdmin),async (req,res)=>{
+router.put("/:id",verifyTokenandFarmerOrAdmin,async (req,res)=>{
     try{
         const updatedProduct = await Product.findByIdAndUpdate(req.params.id,{
             $set:req.body
@@ -29,7 +29,7 @@ router.put("/:id",(verifyTokenandFarmer || verifyTokenandAdmin),async (req,res)=
 })
 
 //DELETE PRODUCT
-router.delete("/:id",(verifyTokenandFarmer || verifyTokenandAdmin),async (req,res)=>{
+router.delete("/:id",verifyTokenandFarmerOrAdmin,async (req,res)=>{
     try{
         await Product.findByIdAndDelete(req.params.id)
 

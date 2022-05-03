@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const Order = require("../models/Order");
-const {verifyTokenandFarmer, verifyTokenandAdmin} = require("./verifyToken")
+const {verifyTokenandAdmin,verifyTokenandFarmerOrAdmin} = require("./verifyToken")
 
 
 //CREATE ORDER
@@ -16,7 +16,7 @@ router.post("/",async (req,res)=>{
 })
 
 // UPDATE ORDER
-router.put("/:id",(verifyTokenandFarmer || verifyTokenandAdmin),async (req,res)=>{
+router.put("/:id",verifyTokenandAdmin,async (req,res)=>{
     try{
         const updatedOrder = await Order.findByIdAndUpdate(req.params.id,{
             $set:req.body
@@ -29,7 +29,7 @@ router.put("/:id",(verifyTokenandFarmer || verifyTokenandAdmin),async (req,res)=
 })
 
 //DELETE ORDER
-router.delete("/:id",(verifyTokenandFarmer || verifyTokenandAdmin),async (req,res)=>{
+router.delete("/:id",verifyTokenandAdmin,async (req,res)=>{
     try{
         await Order.findByIdAndDelete(req.params.id)
 
@@ -40,7 +40,7 @@ router.delete("/:id",(verifyTokenandFarmer || verifyTokenandAdmin),async (req,re
 })
 
 //GET ORDER BY ID
-router.get("/find/:id",(verifyTokenandFarmer || verifyTokenandAdmin),async (req,res)=>{
+router.get("/find/:id",verifyTokenandFarmerOrAdmin,async (req,res)=>{
     try{
         const orders = await Order.find({_id: req.params.id});
         res.status(200).json(orders)
@@ -50,7 +50,7 @@ router.get("/find/:id",(verifyTokenandFarmer || verifyTokenandAdmin),async (req,
 })
 
 //GET ALL ORDERS
-router.get("/",(verifyTokenandFarmer || verifyTokenandAdmin),async (req,res)=>{
+router.get("/",verifyTokenandFarmerOrAdmin,async (req,res)=>{
     try{
          const orders =  await Order.find();
          
@@ -62,7 +62,7 @@ router.get("/",(verifyTokenandFarmer || verifyTokenandAdmin),async (req,res)=>{
 
 
 //GET ORDER STATS&MONTHLY INCOME
-router.get("/income",(verifyTokenandFarmer || verifyTokenandAdmin),async (req,res)=>{
+router.get("/income",verifyTokenandAdmin,async (req,res)=>{
     const productId = req.query.pid;
     const date = new Date();
     const lastMonth = new Date(date.setMonth(date.getMonth() - 1));

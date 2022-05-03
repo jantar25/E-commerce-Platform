@@ -2,7 +2,7 @@ const router = require("express").Router();
 const Farmer = require ("../models/Farmer");
 const CryptoJS = require ("crypto-js");
 const jwt = require("jsonwebtoken");
-const {verifyTokenandAdmin,verifyTokenandFarmer} = require ("./verifyToken")
+const {verifyTokenandFarmerOrAdmin} = require ("./verifyToken")
 
 //REGISTOR
 router.post("/register", async (req,res)=>{
@@ -28,7 +28,7 @@ router.post("/register", async (req,res)=>{
 });
 
 //UPDATE ID
-router.put("/:id",(verifyTokenandFarmer || verifyTokenandAdmin),async (req,res)=>{
+router.put("/:id",verifyTokenandFarmerOrAdmin,async (req,res)=>{
     try{
         const updatedFarmer = await Farmer.findByIdAndUpdate(req.params.id,{
             $set:req.body

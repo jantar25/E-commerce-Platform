@@ -44,4 +44,14 @@ const verifyTokenandFarmer = (req,res,next)=>{
     })
 }
 
-module.exports = {verifyToken,verifyTokenandAuthorisation,verifyTokenandAdmin,verifyTokenandFarmer};
+const verifyTokenandFarmerOrAdmin = (req,res,next)=>{
+    verifyToken(req,res,()=>{
+        if(req.user?.isFarmer || req.user?.isAdmin){
+            next();
+        } else {
+            return res.status(403).json("You are not either Admin or farmer!")
+        }
+    })
+}
+
+module.exports = {verifyToken,verifyTokenandAuthorisation,verifyTokenandAdmin,verifyTokenandFarmer,verifyTokenandFarmerOrAdmin};

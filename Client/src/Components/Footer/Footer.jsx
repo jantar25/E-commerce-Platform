@@ -62,11 +62,11 @@ const Footer = () => {
             <div className='flex-1 flex flex-col p-4 items-center'>
                 <h2 className='mb-8 text-gray-300 text-center'>Contact Us</h2>
                 <div className='text-gray-500 mb-8 flex items-center'>
-                    <Room style={{marginRight:"10px"}} /> ST.3456 Gisozi,Kigali</div>
+                    <Room style={{marginRight:"10px"}} /> ST.345 Gisozi,Kigali</div>
                 <div className='text-gray-500 mb-8 flex items-center'>
                     <LocalPhone style={{marginRight:"10px"}} /> +243 990 921 809</div>
                 <div className='text-gray-500 mb-8 flex items-center'>
-                    <Email style={{marginRight:"10px"}} /> contacts@kivugreen.co</div>
+                    <Email style={{marginRight:"10px"}} /> contacts@kivugreen.shop</div>
                 <img className='w-1/2' src={pay} alt='pay'/>
             </div>
         </div>
