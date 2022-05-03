@@ -36,7 +36,7 @@ export default function WidgetLg() {
         { orders.map((order)=>(
               <Tr key={order._id}>
               <Td>
-                <Name>{order.userId}</Name>
+                <Name>{order.address.name}</Name>
               </Td>
               <Date>{format(order.createdAt)}</Date>
               <Amount>{`Rwf ${order.amount}`}</Amount>

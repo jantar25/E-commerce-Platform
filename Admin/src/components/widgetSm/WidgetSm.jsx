@@ -1,5 +1,4 @@
-import {Container,Title,List,ListItem,Image,User,Username,Button} from './style';
-import { Visibility } from "@material-ui/icons";
+import {Container,Title,List,ListItem,Image,User,Username} from './style';
 import { useEffect, useState } from 'react';
 import {userRequest} from '../../requestMethode'
 
@@ -11,7 +10,7 @@ useEffect(()=>{
   const getUsers = async ()=>{
 
     try {
-      const res = await userRequest.get("/users/?new=true");
+      const res = await userRequest.get("/newsletter/");
       setUsers(res.data);
     } catch (error) {
       console.log(error)
@@ -23,18 +22,14 @@ useEffect(()=>{
 
   return (
     <Container>
-      <Title>New Join Members</Title>
+      <Title>Newsletter Subscribers</Title>
       <List>
         {users.map((user)=>(
         <ListItem key= {user._id}>
           <Image src={user.img || "https://crowd-literature.eu/wp-content/uploads/2015/01/no-avatar.gif"} />
           <User>
-            <Username>{user.username}</Username>
+            <Username>{user.email}</Username>
           </User>
-          <Button>
-            <Visibility fontSize="small" />
-            Display
-          </Button>
         </ListItem>
         ))}
       </List>

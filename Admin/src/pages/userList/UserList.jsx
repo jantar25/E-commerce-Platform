@@ -2,15 +2,14 @@ import { useEffect } from "react";
 import { Container,ListUser,Image,Button } from "./style";
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
-import { userRows } from "../../dummyData";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { userRequest } from "../../requestMethode";
 
 export default function UserList() {
   const [data, setData] = useState();
-console.log(userRows)
-console.log(data)
+
+
 useEffect(()=>{
   const getUsers = async ()=>{
 
@@ -37,7 +36,7 @@ useEffect(()=>{
       renderCell: (params) => {
         return (
           <ListUser>
-            <Image src={params.row.img} alt="" />
+            <Image src={params.row.img || "https://crowd-literature.eu/wp-content/uploads/2015/01/no-avatar.gif"} alt="" />
             {params.row.username}
           </ListUser>
         );
@@ -75,13 +74,15 @@ useEffect(()=>{
 
   return (
     <Container>
+      {data && 
       <DataGrid
-        rows={userRows}
+        rows={data}
         disableSelectionOnClick
         columns={columns}
+        getRowId={(row)=>row._id}
         pageSize={8}
         checkboxSelection
-      />
+      />}
     </Container>
   );
 }

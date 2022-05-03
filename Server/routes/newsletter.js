@@ -17,7 +17,7 @@ router.post("/",async (req,res)=>{
 //GET ALL MEWSLETTER EMAILS
 router.get("/",async (req,res)=>{
     try{
-        const newsLetterEmails =  await Product.find();
+        const newsLetterEmails =  await Newsletter.find();
         res.status(200).json(newsLetterEmails)
     } catch(err){
         res.status(500).json(err)
