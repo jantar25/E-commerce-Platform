@@ -24,6 +24,7 @@ const FarmerOrders = () => {
     const newOrders = orders?.sort(function(a, b) {
       return new Date(b.createdAt).getTime()-new Date(a.createdAt).getTime();
     });
+
   return (
     <div className='flex flex-col justify-center items-center p-4'>
     {newOrders.length>0? 

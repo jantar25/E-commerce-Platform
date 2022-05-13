@@ -1,9 +1,6 @@
 import React,{ useState,useEffect } from 'react'
-import Navbar from "../../Components/Navbar/Navbar"
-import Announcement from "../../Components/Navbar/Announcement"
-import Footer from "../../Components/Footer/Footer"
 import { useLocation } from "react-router"
-import { farmerRequest } from '../../requestMethode'
+import { userRequest } from '../../requestMethode'
 import OrderedProduct from './OrderedProduct/OrderedProduct'
 
 
@@ -16,13 +13,12 @@ const Order = () => {
     const orderDate = date.getHours() + ":" + date.getMinutes() + ", " + date.toDateString();
     const orderedProducts = orderData?.products
     const deliveryAddress = orderData?.address
-   
 
     useEffect(() => {
         const getOrder = async ()=>{
   
             try {
-              const res = await farmerRequest.get(`/orders/find/${orderId}`);
+              const res = await userRequest.get(`/orders/find/${orderId}`);
               setOrder(res.data);
             } catch (error) {
               console.log(error)
@@ -37,8 +33,6 @@ const Order = () => {
       <>
       {orderData &&
             <div className='bg-black'>
-            <Navbar />
-            <Announcement />
             <div className='px-2 md:px-8 py-8 min-h-[50vh]'>
                 <div className='flex flex-wrap justify-between items-center'>
                     <div className='flex items-center m-2'>
@@ -97,7 +91,6 @@ const Order = () => {
                     </div>
                 </div>             
             </div>
-            <Footer />
         </div>
       }
       </>

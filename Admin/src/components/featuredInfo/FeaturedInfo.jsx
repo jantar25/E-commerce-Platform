@@ -7,7 +7,7 @@ export default function FeaturedInfo() {
 
   const [income,setIncome] = useState([]);
   const [percentage,setPercentage] = useState(0);
-  console.log(income[0])
+  
   useEffect(()=>{
     const getIncome = async ()=> {
       try {

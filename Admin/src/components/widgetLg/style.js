@@ -19,7 +19,11 @@ width: 100%;
 border-spacing: 20px;
 `
 
-export const Tr = styled.tr``
+export const Tr = styled.tr`
+display: flex;
+align-items: center;
+justify-content: space-between;
+margin: 20px 0px;`
 
 export const Th = styled.th`
 text-align: left;
@@ -49,5 +53,6 @@ props.type==="Declined"? "#f7ced1" :  "#9fb9f0" };
 color:${ props=>props.type==="Approved"? "#117042" : 
 props.type==="Declined"? "#8d1847" :  "#103a6d" };
 `
+
 
 
