@@ -26,3 +26,21 @@ color: white;
 cursor: pointer;
 margin-right: 20px;
 `
+export const TitleContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px;
+`
+
+export const ButtonTop = styled.button`
+  width: 100px;
+  border: none;
+  padding: 10px;
+  background-color: black;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #6a9113;
+  font-size: 20px;
+  font-weight:600;
+  `

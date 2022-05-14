@@ -11,6 +11,7 @@ import PaySuccess from './Pages/PaySuccess';
 import PasswordForget from './Pages/PasswordForget';
 import Profile from './Pages/Profile';
 import Order from './Pages/Orders/Order';
+import MyOrder from './Pages/MyOrder';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route exact path="/"><Home /></Route>
         <Route exact path="/products/:category"><ProductList /></Route>
         <Route exact path="/cart"><Cart /></Route>
+        <Route exact path="/myOrder"><MyOrder /></Route>
         <Route exact path="/register">{user? <Redirect to="/" /> : <Register />}</Route>
         <Route exact path="/login"> {user? <Redirect to="/" /> : <Login />}</Route>
         <Route exact path="/password"><PasswordForget /></Route>

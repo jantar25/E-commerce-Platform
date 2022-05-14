@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Container,ListUser,Image,Button } from "./style";
+import { Container,ListUser,Image,Button,TitleContainer,ButtonTop } from "./style";
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
@@ -74,6 +74,12 @@ useEffect(()=>{
 
   return (
     <Container>
+      <TitleContainer>
+        <h1 className="productTitle">Users</h1>
+        <Link to="/newUser">
+          <ButtonTop>Create</ButtonTop>
+        </Link>
+      </TitleContainer>
       {data && 
       <DataGrid
         rows={data}

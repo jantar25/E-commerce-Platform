@@ -6,8 +6,7 @@ import {
   PhoneAndroid,
   Publish,
 } from "@material-ui/icons";
-import { Link } from "react-router-dom";
-import {Container,Title,Button,UserContainer,Show,Update,ShowImage,ShowTop,ShowTitle,Username,UserTitle,
+import {Container,Title,UserContainer,Show,Update,ShowImage,ShowTop,ShowTitle,Username,UserTitle,
   Bottom,UserShowTitle,ShowInfo,InfoTitle,UpdateTitle,UpdateImage,UpdateForm,UpdateLeft,UpdateItem,
   UpdateItemLabel,UpdateItemInput,UpdateRight,UpdateUpload,ButtonUpdate} from './styles'
  
@@ -16,9 +15,6 @@ export default function User() {
     <Container>
       <Title>
         <h1>Edit User</h1>
-        <Link to="/newUser">
-          <Button>Create</Button>
-        </Link>
       </Title>
       <UserContainer>
         <Show>
