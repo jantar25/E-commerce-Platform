@@ -33,6 +33,7 @@ const OrderedProduct = (orderedProduct) => {
                         </p>
                     </Content>
                  </Specification>
+                 <Button>Dispatch Order To</Button>
                 <Owner>
                   <OwnerImgContainer> 
                     <OwnerImg src={avatar || productOwner.img} alt='owner image' />
@@ -46,7 +47,6 @@ const OrderedProduct = (orderedProduct) => {
                     <p>{productOwner.telephone}</p>
                   </OwnerDescription>
                 </Owner>
-                <Button>Dispatch Order</Button>
         </OrderInfo>
     </Header>
 </Container>

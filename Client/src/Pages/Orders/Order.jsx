@@ -3,18 +3,23 @@ import Navbar from "../../Components/Navbar/Navbar"
 import Announcement from "../../Components/Navbar/Announcement"
 import Footer from "../../Components/Footer/Footer"
 import { useLocation } from "react-router"
+import { useSelector } from 'react-redux';
 import { farmerRequest } from '../../requestMethode'
 import OrderedProduct from './OrderedProduct/OrderedProduct'
 
 
 const Order = () => {
     const [order,setOrder] = useState()
+    const farmer=useSelector((state)=>state.farmer.currentFarmer);
+    const farmerId = farmer?._id
     const location=useLocation();
     const orderId = location.pathname.split("/")[2]; 
     const orderData = order?order[0]: null;
     const date= new Date(orderData?.createdAt)
     const orderDate = date.getHours() + ":" + date.getMinutes() + ", " + date.toDateString();
-    const orderedProducts = orderData?.products
+    const orderedProducts = orderData?.products.filter(
+              (product) => product.product[0].farmer[0]._id === farmerId
+        );
     const deliveryAddress = orderData?.address
    
 
@@ -78,15 +83,19 @@ const Order = () => {
                             <span className='text-gray-400'>Email:</span>
                             <p className='font-[600] text-lg ml-1'>{deliveryAddress.email}</p>
                         </div>
-                        {/* <div className='flex items-center m-2'>
+                        <div className='flex items-center m-2'>
+                            <span className='text-gray-400'>Phone:</span>
+                            <p className='font-[600] text-lg ml-1'>{deliveryAddress.phone}</p>
+                        </div>
+                        <div className='flex items-center m-2'>
                             <span className='text-gray-400'>Country:</span>
-                            <p className='font-[600] text-lg ml-1'>{deliveryAddress.country}</p>
+                            <p className='font-[600] text-lg ml-1'>{deliveryAddress.address.country}</p>
                         </div>
                         <div className='flex items-center m-2'>
                             <span className='text-gray-400'>City:</span>
-                            <p className='font-[600] text-lg ml-1'>{deliveryAddress.city}</p>
+                            <p className='font-[600] text-lg ml-1'>{deliveryAddress.address.city}</p>
                         </div>
-                        <div className='flex items-center m-2'>
+                        {/* <div className='flex items-center m-2'>
                             <span className='text-gray-400'>Phone:</span>
                             <p className='font-[600] text-lg ml-1'>{deliveryAddress.line1}</p>
                         </div>

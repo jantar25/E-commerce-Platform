@@ -8,14 +8,15 @@ flex-direction:column;
 background:black;
 margin:5px;
 border-radius:10px;
-maximum-width:280px;
+width:300px;
 `
 
 export const Header = styled.div`
 display:flex;
 flex-direction:column;
 width:100%;
-height:400px;
+height:420px;
+padding:5px 0px;
 `
 export const HeaderImg = styled.div`
 flex:1;
@@ -65,11 +66,12 @@ font-weight:700;
 `
 export const Owner = styled.div`
 display:flex;
-justify-content:center;
+justify-content:space-between;
 align-items:center;
 background:gray;
 color:black;
-padding:2px;
+padding-left:5px;
+padding-right:5px;
 margin:1px;
 `
 
@@ -107,6 +109,8 @@ background:#04AA6D;
 color:black;
 padding:3px;
 border-radius:10px;
+margin-bottom:5px;
 margin-top:5px;
 font-weight:700;
+cursor:pointer;
 `

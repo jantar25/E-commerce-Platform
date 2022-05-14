@@ -24,6 +24,10 @@ export default function WidgetLg() {
     getOrders();
   },[])
 
+  const newOrders = orders.sort(function(a, b) {
+    return new window.Date(b.createdAt).getTime()-new window.Date(a.createdAt).getTime();
+  });
+console.log(newOrders)
   return (
     <Container>
       <Title>Latest transactions</Title>
@@ -36,7 +40,7 @@ export default function WidgetLg() {
             <Th>Status</Th>
             <Th>View</Th>
           </Tr>
-          { orders.map((order)=>(
+          { newOrders.map((order)=>(
               <Tr key={order._id}>
                 <Td>
                   <Name>{order.address.name}</Name>
@@ -46,9 +50,11 @@ export default function WidgetLg() {
                 <Td className="widgetLgStatus">
                   <Button type={order.status} />
                 </Td>
-                <Link to={"/orders/" + order._id} style={{textDecoration:'none',color:'green'}}>
-                  <Visibility fontSize="medium" />
-                </Link>
+                <Td>
+                  <Link to={"/orders/" + order._id} style={{textDecoration:'none',color:'green'}}>
+                    <Visibility fontSize="medium" />
+                  </Link>
+                </Td>
             </Tr>
         ))  }  
         </tbody>   
