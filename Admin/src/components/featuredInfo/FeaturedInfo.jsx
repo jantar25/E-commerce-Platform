@@ -13,7 +13,7 @@ export default function FeaturedInfo() {
       try {
         const res = await userRequest.get("/orders/income");
         setIncome(res.data);
-        setPercentage((res.data[0].total * 100)/ res.data[0].total - 100);
+        setPercentage(res.data[0].total * 100/ res.data[0].total);
       } catch (error) {
         console.log(error)
       }
@@ -21,12 +21,14 @@ export default function FeaturedInfo() {
     getIncome();
   },[]);
 
+  console.log(income)
+
   return (
     <Container>
       <Item>
         <Title>Revenue</Title>
         <MoneyContainer>
-          <Money>{`Rwf ${income[0]?.total}`}</Money>
+          <Money>{`Rwf ${(income[0]?.total)-(income[0]?.total*0.25)}`}</Money>
           <MoneyRate>
           % {Math.floor(percentage)}{""} 
           {percentage<0? <ArrowDownward style={{ color: 'red' }} /> :
@@ -39,9 +41,12 @@ export default function FeaturedInfo() {
       <Item>
         <Title>Sales</Title>
         <MoneyContainer>
-          <Money>Rwf 460,000</Money>
+          <Money>{`Rwf ${income[0]?.total}`}</Money>
           <MoneyRate>
-            -1.4 <ArrowDownward style={{ color: 'red' }} />
+          % {Math.floor(percentage)}{""} 
+          {percentage<0? <ArrowDownward style={{ color: 'red' }} /> :
+            <ArrowUpward style={{ color: 'green' }} />
+          }
           </MoneyRate>
         </MoneyContainer>
         <Sub>Compared to last month</Sub>
@@ -49,10 +54,13 @@ export default function FeaturedInfo() {
       <Item>
         <Title>Cost</Title>
         <MoneyContainer>
-          <Money>Rwf 500,000</Money>
+          <Money>{`Rwf ${income[0]?.total*0.25}`}</Money>
           <MoneyRate>
-          +2.4 <ArrowUpward style={{ color: 'green' }} />
-          </MoneyRate> 
+          % {Math.floor(percentage)}{""} 
+          {percentage<0? <ArrowDownward style={{ color: 'red' }} /> :
+            <ArrowUpward style={{ color: 'green' }} />
+          }
+          </MoneyRate>
         </MoneyContainer>
         <Sub>Compared to last month</Sub>
       </Item>

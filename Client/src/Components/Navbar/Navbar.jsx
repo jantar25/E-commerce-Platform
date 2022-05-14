@@ -12,7 +12,6 @@ import { logoutDone } from '../../Redux/apiCalls';
 import logoimage from '../../Images/logo.png'
 
 
-
 const Navbar = () => {
     const [toggle,setToggle] = useState(false);
     const theme = createTheme({
@@ -28,6 +27,7 @@ const Navbar = () => {
     const history= useHistory();
     const location= useLocation();
     const user=useSelector((state)=>state.user.currentUser);
+    const farmer= useSelector((state)=>state.farmer.currentFarmer);
 
     const Logout= ()=>{
         logoutDone(dispatch);
@@ -65,6 +65,17 @@ const Navbar = () => {
                  </div>
                  </Link>
                 <div className='flex-2 flex items-center justify-end px-2'>
+                    <div className='hidden md:flex mx-4'>
+                        <Link to='/products/All'>
+                            <h3 className='text-[#04AA6D] hover:text-[#24FE41] mx-2'>Products</h3>
+                        </Link>
+                        {farmer? <Link to={`/profile/${farmer?.username}`}>
+                            <h3 className='text-[#04AA6D] hover:text-[#24FE41] mx-2'>My Account</h3>
+                        </Link> : null}
+                        <Link to='/myOrder'>
+                            <h3 className='text-[#04AA6D] hover:text-[#24FE41] mx-2'>My Order</h3>
+                        </Link>
+                    </div>
                     <Link to="/cart" >
                         <div className='text-[#04AA6D] hover:text-[#24FE41]'>
                             <Badge badgeContent={quantity} color="primary">
@@ -103,10 +114,21 @@ const Navbar = () => {
                                 text-xl mt-4' onClick={Logout}>Sign Out</p>
                                 </div>)
                                 :(
-                                <Link to="/login" style={{textDecoration:"none"}}>
-                                    <p className='bg-[#04AA6D] text-black font-[600] rounded py-1 px-2 hover:bg-[#24FE41] 
-                                text-xl mt-4'>Sign In</p>
-                                </Link>)}
+                                <div className='flex flex-col mx-4'>
+                                    <Link to='/products/All'>
+                                        <h3 className='text-[#04AA6D] hover:text-[#24FE41] my-2'>Products</h3>
+                                    </Link>
+                                    {farmer? <Link to={`/profile/${farmer?.username}`}>
+                                        <h3 className='text-[#04AA6D] hover:text-[#24FE41] my-2'>My Account</h3>
+                                    </Link> : null}
+                                    <Link to='/myOrder'>
+                                        <h3 className='text-[#04AA6D] hover:text-[#24FE41] my-2'>My Order</h3>
+                                    </Link>
+                                    <Link to="/login" style={{textDecoration:"none"}}>
+                                        <p className='bg-[#04AA6D] text-black font-[600] rounded py-1 px-2 hover:bg-[#24FE41] 
+                                        text-xl mt-4'>Sign In</p>
+                                    </Link>
+                                </div>)}
                             </div>
                         </div>
                     )}
