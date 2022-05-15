@@ -19,7 +19,7 @@ const FarmerProfile = ({farmer}) => {
                      </div>
                      <p className='text-[12px] md:text-sm text-center mb-4 font-[600]'>{farmer.description}</p>
                     <Link to={`profile/${farmer.username}`}>
-                        <span className='text-white cursor-pointer'>View your profile</span>
+                        <span className='text-white cursor-pointer'>View your Account</span>
                     </Link>
                  </div>
                  <div className='flex-1 flex items-center justify-center mt-4 md:mt-0'>
