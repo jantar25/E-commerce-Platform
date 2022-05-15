@@ -2,18 +2,20 @@ import React,{useRef} from 'react'
 import Navbar from "../Components/Navbar/Navbar"
 import Announcement from "../Components/Navbar/Announcement"
 import Footer from "../Components/Footer/Footer"
+import emailjs from 'emailjs-com';
+import { GrSend } from 'react-icons/gr';
 
 const MyOrder = () => {
   const form = useRef();
   const sendEmail = (e) =>{
     e.preventDefault();
     
-    // emailjs.sendForm('service_o27xpzc', 'template_rvwz16m', form.current, 'user_p6Z8erkcnfbXKsrc63eXs')
-    //   .then((result) => {
-    //       console.log(result.text);
-    //   }, (error) => {
-    //       console.log(error.text);
-    //   });
+    emailjs.sendForm('service_q6x7dze', 'template_bp27bzl', form.current, 'user_p6Z8erkcnfbXKsrc63eXs')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
       form.current.reset()
   }
 
@@ -35,13 +37,13 @@ const MyOrder = () => {
               </div>
               <div className='flex flex-col m-2 w-full'>
                 <label>Order Number</label>
-                <input name='OrderNumber' className='rounded text-white px-4 py-2 bg-gray-600'/>
+                <input name='orderNumber' className='rounded text-white px-4 py-2 bg-gray-600'/>
               </div>
             </div>
             <div className='flex flex-col md:flex-row items-center w-full'>
               <div className='flex flex-col m-2 w-full'>
-                <label>Address</label>
-                <input name='address' className='rounded text-white px-4 py-2 bg-gray-600'/>
+                <label>Email</label>
+                <input type='email' name='email' className='rounded text-white px-4 py-2 bg-gray-600'/>
               </div>
               <div className='flex flex-col m-2 w-full'>
                 <label>Ordered Date</label>
@@ -52,8 +54,8 @@ const MyOrder = () => {
               <label>Comments</label>
               <textarea name='comments'  rows={4} className='rounded text-white px-4 py-2 bg-gray-600'/>
             </div>
-            <button type='submit' className='my-4 px-8 py-2 text-black text-xl font-[600] bg-[#04AA6D] hover:bg-[#24FE41] rounded'>
-              Send Claim</button>
+            <button type='submit' className='flex items-center my-4 px-8 py-2 text-black text-xl font-[600] bg-[#04AA6D] hover:bg-[#24FE41] rounded'>
+              Send Claim <GrSend style={{fontSize:'1.5rem',marginLeft:'15px'}} /></button>
           </form>
           <div className='mt-16 md:mx-4 text-center'>
             <h3 className='text-xl text-red-500 underline '>IMPORTANT</h3>
