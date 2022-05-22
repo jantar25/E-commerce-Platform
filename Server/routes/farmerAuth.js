@@ -16,13 +16,17 @@ router.post("/register", async (req,res)=>{
         description:req.body.description,
         password:CryptoJS.AES.encrypt(req.body.password, process.env.SEC_PASS).toString(),
     });
-    
+
+    const alreadyExistUser = await Farmer.findOne({email:req.body.email})
+    if(alreadyExistUser){
+        return res.status(409).json({message:'User with this email already exist'})
+    }
     try{
         const savedFarmer= await newFarmer.save();        
         res.status(201).json(savedFarmer);
     }catch(err){
         console.log(err);
-        res.status(500).json(err);
+        res.status(500).json({message:'Something went wrong!!! We are unable to registor'});
     }
 
 });
@@ -43,20 +47,24 @@ router.put("/:id",verifyTokenandFarmerOrAdmin,async (req,res)=>{
 
 //LOGIN
 router.post("/login", async (req,res)=>{
+    const farmer= await Farmer.findOne({email:req.body.email});
+    if(!farmer) {
+        return res.status(401).json({message:"Wrong Email address"});
+    }
     try{ 
-        const farmer= await Farmer.findOne({email:req.body.email});
-        // if(!farmer) {
-        //     return res.status(401).json("Wrong Credentials");
-        // }
         const hashedPassword = CryptoJS.AES.decrypt(farmer.password, process.env.SEC_PASS);
         const OriginalPassword = hashedPassword.toString(CryptoJS.enc.Utf8);
         const accessToken = jwt.sign({id: farmer._id,isAdmin: farmer.isAdmin,isFarmer:farmer.isFarmer},process.env.SEC_JWT,{expiresIn:"3d"});     
         const {password,...others}= farmer._doc;
-        OriginalPassword !== req.body.password?res.status(401).json("Wrong Credentials") :
-        res.status(200).json({...others, accessToken}); 
+        if(OriginalPassword !== req.body.password) {
+            return res.status(401).json({message:"Wrong Password"})
+        } else {
+            res.status(200).json({...others, accessToken});
+        } 
    
     } catch(err){
-        res.status(500).json(err)
+        console.log(err)
+        res.status(500).json({message:'Something went wrong!!!'})
     }
 
 });

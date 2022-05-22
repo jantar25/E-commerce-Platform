@@ -12,6 +12,7 @@ import {useHistory} from "react-router"
 import { decreaseProductQuantity, deleteProduct,IncreamentProductQuantity } from '../Redux/cartRedux';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+const axios = require('axios');
 
 
 
@@ -59,8 +60,13 @@ const Cart = () => {
         dispatch(IncreamentProductQuantity(product))
     }
 
-    const HandleSubmit = () =>{
-
+    const HandleSubmit = async () =>{
+        try {
+        const res= axios.get('https://afripay.herokuapp.com//pay/reference_number?redirect_url=&api_key=&email=')
+        console.log(res)
+        } catch(err){
+            console.log(err)
+        }
     }
 
     return (

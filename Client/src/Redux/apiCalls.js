@@ -7,6 +7,7 @@ import {getProductStart,getProductSuccess,getProductFailure,
     updateProductStart,updateProductSuccess,updateProductFailure,
     addProductStart,addProductSuccess,addProductFailure} from "./productRedux"
 
+
 // GET ALL PRODUCTS
 export const getProducts = async (dispatch) =>{
     dispatch(getProductStart());
@@ -72,12 +73,13 @@ export const login = async (dispatch,user) =>{
 
 export const farmerLogin = async (dispatch,farmer) =>{
     dispatch(farmerLoginStart());
-
     try {
-        const res = await publicRequest.post("/farmerAuth/login",farmer);
+        const res = (await publicRequest.post("/farmerAuth/login",farmer));
         dispatch(farmerLoginSuccess(res.data));
+    
     } catch (error) {
-        dispatch(FarmerLoginFailure());
+        console.log(error.response.data.message)
+        dispatch(FarmerLoginFailure(error.response.data.message));
     }
 }
 
@@ -97,7 +99,6 @@ export const updateFarmer = async (id,updatedFarmer,dispatch) =>{
         await farmerRequest.put(`/farmerAuth/${id}`,updatedFarmer);
         dispatch(updateFarmerSuccess({id,updatedFarmer}));
     } catch (error) {
-        dispatch(updateFarmerFailure());
-        console.log(error);
+        dispatch(updateFarmerFailure(error));
     }
 }

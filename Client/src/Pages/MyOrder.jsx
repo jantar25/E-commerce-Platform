@@ -33,11 +33,11 @@ const MyOrder = () => {
             <div className='flex flex-col md:flex-row items-center w-full'>
               <div className='flex flex-col m-2 w-full'>
                 <label>Names</label>
-                <input name='names' className='rounded text-white px-4 py-2 bg-gray-600'/>
+                <input name='names' required className='rounded text-white px-4 py-2 bg-gray-600'/>
               </div>
               <div className='flex flex-col m-2 w-full'>
                 <label>Order Number</label>
-                <input name='orderNumber' className='rounded text-white px-4 py-2 bg-gray-600'/>
+                <input name='orderNumber' required className='rounded text-white px-4 py-2 bg-gray-600'/>
               </div>
             </div>
             <div className='flex flex-col md:flex-row items-center w-full'>
@@ -47,12 +47,12 @@ const MyOrder = () => {
               </div>
               <div className='flex flex-col m-2 w-full'>
                 <label>Ordered Date</label>
-                <input type='date' name='date' className='rounded text-white px-4 py-2 bg-gray-600'/>
+                <input type='date' name='date' required className='rounded text-white px-4 py-2 bg-gray-600'/>
               </div>
             </div>
             <div className='flex flex-col m-2 w-full'>
               <label>Comments</label>
-              <textarea name='comments'  rows={4} className='rounded text-white px-4 py-2 bg-gray-600'/>
+              <textarea name='comments' required rows={4} className='rounded text-white px-4 py-2 bg-gray-600'/>
             </div>
             <button type='submit' className='flex items-center my-4 px-8 py-2 text-black text-xl font-[600] bg-[#04AA6D] hover:bg-[#24FE41] rounded'>
               Send Claim <GrSend style={{fontSize:'1.5rem',marginLeft:'15px'}} /></button>

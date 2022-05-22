@@ -4,8 +4,8 @@ const farmerSlice = createSlice({
     name:"farmer",
     initialState:{
         currentFarmer: null,
+        error: null,
         isFetching: false,
-        error: false,
     },
     reducers:{
         farmerLoginStart:(state)=>{
@@ -14,10 +14,11 @@ const farmerSlice = createSlice({
         farmerLoginSuccess:(state,action)=>{
             state.isFetching=false;
             state.currentFarmer=action.payload
+            state.error=null;
         },
-        FarmerLoginFailure:(state)=>{
+        FarmerLoginFailure:(state,error)=>{
             state.isFetching=false;
-            state.error=true;
+            state.error=error;
         },
         FarmerLogoutSuccess:(state)=>{
             state.currentFarmer= null;
@@ -33,9 +34,9 @@ const farmerSlice = createSlice({
             state.products[state.products.findIndex((item)=>item._id === action.payload.id)
             ]=action.payload.product;
         },
-        updateFarmerFailure:(state)=>{
+        updateFarmerFailure:(state,action)=>{
             state.isFetching=false;
-            state.error=true;
+            state.error=action.error;
         },
     }
 })
