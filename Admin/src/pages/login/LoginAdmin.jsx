@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Container,Input,Button,Title,Form } from './styles'
-import {useDispatch} from 'react-redux'
-import {login} from '../../Redux/apiCalls'
+import { Container,Input,Button,Title,Form,Error } from './styles'
+import { useDispatch,useSelector } from 'react-redux'
+import { login } from '../../Redux/apiCalls'
 import { useHistory } from 'react-router'
 
 
@@ -11,7 +11,7 @@ const LoginAdmin = () => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-
+    const {isFetching,error} = useSelector((state)=> state.user)
     const HandleClick = (e) =>{
         e.preventDefault();
         login(dispatch,{username,password});
@@ -22,9 +22,10 @@ const LoginAdmin = () => {
         <Container>
             <Form>
                 <Title>ADMIN LOGIN</Title>
-                <Input type='text' placeholder='username' onChange={e=>setUsername(e.target.value)} />
-                <Input type='password' placeholder='password' onChange={e=>setPassword(e.target.value)} />
-                <Button onClick={HandleClick} >LOGIN</Button>
+                <Input required type='text' placeholder='username' onChange={e=>setUsername(e.target.value)} />
+                <Input required type='password' placeholder='password' onChange={e=>setPassword(e.target.value)} />
+                {error? <Error>{`*${error.payload.message}*`}</Error> : null}
+                <Button onClick={HandleClick} >{isFetching? 'Logging ...' : 'Login'}</Button>
             </Form>
         </Container>
     )

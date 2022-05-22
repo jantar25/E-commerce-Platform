@@ -7,14 +7,15 @@ import axios from "axios";
 
 const Slider = () => {
     const [email,setEmail] = useState('');
-    
+    const [err,setErr] = useState(null);
     const HandleNewsletter = async(e) => {
         e.preventDefault();     
         try {
             await axios.post('http://localhost:5000/api/newsletter',{email:email});
             setEmail('')
+            setErr(null);
         } catch (error) {
-            console.log(error);
+            setErr(error.response.data);
         }
     }
 
@@ -28,9 +29,10 @@ const Slider = () => {
                     Farming Techniques that involves the cultivation of plants and rearing of animals in natural ways</p>
                 <p className='font-Manrope text-sm md:text-md text-[#5aff15] mt-12'>
                     Get timely updates from your favorite products by subscribing to our newsletter</p>
+                    {err? <span className="text-red-800 py-2">{`*${err.message}*`}</span>: null}
                 <form className='flex w-full mt-2 mb-4' onSubmit={HandleNewsletter}>
                     <input className='bg-[#232B2B] rounded-l font-Manrope text-md md:text-lg text-white px-4 flex-2 w-full 
-                    min-h-[40px] md:min-h-[50px]' type='Email' placeholder='Your Email' 
+                    min-h-[40px] md:min-h-[50px]' type='Email' placeholder='Your Email' required
                     onChange={(e)=>setEmail(e.target.value)} value={email}/>
                     <button className='flex-[1_1_60%] bg-[#04AA6D] min-h-[40px] md:min-h-[50px] px-4 w-full rounded-r font-Manrope 
                     font-bold text-white text-md md:text-lg' type='submit' >Subscribe</button>

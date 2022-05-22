@@ -5,11 +5,16 @@ const Newsletter = require("../models/Newsletter");
 //SAVE EMAIL FOR NEWSLETTER
 router.post("/",async (req,res)=>{
     const newNewsletter = new Newsletter(req.body);
+    const existingEmail= await Newsletter.findOne({email:req.body.email});
+    if(existingEmail) {
+        return res.status(401).json({message:"Email already exist!!"});
+    }
     try {
         const savedNewsletter = await newNewsletter.save(); 
         res.status(200).json(savedNewsletter)
     } catch(err){
-        res.status(500).json(err)
+        console.log(err)
+        res.status(500).json({message:"Something went wrong!!"})
     }
 })
 

@@ -49,8 +49,8 @@ const FarmerRegistor = ({setSignIn,signIn}) => {
                     setSignIn(!signIn)
                     console.log(res)
                 } catch(err){
-                    setFarmer({ ...farmer,error:err,loading:false });
-                    console.log(err)
+                    setFarmer({ ...farmer,error:err.response.data.message,loading:false });
+                    console.log(err.response)
                 }
     } 
     }
@@ -79,7 +79,7 @@ const FarmerRegistor = ({setSignIn,signIn}) => {
             <p className='text-sm my-2'>By creating an account,I consent to the processing of my personal data 
                 in accordance with the <b>PRIVACY POLICY</b></p>
             <div>
-                {error? <p className='text-red-900 font-bold text-sm my-2'>{farmer.error}</p> : null}
+                {error? <p className='text-red-900 font-bold text-sm my-2'>{`*${farmer.error}*`}</p> : null}
                 <button className='bg-black text-white py-2 px-8 text-lg font-[700] rounded-md' onClick={handleRegisterFarmer}>
                 {loading?'Creating ...' : 'Create'}</button>
                 <div className='flex mt-4'>
