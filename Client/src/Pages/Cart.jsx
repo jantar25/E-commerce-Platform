@@ -28,12 +28,14 @@ const KEY="pk_test_51JvPoqKBZkT4LPtBKI5yrAmM7dYnethOIG6riguwYBfTc4yQ9DHQipmpeR4J
 const Cart = () => {
     const [img,setImg] = useState('')
     const cart = useSelector(state=>state.cart)
+    const user = useSelector(state=>state.user.currentUser)
     const [stripeToken,setStripeToken]= useState(null);
     const history = useHistory();
     const dispatch = useDispatch();
     const onToken=(token)=>{
         setStripeToken(token);
     }
+
 
     useEffect(()=>{
         const makeRequest= async ()=>{
@@ -61,11 +63,15 @@ const Cart = () => {
     }
 
     const HandleSubmit = async () =>{
-        try {
-        const res= axios.get('https://afripay.herokuapp.com//pay/reference_number?redirect_url=&api_key=&email=')
-        console.log(res)
-        } catch(err){
-            console.log(err)
+        if(!user) {
+            history.push("/login")
+        } else {
+            try {
+                const res= axios.get('https://afripay.herokuapp.com//pay/reference_number?redirect_url=&api_key=&email=')
+                console.log(res)
+                } catch(err){
+                    console.log(err)
+            }
         }
     }
 

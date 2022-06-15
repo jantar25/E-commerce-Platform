@@ -5,6 +5,7 @@ import NewestItems from "../Components/PopularItems/NewestItems"
 import Footer from "../Components/Footer/Footer"
 import FarmerLogin from "../Components/FarmerLogin/FarmerLogin"
 import FarmerProfile from "../Components/FarmerProfile/FarmerProfile"
+import GetStarted from '../Components/GetStarted/GetStarted';
 
 
 const Home = () => {
@@ -17,6 +18,7 @@ const Home = () => {
                 <h1 className='text-2xl md:text-4xl text-orange-500 text-center mb-8'>Newest Items</h1>
             </div>
            <NewestItems />
+           <GetStarted />
            {farmer? <FarmerProfile farmer={farmer} />: <FarmerLogin /> }
            <Footer />
         </div>

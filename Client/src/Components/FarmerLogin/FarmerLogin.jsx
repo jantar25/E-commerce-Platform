@@ -17,12 +17,10 @@ const FarmerLogin = () => {
     }
     
   return (
-    <div className='py-8 px-5 sm:px-20'>
+    <div className='pb-8 px-5 sm:px-20'>
         {signIn? (
              <div className='flex flex-col p-8 bg-gradient-to-tr from-[#04AA6D] to-[#24FE41]'>
              <div>
-                 <p className='text-sm md:text-lg lg:text-xl'>Are you Farmer?</p>
-                 <h3 className='text-xl md:text-2xl lg:text-3xl font-[800] my-2'>Want to join our comunity?</h3>
                  <p className='text-md md:text-xl lg:text-2xl font-[600]'>login here as Farmer</p>
              </div>
              <form className='flex flex-col md:flex-row justify-between items-center' onSubmit={handleClick}>

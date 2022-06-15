@@ -52,7 +52,7 @@ const Footer = () => {
                         <Link to=''>Order Tracking</Link>
                     </li>
                     <li className='text-gray-500 w-1/2 hover:text-[#6a9113] mb-2 cursor-pointer'>
-                        <a href='http://localhost:3001/' target="_blank">Admin</a>
+                        <a href='https://kivugreenadmin.netlify.app/' target="_blank">Admin</a>
                     </li>
                     <li className='text-gray-500 w-1/2 hover:text-[#6a9113] mb-2 cursor-pointer'>
                         <Link to=''>Terms</Link>

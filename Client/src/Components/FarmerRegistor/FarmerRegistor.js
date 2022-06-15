@@ -59,7 +59,6 @@ const FarmerRegistor = ({setSignIn,signIn}) => {
   return (
         <div className='flex flex-col p-8 bg-gradient-to-tr from-[#04AA6D] to-[#24FE41]'>
             <div>
-                <p className='text-sm md:text-lg lg:text-xl'>Are you Farmer?</p>
                 <h3 className='text-xl md:text-2xl lg:text-3xl font-[800] my-2'>Create account to join our farmers comunity</h3>
             </div>
             <div className='flex flex-col md:flex-row justify-between items-center my-4'>

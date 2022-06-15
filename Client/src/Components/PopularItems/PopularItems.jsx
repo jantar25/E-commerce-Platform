@@ -29,8 +29,8 @@ const PopularsItems = ({cat,filters,sort}) => {
                 // cat? `https://kivugree.herokuapp.com/api/products?category=${cat}`
                 // : "https://kivugree.herokuapp.com/api/products")
 
-                const res = await axios.get(cat==="All"? "http://localhost:5000/api/products":
-                 `http://localhost:5000/api/products?category=${cat}`)
+                const res = await axios.get(cat==="All"? "https://kivugren.herokuapp.com/api/products":
+                 `https://kivugren.herokuapp.com/api/products?category=${cat}`)
 
                 setProducts(res.data);
             } catch(err){
